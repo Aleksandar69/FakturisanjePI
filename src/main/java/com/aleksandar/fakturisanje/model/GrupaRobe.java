@@ -42,6 +42,54 @@ public class GrupaRobe {
 		this.pdv = pdv;
 		this.obrisano = false;
 	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getGrupaNaziv() {
+		return grupaNaziv;
+	}
+
+	public void setGrupaNaziv(String grupaNaziv) {
+		this.grupaNaziv = grupaNaziv;
+	}
+
+	public Set<RobaUsluga> getRobaUsluge() {
+		return robaUsluge;
+	}
+
+	public void setRobaUsluge(Set<RobaUsluga> robaUsluge) {
+		this.robaUsluge = robaUsluge;
+	}
+
+	public Preduzece getPreduzece() {
+		return preduzece;
+	}
+
+	public void setPreduzece(Preduzece preduzece) {
+		this.preduzece = preduzece;
+	}
+
+	public PDV getPdv() {
+		return pdv;
+	}
+
+	public void setPdv(PDV pdv) {
+		this.pdv = pdv;
+	}
+
+	public boolean isObrisano() {
+		return obrisano;
+	}
+
+	public void setObrisano(boolean obrisano) {
+		this.obrisano = obrisano;
+	}
 	
 	
 
