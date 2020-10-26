@@ -43,6 +43,10 @@ public class GrupaRobe {
 		this.obrisano = false;
 	}
 
+	public GrupaRobe() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public long getId() {
 		return id;
 	}

@@ -78,6 +78,10 @@ public class Preduzece {
 		this.obrisano = false;
 	}
 
+	public Preduzece() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public long getId() {
 		return id;
 	}
