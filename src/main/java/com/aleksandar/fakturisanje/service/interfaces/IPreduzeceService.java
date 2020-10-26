@@ -5,6 +5,7 @@ import java.util.List;
 import com.aleksandar.fakturisanje.model.Faktura;
 import com.aleksandar.fakturisanje.model.Preduzece;
 
+
 public interface IPreduzeceService {
 
 	List<Preduzece> findAll();

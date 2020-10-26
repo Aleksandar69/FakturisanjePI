@@ -12,9 +12,9 @@ import com.aleksandar.fakturisanje.model.Narudzbenica;
 @Repository
 public interface NarudzbenicaRepository extends JpaRepository<Narudzbenica, Long>{
 
-    Page<Narudzbenica> findAllByPoslovniPartner_NazivPartneraIgnoreCaseContains(String nazivPartnera , Pageable pageable);
+    Page<Narudzbenica> findAllByPoslovniPartner_NazivIgnoreCaseContains(String nazivPartnera , Pageable pageable);
 
-    Page<Narudzbenica> findAllByPoslovnaGodina_IdAndPoslovniPartner_NazivPartneraIgnoreCaseContains(long poslovnaGodina_id, String nazivPartnera, Pageable pageable);
+    Page<Narudzbenica> findAllByPoslovnaGodina_IdAndPoslovniPartner_NazivIgnoreCaseContains(long poslovnaGodina_id, String nazivPartnera, Pageable pageable);
 
     List<Narudzbenica> findAllByObrisano(boolean obrisano);
 

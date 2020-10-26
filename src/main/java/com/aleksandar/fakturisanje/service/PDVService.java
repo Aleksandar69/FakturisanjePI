@@ -1,14 +1,16 @@
-package com.aleksandar.service;
+package com.aleksandar.fakturisanje.service;
 
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.aleksandar.fakturisanje.model.PDV;
 import com.aleksandar.fakturisanje.repo.PdvRepository;
 import com.aleksandar.fakturisanje.service.interfaces.IPDVService;
 
+@Service
 public class PDVService implements IPDVService {
 	
 	@Autowired

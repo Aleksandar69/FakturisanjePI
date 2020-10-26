@@ -1,4 +1,4 @@
-package com.aleksandar.service;
+package com.aleksandar.fakturisanje.service;
 
 import java.util.List;
 import java.util.Optional;
@@ -7,6 +7,7 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.stereotype.Service;
 
 import com.aleksandar.fakturisanje.model.Cjenovnik;
 import com.aleksandar.fakturisanje.model.StavkaCjenovnika;
@@ -14,6 +15,7 @@ import com.aleksandar.fakturisanje.repo.CjenovnikRepository;
 import com.aleksandar.fakturisanje.repo.StavkaCjenovnikaRepository;
 import com.aleksandar.fakturisanje.service.interfaces.ICjenovnikService;
 
+@Service
 public class CjenovnikService implements ICjenovnikService{
 	
 	@Autowired
@@ -31,7 +33,7 @@ public class CjenovnikService implements ICjenovnikService{
 	@Override
 	public Page<StavkaCjenovnika> findAllByCjenovnikId(long id, String nazivRobeUsluge, int brStranice,
 			int brPrikazanih) {
-		return stavkaCjenovnikaRepo.findAllByObrisanoAndCenovnik_IdAndRobaUsluga_NazivRobeUslugeIgnoreCaseContains(false, id, nazivRobeUsluge, PageRequest.of(brStranice, brPrikazanih));
+		return stavkaCjenovnikaRepo.findAllByObrisanoAndCjenovnik_IdAndRobaUsluga_NazivIgnoreCaseContains(false, id, nazivRobeUsluge, PageRequest.of(brStranice, brPrikazanih));
 	}
 
 	@Override

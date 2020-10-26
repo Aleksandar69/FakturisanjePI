@@ -1,4 +1,4 @@
-package com.aleksandar.service;
+package com.aleksandar.fakturisanje.service;
 
 import java.util.Date;
 import java.util.HashSet;
@@ -10,6 +10,7 @@ import org.apache.commons.lang3.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.stereotype.Service;
 
 import com.aleksandar.fakturisanje.model.Faktura;
 import com.aleksandar.fakturisanje.model.Narudzbenica;
@@ -20,6 +21,7 @@ import com.aleksandar.fakturisanje.repo.StavkaFaktureRepository;
 import com.aleksandar.fakturisanje.service.interfaces.IFakturaService;
 import com.aleksandar.fakturisanje.service.interfaces.INarudzbenicaService;
 
+@Service
 public class NarudzbenicaService implements INarudzbenicaService{
 
 	@Autowired
@@ -52,14 +54,14 @@ public class NarudzbenicaService implements INarudzbenicaService{
 
 	@Override
 	public Page<Narudzbenica> findAllByNazivPartnera(String nazivPartnera, int brojStranice, int brojPrikazanih) {
-		return narudzbenicaRepo.findAllByPoslovniPartner_NazivPartneraIgnoreCaseContains(nazivPartnera, PageRequest.of(brojStranice, brojPrikazanih));
+		return narudzbenicaRepo.findAllByPoslovniPartner_NazivIgnoreCaseContains(nazivPartnera, PageRequest.of(brojStranice, brojPrikazanih));
 	}
 
 	@Override
 	public Page<Narudzbenica> findAllByPoslovnaGodinaAndNazivPartnera(String nazivPartnera, long poslovnaGodinaId,
 			int brojStranice, int brojPrikazanih) {
-		return narudzbenicaRepo.findAllByPoslovnaGodina_IdAndPoslovniPartner_NazivPartneraIgnoreCaseContains(poslovnaGodinaId, nazivPartnera, PageRequest.of(brojStranice, brojPrikazanih));
-	}
+		return narudzbenicaRepo.findAllByPoslovnaGodina_IdAndPoslovniPartner_NazivIgnoreCaseContains(poslovnaGodinaId, nazivPartnera, PageRequest.of(brojStranice, brojPrikazanih));
+		}
 
 	@Override
 	public void napraviFakturuOdNarudzbenice(Narudzbenica narudzbenica, int poslovnaGodina) {

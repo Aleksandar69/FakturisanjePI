@@ -10,9 +10,9 @@ import com.aleksandar.fakturisanje.model.RobaUsluga;
 @Repository
 public interface RobaUslugaRepository extends JpaRepository<RobaUsluga, Long>{
 	
-    Page<RobaUsluga> findAllByObrisanoAndNazivRobeUslugeIgnoreCaseContains(boolean obrisano,
+    Page<RobaUsluga> findAllByObrisanoAndNazivIgnoreCaseContains(boolean obrisano,
             String nazivRobeUsluge, Pageable pageable);
-	Page<RobaUsluga> findAllByGrupaRobe_idAndObrisanoAndNazivRobeUslugeIgnoreCaseContains(Long id,
+	Page<RobaUsluga> findAllByGrupaRobe_idAndObrisanoAndNazivIgnoreCaseContains(Long id,
 	boolean obrisano, String nazivRobeUsluge, Pageable pageable);
 	RobaUsluga findByObrisanoAndId(boolean obrisano, long id);
 	

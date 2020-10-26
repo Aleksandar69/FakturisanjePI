@@ -1,15 +1,17 @@
-package com.aleksandar.service;
+package com.aleksandar.fakturisanje.service;
 
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.stereotype.Service;
 
 import com.aleksandar.fakturisanje.model.Mjesto;
 import com.aleksandar.fakturisanje.repo.MjestoRepository;
 import com.aleksandar.fakturisanje.service.interfaces.IMjestoService;
 
+@Service
 public class MjestoService implements IMjestoService{
 	
 	@Autowired

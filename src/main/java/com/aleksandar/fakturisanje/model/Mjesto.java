@@ -23,10 +23,10 @@ public class Mjesto {
 	
 	private String drzava;
 	
-    @OneToMany(mappedBy = "mesto", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "mjesto", cascade = CascadeType.ALL)
 	private Set<PoslovniPartner> poslovniPartneri = new HashSet<>();
     
-    @OneToMany(mappedBy = "mesto", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "mjesto", cascade = CascadeType.ALL)
 	private Set<Preduzece> preduzeca = new HashSet<>();
 	
 	private boolean obrisano;

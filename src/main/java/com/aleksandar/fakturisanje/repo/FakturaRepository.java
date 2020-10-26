@@ -12,11 +12,11 @@ import com.aleksandar.fakturisanje.model.Faktura;
 @Repository
 public interface FakturaRepository extends JpaRepository<Faktura, Long> {
 
-	Page<Faktura> findAllByVrstaFaktureAndPoslovniPartner_NazivPartneraIgnoreCaseContainsAndObrisanoIsFalse(
+	Page<Faktura> findAllByVrstaFaktureAndPoslovniPartner_NazivIgnoreCaseContainsAndObrisanoIsFalse(
 			boolean vrstaFakture,String nazivPartnera , Pageable pageable);
 
 	Page<Faktura>
-	findAllByVrstaFaktureAndPoslovnaGodina_IdAndPoslovniPartner_NazivPartneraIgnoreCaseContainsAndObrisanoIsFalse(
+	findAllByVrstaFaktureAndPoslovnaGodina_IdAndPoslovniPartner_NazivIgnoreCaseContainsAndObrisanoIsFalse(
 			boolean vrstaFakture, long poslovnaGodina_id, String nazivPartnera,Pageable pageable);
 	
 

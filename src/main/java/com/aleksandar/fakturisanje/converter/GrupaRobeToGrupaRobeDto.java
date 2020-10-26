@@ -17,7 +17,7 @@ public class GrupaRobeToGrupaRobeDto implements Converter<GrupaRobe, GrupaRobeDt
 		GrupaRobeDto grupaRobeDto = new GrupaRobeDto();
 
 		grupaRobeDto.setId(source.getId());
-		grupaRobeDto.setNazivGrupe(source.getGrupaNaziv());
+		grupaRobeDto.setNazivGrupe(source.getNaziv());
 		grupaRobeDto.setPreduzece(source.getPreduzece().getId());
 		grupaRobeDto.setPdv(source.getPdv().getId());
 

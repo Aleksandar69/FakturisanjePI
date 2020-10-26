@@ -15,7 +15,7 @@ public interface PoslovniPartnerRepository extends JpaRepository<PoslovniPartner
     List<PoslovniPartner> findByPreduzece_id(Long id);
 
     List<PoslovniPartner>
-    findAllByNazivPartneraIgnoreCaseContainsOrAdresaIgnoreCaseContainsOrMesto_NazivIgnoreCaseContainsAndObrisano(
+    findAllByNazivIgnoreCaseContainsOrAdresaIgnoreCaseContainsOrMjesto_NazivIgnoreCaseContainsAndObrisano(
             String nazivPartnera, String adresa, String naziv,
             boolean obrisano);
 	

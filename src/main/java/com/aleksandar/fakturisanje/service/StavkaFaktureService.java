@@ -1,15 +1,17 @@
-package com.aleksandar.service;
+package com.aleksandar.fakturisanje.service;
 
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.aleksandar.fakturisanje.model.StavkaFakture;
 import com.aleksandar.fakturisanje.repo.StavkaFaktureRepository;
 import com.aleksandar.fakturisanje.service.interfaces.IFakturaService;
 import com.aleksandar.fakturisanje.service.interfaces.IStavkaFaktureService;
 
+@Service
 public class StavkaFaktureService implements IStavkaFaktureService{
 
 	@Autowired

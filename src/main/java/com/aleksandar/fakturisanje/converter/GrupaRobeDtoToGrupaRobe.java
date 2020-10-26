@@ -26,7 +26,7 @@ public class GrupaRobeDtoToGrupaRobe implements Converter<GrupaRobeDto, GrupaRob
         GrupaRobe grupaRobe = new GrupaRobe();
         
         grupaRobe.setId(source.getId());
-        grupaRobe.setGrupaNaziv(source.getNazivGrupe());
+        grupaRobe.setNaziv(source.getNazivGrupe());
         Preduzece preduzece = preduzeceServiceIf.findOne(source.getPreduzece());
         if(preduzece!=null){
             grupaRobe.setPreduzece(preduzece);

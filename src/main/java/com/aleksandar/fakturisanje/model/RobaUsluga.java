@@ -25,7 +25,7 @@ public class RobaUsluga {
 	
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="grupa_robe_id")
-	private GrupaRobe robaGrupa;
+	private GrupaRobe grupaRobe;
 	
 	@OneToMany(mappedBy = "robaUsluga", cascade= CascadeType.ALL)
 	private Set<StavkaFakture> stavkeFakture = new HashSet<>();
@@ -46,7 +46,7 @@ public class RobaUsluga {
 		this.jedinicaMjere = jedinicaMjere;
 		this.stavkeFakture = stavkeFakture;
 		this.stavkeCjenovnika = stavkeCjenovnika;
-		this.robaGrupa = grupaRobe;
+		this.grupaRobe = grupaRobe;
 		this.obrisano = false;
 	}
 
@@ -91,11 +91,11 @@ public class RobaUsluga {
 	}
 
 	public GrupaRobe getGrupaRobe() {
-		return robaGrupa;
+		return grupaRobe;
 	}
 
 	public void setGrupaRobe(GrupaRobe grupaRobe) {
-		this.robaGrupa = grupaRobe;
+		this.grupaRobe = grupaRobe;
 	}
 
 	public boolean isObrisano() {

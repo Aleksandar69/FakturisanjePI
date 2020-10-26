@@ -12,6 +12,6 @@ public interface GrupaRobeRepository extends JpaRepository<GrupaRobe, Long> {
 
 	GrupaRobe findByObrisanoAndId(boolean obrisano, long id);
 	List<GrupaRobe> findAllByPreduzece_idAndObrisano(Long id, boolean obrisano);
-	Page<GrupaRobe> findAllByObrisanoAndNazivGrupeIgnoreCaseContains(boolean obrisano, String naziv, Pageable pageable);
+	Page<GrupaRobe> findAllByObrisanoAndNazivIgnoreCaseContains(boolean obrisano, String naziv, Pageable pageable);
 	
 }

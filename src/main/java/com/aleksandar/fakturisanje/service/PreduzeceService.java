@@ -1,9 +1,10 @@
-package com.aleksandar.service;
+package com.aleksandar.fakturisanje.service;
 
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.aleksandar.fakturisanje.model.Faktura;
 import com.aleksandar.fakturisanje.model.Preduzece;
@@ -11,6 +12,7 @@ import com.aleksandar.fakturisanje.repo.FakturaRepository;
 import com.aleksandar.fakturisanje.repo.PreduzeceRepository;
 import com.aleksandar.fakturisanje.service.interfaces.IPreduzeceService;
 
+@Service
 public class PreduzeceService implements IPreduzeceService{
 	
 	@Autowired

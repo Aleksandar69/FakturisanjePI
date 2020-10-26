@@ -1,9 +1,10 @@
-package com.aleksandar.service;
+package com.aleksandar.fakturisanje.service;
 
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.aleksandar.fakturisanje.model.Otpremnica;
 import com.aleksandar.fakturisanje.model.StavkaOtpremnice;
@@ -11,6 +12,7 @@ import com.aleksandar.fakturisanje.repo.StavkaOtpremniceRepository;
 import com.aleksandar.fakturisanje.service.interfaces.IOtpremnicaService;
 import com.aleksandar.fakturisanje.service.interfaces.IStavkaOtpremniceService;
 
+@Service
 public class StavkaOtpremniceService implements IStavkaOtpremniceService {
 	
     @Autowired

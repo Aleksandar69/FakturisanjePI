@@ -17,7 +17,7 @@ public interface StavkaCjenovnikaRepository extends JpaRepository<StavkaCjenovni
     StavkaCjenovnika findByObrisanoAndId(boolean obrisano, long id);
     List<StavkaCjenovnika> findAllByObrisanoAndRobaUsluga_Id(boolean obrisano, Long id);
 
-    Page<StavkaCjenovnika> findAllByObrisanoAndCenovnik_IdAndRobaUsluga_NazivRobeUslugeIgnoreCaseContains(
+    Page<StavkaCjenovnika> findAllByObrisanoAndCjenovnik_IdAndRobaUsluga_NazivIgnoreCaseContains(
             boolean obrisano, long cenovnik_id, String nazivRobeUsluge,Pageable pageable);
 	
 }

@@ -1,4 +1,4 @@
-package com.aleksandar.service;
+package com.aleksandar.fakturisanje.service;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,12 +6,14 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.stereotype.Service;
 
 import com.aleksandar.fakturisanje.model.Faktura;
 import com.aleksandar.fakturisanje.model.StavkaFakture;
 import com.aleksandar.fakturisanje.repo.FakturaRepository;
 import com.aleksandar.fakturisanje.service.interfaces.IFakturaService;
 
+@Service
 public class FakturaService implements IFakturaService{
 	
 	@Autowired
@@ -82,14 +84,14 @@ public class FakturaService implements IFakturaService{
 	@Override
 	public Page<Faktura> findAllByVrstaFaktureAndNazivPartnera(boolean vrstaFakture, String nazivPartnera,
 			int brojStranice, int brojPrikazanih) {
-		return fakturaRepo.findAllByVrstaFaktureAndPoslovniPartner_NazivPartneraIgnoreCaseContainsAndObrisanoIsFalse(vrstaFakture, nazivPartnera, 
+		return fakturaRepo.findAllByVrstaFaktureAndPoslovniPartner_NazivIgnoreCaseContainsAndObrisanoIsFalse(vrstaFakture, nazivPartnera, 
 				PageRequest.of(brojStranice, brojPrikazanih));
 	}
 
 	@Override
 	public Page<Faktura> findAllByVrstaFaktureAndPoslovnaGodinaAndNazivPartnera(boolean vrstaFakture,
 			String nazivPartnera, long poslovnaGodinaId, int brojStranice, int brojPrikazanih) {
-		return fakturaRepo.findAllByVrstaFaktureAndPoslovnaGodina_IdAndPoslovniPartner_NazivPartneraIgnoreCaseContainsAndObrisanoIsFalse(vrstaFakture, 
+		return fakturaRepo.findAllByVrstaFaktureAndPoslovnaGodina_IdAndPoslovniPartner_NazivIgnoreCaseContainsAndObrisanoIsFalse(vrstaFakture, 
 				poslovnaGodinaId, nazivPartnera, PageRequest.of(brojStranice, brojPrikazanih));
 	}
 

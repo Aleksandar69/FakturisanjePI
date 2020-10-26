@@ -1,16 +1,18 @@
-package com.aleksandar.service;
+package com.aleksandar.fakturisanje.service;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.aleksandar.fakturisanje.model.Cjenovnik;
 import com.aleksandar.fakturisanje.model.PoslovniPartner;
 import com.aleksandar.fakturisanje.repo.PoslovniPartnerRepository;
 import com.aleksandar.fakturisanje.service.interfaces.IPoslovniPartnerService;
 
+@Service
 public class PoslovniPartnerService implements IPoslovniPartnerService {
 
 	@Autowired
@@ -18,7 +20,7 @@ public class PoslovniPartnerService implements IPoslovniPartnerService {
 	
 	@Override
 	public List<PoslovniPartner> findAll(String filter) {
-		return poslovniPartnerRepo.findAllByNazivPartneraIgnoreCaseContainsOrAdresaIgnoreCaseContainsOrMesto_NazivIgnoreCaseContainsAndObrisano(filter, filter, filter, false);
+		return poslovniPartnerRepo.findAllByNazivIgnoreCaseContainsOrAdresaIgnoreCaseContainsOrMjesto_NazivIgnoreCaseContainsAndObrisano(filter, filter, filter, false);
 	}
 
 	@Override

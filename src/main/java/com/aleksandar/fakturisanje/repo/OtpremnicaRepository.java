@@ -13,9 +13,9 @@ import com.aleksandar.fakturisanje.model.Otpremnica;
 public interface OtpremnicaRepository extends JpaRepository<Otpremnica, Long> {
 	
 	
-    Page<Otpremnica> findAllByPoslovniPartner_NazivPartneraIgnoreCaseContains(String nazivPartnera, Pageable pageable);
+    Page<Otpremnica> findAllByPoslovniPartner_NazivIgnoreCaseContains(String nazivPartnera, Pageable pageable);
 
-    Page<Otpremnica> findAllByPoslovnaGodina_IdAndPoslovniPartner_NazivPartneraIgnoreCaseContains(long poslovnaGodina_id, String nazivPartnera, Pageable pageable);
+    Page<Otpremnica> findAllByPoslovnaGodina_IdAndPoslovniPartner_NazivIgnoreCaseContains(long poslovnaGodina_id, String nazivPartnera, Pageable pageable);
 
 	List<Otpremnica> findAllByObrisano(boolean obrisano);
 	

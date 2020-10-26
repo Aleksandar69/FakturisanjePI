@@ -1,4 +1,4 @@
-package com.aleksandar.service;
+package com.aleksandar.fakturisanje.service;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,11 +6,13 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.stereotype.Service;
 
 import com.aleksandar.fakturisanje.model.GrupaRobe;
 import com.aleksandar.fakturisanje.repo.GrupaRobeRepository;
 import com.aleksandar.fakturisanje.service.interfaces.IGrupaRobeService;
 
+@Service
 public class GrupaRobeService implements IGrupaRobeService{
 	
 	@Autowired
@@ -18,7 +20,8 @@ public class GrupaRobeService implements IGrupaRobeService{
 
 	@Override
 	public Page<GrupaRobe> finadAll(String naziv, int brStranice, int brPrikazanih) {
-		return grupaRobeRepo.findAllByObrisanoAndNazivGrupeIgnoreCaseContains(false, naziv, 
+
+		return grupaRobeRepo.findAllByObrisanoAndNazivIgnoreCaseContains(false, naziv, 
 				PageRequest.of(brStranice, brPrikazanih));
 	}
 

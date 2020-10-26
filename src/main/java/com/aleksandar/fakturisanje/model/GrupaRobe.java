@@ -19,7 +19,7 @@ public class GrupaRobe {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
-	private String grupaNaziv;
+	private String naziv;
 	
 	@OneToMany(mappedBy="grupaRobe", cascade = CascadeType.ALL)
 	private Set<RobaUsluga> robaUsluge = new HashSet<>();
@@ -34,9 +34,9 @@ public class GrupaRobe {
 	
 	private boolean obrisano;
 
-	public GrupaRobe(String grupaNaziv, Set<RobaUsluga> robaUsluge, Preduzece preduzece, PDV pdv) {
+	public GrupaRobe(String naziv, Set<RobaUsluga> robaUsluge, Preduzece preduzece, PDV pdv) {
 		super();
-		this.grupaNaziv = grupaNaziv;
+		this.naziv = naziv;
 		this.robaUsluge = robaUsluge;
 		this.preduzece = preduzece;
 		this.pdv = pdv;
@@ -55,12 +55,12 @@ public class GrupaRobe {
 		this.id = id;
 	}
 
-	public String getGrupaNaziv() {
-		return grupaNaziv;
+	public String getNaziv() {
+		return naziv;
 	}
 
-	public void setGrupaNaziv(String grupaNaziv) {
-		this.grupaNaziv = grupaNaziv;
+	public void setNaziv(String naziv) {
+		this.naziv = naziv;
 	}
 
 	public Set<RobaUsluga> getRobaUsluge() {

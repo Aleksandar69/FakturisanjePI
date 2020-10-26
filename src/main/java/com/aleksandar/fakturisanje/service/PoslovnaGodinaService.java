@@ -1,14 +1,16 @@
-package com.aleksandar.service;
+package com.aleksandar.fakturisanje.service;
 
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.aleksandar.fakturisanje.model.PoslovnaGodina;
 import com.aleksandar.fakturisanje.repo.PoslovnagodinaRepository;
 import com.aleksandar.fakturisanje.service.interfaces.IPoslovnaGodinaService;
 
+@Service
 public class PoslovnaGodinaService implements IPoslovnaGodinaService {
 
 	@Autowired
