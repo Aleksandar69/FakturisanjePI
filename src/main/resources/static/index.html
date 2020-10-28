@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--   <script type="text/javascript" src="js/index.js"></script>--> 
+ <link rel="stylesheet" href="lib/bootstrap.css" type="text/css">
+  <script src="lib/jquery-3.5.1.min.js"></script>
+  <script src="lib/bootstrap.min.js"></script>
+</head>
+<body>
+  <div id="navigation"></div>
+  <div class="py-3 ">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card border-0">
+            <div class="card-body">
+              <div class="row">
+                
+                <div class="col-md-12">
+                  <img src="" id="logoPreduzeca" class="img-thumbnail border-0 rounded mx-auto d-block"  alt="Company Logo">
+                </div>
+              </div>
+              <br></br>
+              <div class="row">
+                <div class="col-md-5">
+                  <div class="row">
+                    <div class="col-md-3">
+                      <p class="card-text p-y-3"><b>Naziv:</b></p>
+                    </div>
+                    <div class="col-md-9">
+                      <span id="nazivPreduzeca"></span>
+                    </div>
+                    <div class="col-md-12">
+                      <hr>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3">
+                      <p class="card-text p-y-3"><b>Adresa:</b></p>
+                    </div>
+                    <div class="col-md-9">
+                      <span id="adresaPreduzeca"></span>
+                    </div>
+                    <div class="col-md-12">
+                      <hr>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3">
+                      <p class="card-text p-y-3"><b>Telefon:</b></p>
+                    </div>
+                    <div class="col-md-9">
+                      <span id="telefonPreduzeca"></span>
+                    </div>
+                    <div class="col-md-12">
+                      <hr>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-6">
+                  <div class="row">
+                    <div class="col-md-3">
+                      <p class="card-text p-y-3"><b>Email:</b></p>
+                    </div>
+                    <div class="col-md-9">
+                      <span id="emailPreduzeca"></span>
+                    </div>
+                    <div class="col-md-12">
+                      <hr>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3">
+                      <p class="card-text p-y-3"><b>Tekuci racun:</b></p>
+                    </div>
+                    <div class="col-md-9">
+                      <span id="tekuciRacunPreduzeca"></span>
+                    </div>
+                    <div class="col-md-12">
+                      <hr>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3">
+                      <p class="card-text p-y-3"><b>PIB:</b></p>
+                    </div>
+                    <div class="col-md-9">
+                      <span id="pib"></span>
+                    </div>
+                    <div class="col-md-12">
+                      <hr>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-10">
+                    </div>
+                    <div class="col-md-2">              
+                      <button class="btn btn-primary" id="updatePreduzece">Izmijeni podatke</button>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="py-5">
+        
+        
+        <h3 class="text-center font-weight-bold text-roda">Cjenovnici</h3>
+        <div class="row">
+          <div class="col-md-1"></div>
+          <div class="col-md-10">
+            <table class="table" >
+              <thead>
+              <tr>
+                <th class="text-primary">Datum važenja</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+              </tr>
+              </thead>
+              <tbody id="tblCenovniciPreduzeca" ></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-9">
+          </div>
+          <div class="col-md-2">
+            <button type="button" class="btn btn-primary " id="add_new_cenovnik">Unesi novi cjenovnik</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--UPDATE PREDUZECE MODAL-->
+  <div class="modal" tabindex="-1" role="dialog" id="update_preduzece_modal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header bg-roda">
+          <h5 class="modal-title ">Azuriranje podataka</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <label  for="naziv"><b>Naziv</b></label>
+          <input type="text" class="form-control" id="naziv">
+          <label  for="adresa"><b>Adresa</b></label>
+          <input type="text" class="form-control" id="adresa">
+          <label  for="telefon"><b>Telefon</b></label>
+          <input type="text" class="form-control" id="telefon">
+          <label  for="email"><b>Email</b></label>
+          <input type="email" class="form-control" id="email">
+          <label for="tekuci_racun"><b>Tekuci racun</b></label>
+          <input type="number" class="form-control" id="tekuci_racun">
+          <label for="pib"><b>PIB</b></label>
+          <input type="number" class="form-control" id="pibUpdate">
+          <label for="logo"><b>Logo URL</b></label>
+          <input type="text" class="form-control" id="logo">
+          <label  for="mestoDropdown"><b>Mesto</b></label>
+          <select id="mestoDropdown" class="form-control"></select>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="update_confirm" class="btn btn-primary">Potvrda</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Izlaz</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+<div id="message-dialog"></div>
+
+
+<div class="modal" tabindex="-1" role="dialog" id="add_cenovnik">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-roda">
+              
+                <h5 class="modal-title"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Datum vazenja</span>
+                    </div>
+                    <input type="date" class="form-control" id="datum">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="buttonAdd_cenovnik">Potvrda</button>
+                <button type="button" class="btn btn-primary" id="edit_cenovnik">Potvrda</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Izlaz</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" tabindex="-1" role="dialog" id="message"></div>
+
+
+  <!--DELETE CENOVNIK-->
+  <div class="modal" tabindex="-1" role="dialog" id="delete_cenovnik">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header bg-roda">
+          <h5 class="modal-title ">Brisanaje cenovnika</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" id="delete_content"></div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" id="delete_confirm">Obrisi</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Odustani</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="js/index.js"></script>
+</body>
+
+</html>
