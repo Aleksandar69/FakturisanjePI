@@ -27,6 +27,7 @@ import com.aleksandar.fakturisanje.dto.CjenovnikDto;
 import com.aleksandar.fakturisanje.model.Cjenovnik;
 import com.aleksandar.fakturisanje.model.PoslovniPartner;
 import com.aleksandar.fakturisanje.model.Preduzece;
+import com.aleksandar.fakturisanje.model.StavkaCjenovnika;
 import com.aleksandar.fakturisanje.repo.PoslovniPartnerRepository;
 import com.aleksandar.fakturisanje.repo.PreduzeceRepository;
 import com.aleksandar.fakturisanje.service.interfaces.ICjenovnikService;
@@ -135,6 +136,27 @@ public class CjenovnikController {
 		} else {
 			return new ResponseEntity(HttpStatus.BAD_REQUEST);
 		}
+	}
+	
+	@GetMapping("/{id}/stavke_cjenovnika")
+	public ResponseEntity getStavkecjenovnika(@PathVariable("id") long id,
+			@RequestParam(value = "page", defaultValue = "0") int page,
+			@RequestParam(value = "num", defaultValue = Integer.MAX_VALUE+"") int num,
+			@RequestParam(value = "naziv", defaultValue = "") String naziv) {
+		
+		Cjenovnik cjenovnik = cjenovnikServiceInterface.findOne(id);
+		if (cjenovnik!=null) {
+			Page<StavkaCjenovnika> stavkeCjenovnika = cjenovnikServiceInterface.findAllByCjenovnikId(cjenovnik.getId(), naziv, page, num);
+			HttpHeaders headers = new HttpHeaders();
+			headers.set("total", String.valueOf(stavkeCjenovnika.getTotalPages()));
+			return ResponseEntity.ok().headers(headers).body(stavkaToDto.convert(stavkeCjenovnika.getContent()));
+			
+		}
+		else {
+			
+			return new ResponseEntity(HttpStatus.NOT_FOUND);
+		}
+		
 	}
 
 }
