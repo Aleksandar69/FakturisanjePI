@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="lib/bootstrap.css" type="text/css">
+    <script src="lib/jquery-3.5.1.min.js"></script>
+    <script src="lib/bootstrap.min.js"></script>
+</head>
+<body>
+<div id="navigation"></div>
+<div class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <form id="tip-partnera">
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                        <label class="btn btn-outline-primary active">
+                            <input type="radio" name="options" value="1" autocomplete="off" checked> Dobavljaci
+                        </label>
+                        <label class="btn btn-outline-secondary">
+                            <input type="radio" name="options" value="0" autocomplete="off"> Kupci
+                        </label>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group mx-4">
+                    <label>Pretrazi</label>
+                    <input type="text" class="form-control" id="filter" placeholder="Filtriraj po nazivu ili adresi"
+                           value="">
+                </div>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-1">
+                <button class="btn btn-outline-primary" data-toggle="modal" data-target="#add_partner">Dodaj</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table">
+                    <thead class="text-roda">
+                    <tr>
+                        <th>Naziv partnera</th>
+                        <th>Adresa partnera</th>
+                        <th>Tekuci racun</th>
+                        <th>PIB</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody id="tabelaPartnera"></tbody>
+                </table>
+                <ul class="pagination justify-content-center" id="partneri-page"></ul>
+                <br>
+                <div class="form-group mx-auto w-25">
+                    <label for="nmb-select">Broj prikaza na strani</label>
+                    <select class="form-control" id="nmb-select">
+                        <option value="2">2</option>
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--DELETE PARTNER MODAL-->
+<div class="modal" tabindex="-1" role="dialog" id="delete_partner">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-roda">
+                <h5 class="modal-title ">Brisanje partnera</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="delete_content"></div>
+            <div class="modal-footer">
+                <button type="button" id="delete_confirm" class="btn btn-danger">Obrisi</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Izlaz</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!--UPDATE PARNTER MODAL-->
+<div class="modal" tabindex="-1" role="dialog" id="update_partner">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-roda">
+                <h5 class="modal-title ">Izmeni partnera</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                   <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <label  for="naziv"><b>Naziv</b></label>
+                <input type="text" class="form-control" id="naziv">
+                <label  for="adresa"><b>Adresa</b></label>
+                <input type="text" class="form-control" id="adresa">
+                <label for="tekuci_racun"><b>Tekuci racun</b></label>
+                <input type="number" class="form-control" id="tekuci_racun">
+                <label for="pib"><b>PIB</b></label>
+                <input type="number" class="form-control" id="pib">
+                <label  for="mestoDropdown"><b>Mesto</b></label>
+                <select id="mestoDropdown" class="form-control"></select>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="update_confirm" class="btn btn-primary">Izmijeni</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Odustani</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--ADD PARTNER MODAL-->
+<div class="modal" tabindex="-1" role="dialog" id="add_partner">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-roda">
+                <h5 class="modal-title ">Dodavanje partnera</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <label for="partnerTip"><b>Tip poslovnog partnera</b></label>
+                <select id="partnerTip" class="form-control">
+                    <option value="1">Dobavljac</option>
+                    <option value="0">Kupac</option>
+                </select>
+                <label  for="naziv"><b>Naziv</b></label>
+                <input type="text" class="form-control" id="nazivPartnera">
+                <label  for="adresa"><b>Adresa</b></label>
+                <input type="text" class="form-control" id="adresaPartnera">
+                <label for="tekuci_racun"><b>Tekuci racun</b></label>
+                <input type="number" class="form-control" id="tekuciRacunPartnera">
+                <label for="pib"><b>PIB</b></label>
+                <input type="number" class="form-control" id="pibPartnera">
+                <label  for="mestoDropdown"><b>Mesto</b></label>
+                <select id="mestoDropdownPartnera" class="form-control"></select>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="addPartnerConfirm" class="btn btn-primary">Dodaj</button>
+                <button type="button" class="btn btn-danger " data-dismiss="modal" id="addPartnerIzlaz">Odustani</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="message-dialog"></div>
+
+
+
+<script src="js/listaPoslovnihPartnera.js"></script>
+</body>
+
+</html>

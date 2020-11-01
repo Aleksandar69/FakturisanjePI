@@ -41,6 +41,23 @@ public class MjestoService implements IMjestoService{
 		return mjesto;
 	}
 
+	@Override
+	public Boolean delete(Long id) {
+		Optional<Mjesto> result = mjestoRepo.findById(id);
+		
+		if(result.isPresent()) {
+			Mjesto mjesto = result.get();
+			mjesto.setObrisano(true);
+			mjestoRepo.saveAndFlush(mjesto);
+			return true;
+		}
+		else {
+			throw new RuntimeException("Mjesto sa tim IDom ne postoji!");
+		}
+	}
+	
+	
+
 	
 
 }

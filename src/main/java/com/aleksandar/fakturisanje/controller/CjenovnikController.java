@@ -1,5 +1,6 @@
 package com.aleksandar.fakturisanje.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,7 @@ import com.aleksandar.fakturisanje.converter.CjenovnikToCjenovnikDto;
 import com.aleksandar.fakturisanje.converter.PoslovniPartnerToPoslovniPartnerDto;
 import com.aleksandar.fakturisanje.converter.StavkaCjenovnikaToStavkaCjenovnikaDto;
 import com.aleksandar.fakturisanje.dto.CjenovnikDto;
+import com.aleksandar.fakturisanje.dto.PoslovniPartnerDto;
 import com.aleksandar.fakturisanje.model.Cjenovnik;
 import com.aleksandar.fakturisanje.model.PoslovniPartner;
 import com.aleksandar.fakturisanje.model.Preduzece;
@@ -157,6 +159,44 @@ public class CjenovnikController {
 			return new ResponseEntity(HttpStatus.NOT_FOUND);
 		}
 		
+	}
+	
+	@GetMapping("/{id}/poslovni_partner")
+	public ResponseEntity getPoslovniPartner(@PathVariable("id") long id) {
+		Cjenovnik cjenovnik = cjenovnikServiceInterface.findOne(id);
+		if(cjenovnik!= null) {
+			try {
+				PoslovniPartnerDto dto = poslovniPartnerToDto.convert(poslovniPartenerServiceInterface.findPartner(cjenovnik));
+				return ResponseEntity.ok(dto);
+				
+			}catch (Exception e) {
+				// TODO: handle exception
+				return ResponseEntity.notFound().build();
+			}
+			
+		}
+		else {
+			return new ResponseEntity(HttpStatus.NOT_FOUND);
+		}
+		
+	}
+	
+	@GetMapping("/{id}/bezIzabranog")
+	public ResponseEntity getAllWithoutGivenOne(@PathVariable("id") long id) {
+		List<Cjenovnik> cenovnik = cjenovnikServiceInterface.findAllById(id);
+		return ResponseEntity.ok(cjenovnikToDto.convert(cenovnik));
+
+	}
+	
+	@PutMapping("/{id}/kopirajIzCjenovnika/{izvorniCenovnikId}")
+	public ResponseEntity kopirajCenovnik(@PathVariable("id") long id, @PathVariable("izvorniCenovnikId") long izvorniCenovnikId) {
+
+		Cjenovnik ciljaniCenovnik = cjenovnikServiceInterface.findOne(id);
+		Cjenovnik izvorniCenovnik = cjenovnikServiceInterface.findOne(izvorniCenovnikId);
+
+		cjenovnikServiceInterface.kopirajCjenovnik(ciljaniCenovnik, izvorniCenovnik);
+
+		return new ResponseEntity(HttpStatus.OK);
 	}
 
 }

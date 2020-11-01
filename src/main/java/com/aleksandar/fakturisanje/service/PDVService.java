@@ -18,8 +18,8 @@ public class PDVService implements IPDVService {
 
 	@Override
 	public List<PDV> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+        return pdvRepo.findAll();
+
 	}
 
 	@Override

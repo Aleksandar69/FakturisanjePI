@@ -9,5 +9,5 @@ public interface IMjestoService {
 	Page<Mjesto> findAll(String naziv, int brStranice, int brPrikazanih);
 	Mjesto findOne(Long id);
 	Mjesto save (Mjesto mjesto);
-	
+	Boolean delete(Long id);
 }

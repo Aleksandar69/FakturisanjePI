@@ -65,7 +65,7 @@ function ucitajCjenovnike(){
                 red.append("<td></td>");
                 red.append("<td class='text-right'><a href='cjenovnik.html?id="+value.id+"' class='btn  btn-outline-primary'>Pristupi</a></td>");
                 red.append("<td style='width: 25px;'><button cjenovnik_id='"+value.id+"' class='btn btn-outline-danger delete_cenovnik ' >Obrisi</button></td>");
-                red.append("<td><button cjenovnik_id='"+value.id+"' class=' btn btn-outline-success update_cenovnik '>Izmijeni</button></td>");
+                red.append("<td><button cjenovnik_id='"+value.id+"' class=' btn btn-outline-warning update_cenovnik '>Izmijeni</button></td>");
                 tabelaCjenovnika.append(red);
             })
         }
