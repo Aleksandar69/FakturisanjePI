@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="lib/bootstrap.css" type="text/css">
+  <script src="lib/jquery-3.5.1.min.js"></script>
+  <script src="lib/bootstrap.min.js"></script>
+</head>
+
+<body>
+<div id="navigation"></div>
+<div class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-inline">
+            <div class="form-group">
+              <label>Pretrazi</label>
+              <input type="text" class="form-control ml-2 mr-5" id="naziv-robe-usluge" placeholder="Naziv robe/usluge"
+                     value="">
+            </div>
+            <div>
+              <select id="grupa-robe-filter" class="select form-control mr-5">
+                <option value="0" selected>Sve grupe</option>
+              </select>
+            </div>
+            <button type="button" class="btn btn-outline-primary" id="addRoba">Dodaj robu</button>
+          </div>
+          <p></p>
+          <table id="robaTable" class="table">
+            <thead>
+              <tr class="text-roda">
+                <th>Naziv</th>
+                <th>Jedinica mjere</th>
+                <th>Grupa robe</th>
+                <th></th><th></th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+          <ul class="pagination justify-content-center" id="roba-pagination"></ul>
+          <br>
+          <div class="form-group mx-auto w-25">
+            <label for="nmb-select">Broj prikaza na strani</label>
+            <select class="form-control" id="nmb-select">
+              <option value="2">2</option>
+              <option value="5">5</option>
+              <option value="10">10</option>
+              <option value="20">20</option>
+              <option value="50">50</option>
+              <option value="100">100</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="addEditModal" class="modal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-roda">
+        <h4 id="title" class="modal-title text-light"></h4>
+      </div>
+      <div class="modal-body">
+        <form>
+        <div class="input-group-prepend"><span class="input-group-text">Naziv robe/usluge</span></div>
+        <input type="text" class="form-control" id="naziv">
+        <div class="input-group-prepend"><span class="input-group-text">Jedinica mere</span></div>
+        <input type="text" class="form-control" id="jedinicaMere">
+        <div id="inputGrupa"><div class="input-group-prepend"><span class="input-group-text">Grupa robe</span></div>
+        <select class="custom-select" id="grupaRobe">
+        </select></div>
+        </form>
+      </div>
+      <div class="modal-footer">
+      	<button type="button" class="btn btn-primary" id="confirmSave">Sacuvaj</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Odustani</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+  <div id="deleteModal" class="modal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-roda">
+        <h4 class="modal-title text-light">Potvrdi brisanje</h4>
+      </div>
+      <div class="modal-body">
+        <p>Jeste li sigurni?</p>
+      </div>
+      <div class="modal-footer">
+      	<button type="button" class="btn btn-danger" id="confirm">Da</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Ne</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<script src="js/roba_usluga.js"></script>
+</body>
+</html>

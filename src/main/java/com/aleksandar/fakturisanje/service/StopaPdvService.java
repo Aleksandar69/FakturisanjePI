@@ -8,10 +8,10 @@ import org.springframework.stereotype.Service;
 
 import com.aleksandar.fakturisanje.model.StopaPDV;
 import com.aleksandar.fakturisanje.repo.StopaPdvRepository;
-import com.aleksandar.fakturisanje.service.interfaces.IStopaPDVa;
+import com.aleksandar.fakturisanje.service.interfaces.IStopaPDVaService;
 
 @Service
-public class StopaPdvService implements IStopaPDVa{
+public class StopaPdvService implements IStopaPDVaService{
 
 	@Autowired
 	StopaPdvRepository stopaPdvRepo;

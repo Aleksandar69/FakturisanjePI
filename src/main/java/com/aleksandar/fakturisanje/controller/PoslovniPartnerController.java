@@ -96,7 +96,7 @@ public class PoslovniPartnerController {
     }
     
     @PutMapping(value = "/{id}")
-    public ResponseEntity putPartner(@PathVariable long id, @Validated @RequestBody PoslovniPartnerDto dto,Errors errors){
+    public ResponseEntity editPartner(@PathVariable long id, @Validated @RequestBody PoslovniPartnerDto dto,Errors errors){
         if(errors.hasErrors()){
             return new ResponseEntity(errors.getAllErrors(),HttpStatus.BAD_REQUEST);
         }
@@ -111,7 +111,7 @@ public class PoslovniPartnerController {
     }
     
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity deleteOne(@PathVariable long id){
+    public ResponseEntity deletePartner(@PathVariable long id){
         PoslovniPartner partner = poslovniPartnerServiceInterface.findOne(id);
         if(partner==null){
             return new ResponseEntity(HttpStatus.NOT_FOUND);

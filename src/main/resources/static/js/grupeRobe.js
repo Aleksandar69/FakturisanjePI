@@ -123,7 +123,7 @@ $(document).ready(function(){
             }).done(function () {
                 popunjavanjeTabele();
                 message.modal("show");
-                message.find("div.modal-body").text("Uspesno ste dodali grupu robe!")
+                message.find("div.modal-body").text("Uspjesno ste dodali grupu robe!")
             });
             updateGrupa.modal("hide");
         });
@@ -161,7 +161,7 @@ $(document).ready(function(){
                     }).done(function () {
                         popunjavanjeTabele();
                         message.modal("show");
-                        message.find("div.modal-body").text("Uspesno ste izmjenili grupu robe!")
+                        message.find("div.modal-body").text("Uspjesno ste izmjenili grupu robe!")
                     });
                     updateGrupa.modal("hide");
                     grupa=null;
@@ -185,7 +185,7 @@ $(document).ready(function(){
             }).done(function () {
                 popunjavanjeTabele();
                 message.modal("show");
-                message.find("div.modal-body").text("Uspesno ste obrisali!");
+                message.find("div.modal-body").text("Uspjesno ste obrisali!");
             });
             deleteGrupa.modal("hide");
         });

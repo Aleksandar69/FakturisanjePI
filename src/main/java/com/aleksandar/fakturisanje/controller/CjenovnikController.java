@@ -124,7 +124,7 @@ public class CjenovnikController {
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity putOne(@PathVariable("id") long id, @Validated @RequestBody CjenovnikDto dto, Errors errors) {
+	public ResponseEntity addCjenovnik(@PathVariable("id") long id, @Validated @RequestBody CjenovnikDto dto, Errors errors) {
 		
 		if(errors.hasErrors()) {
 			return new ResponseEntity(errors.getAllErrors(),HttpStatus.BAD_REQUEST);

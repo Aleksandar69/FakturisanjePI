@@ -142,7 +142,7 @@ buttons.add.on("click", function (event) {
     }).done(function () {
         ucitajCjenovnike();
         message.modal("show");
-        message.find("div.modal-body").text("Uspesno ste dodali cjenovnik!")
+        message.find("div.modal-body").text("Uspjesno ste dodali cjenovnik!")
     });
     addCenovnik.modal("hide");
     c={};
@@ -162,7 +162,7 @@ tabelaCjenovnika.on("click","button.delete_cenovnik", function (event) {
         }).done(function () {
             ucitajCjenovnike();
             message.modal("show");
-            message.find("div.modal-body").text("Uspesno ste obrisali cjenovnik!");
+            message.find("div.modal-body").text("Uspjesno ste obrisali cjenovnik!");
         });
         deleteCjenovnik.modal("hide");
     });
@@ -201,7 +201,7 @@ buttons.edit.on("click", function (event) {
     }).done(function () {
         ucitajCjenovnike();
         message.modal("show");
-        message.find("div.modal-body").text("Uspesno ste izmjenili cjenovnik!")
+        message.find("div.modal-body").text("Uspjesno ste izmjenili cjenovnik!")
     });
     addCenovnik.modal("hide");
     c={};

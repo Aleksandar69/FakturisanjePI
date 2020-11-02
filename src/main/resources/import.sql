@@ -1,8 +1,8 @@
 INSERT INTO pdv (naziv,obrisano) VALUES ('Opsti',0);
 INSERT INTO pdv (naziv,obrisano) VALUES ('Poseban',0);
 
-INSERT INTO stopapdv (datum_vazenja,obrisano,procijenat,pdv_id) VALUES ('2018-01-10 00:00:00.000',0,20,1);
-INSERT INTO stopapdv (datum_vazenja,obrisano,procijenat,pdv_id) VALUES ('2019-02-12 00:00:00.000',0,8,2);
+INSERT INTO stopapdv (datum_vazenja,obrisano,procenat,pdv_id) VALUES ('2018-01-10 00:00:00.000',0,20,1);
+INSERT INTO stopapdv (datum_vazenja,obrisano,procenat,pdv_id) VALUES ('2019-02-12 00:00:00.000',0,8,2);
 
 INSERT INTO poslovna_godina (godina,obrisano,zakljucana) VALUES (2015,0,1);
 INSERT INTO poslovna_godina (godina,obrisano,zakljucana) VALUES (2016,0,1);

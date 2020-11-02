@@ -127,7 +127,7 @@ $(document).ready(function(){
             }).done(function () {
                 ucitajStavkeCenovnika();
                 message.modal("show");
-                message.find("div.modal-body").text("Uspesno ste obrisali stavku cjenovnika!");
+                message.find("div.modal-body").text("Uspjesno ste obrisali stavku cjenovnika!");
                 stavka.id = 0;
             });
             deleteStavka.modal("hide");
@@ -173,9 +173,9 @@ $(document).ready(function(){
                 ucitajStavkeCenovnika();
                 message.modal("show");
                 if(stavka.id==0){
-                    message.find("div.modal-body").text("Uspesno ste dodali stavku cjenovnika!")
+                    message.find("div.modal-body").text("Uspjesno ste dodali stavku cjenovnika!")
                 }else {
-                    message.find("div.modal-body").text("Uspesno ste izmijenili stavku cjenovnika!")
+                    message.find("div.modal-body").text("Uspjesno ste izmijenili stavku cjenovnika!")
                 }
                 stavka.id = 0;
             });

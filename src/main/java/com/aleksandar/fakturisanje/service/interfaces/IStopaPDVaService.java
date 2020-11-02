@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.aleksandar.fakturisanje.model.StopaPDV;
 
-public interface IStopaPDVa {
+public interface IStopaPDVaService {
 	
     List<StopaPDV> findAll();
     StopaPDV findOne(Long id);

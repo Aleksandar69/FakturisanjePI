@@ -51,7 +51,7 @@ $(document).ready(function() {
                     red.append("<td>"+value.adresa +" - " + mesto.naziv + "</td>");
                     red.append("<td>"+value.tekuciRacun + "</td>");
                     red.append("<td>"+value.pib + "</td>");
-                    red.append("<td><button partner_id='"+value.id+"' class='btn btn-outline-primary update_partner'>Izmeni</button></td>");
+                    red.append("<td><button partner_id='"+value.id+"' class='btn btn-outline-primary update_partner'>Izmijeni</button></td>");
                     red.append("<td><button partner_id='"+value.id+"' class='btn btn-outline-danger delete_partner'>Obrisi</button></td>");
                     tabelaPartnera.append(red);
                 });
@@ -148,7 +148,7 @@ $(document).ready(function() {
             data: JSON.stringify(poslovniPartner),
             contentType:"application/json"
         }).done(function(){
-            message.find("div.modal-body").text("Uspesno ste izmijenili poslovnog pa rtnera");
+            message.find("div.modal-body").text("Uspjesno ste izmijenili poslovnog pa rtnera");
             message.modal("show");
             ucitajPartnere();
         });

@@ -89,7 +89,7 @@ $(document).ready(function(){
             }).done(function () {
                 popunjavanjeTabele();
                 message.modal("show");
-                message.find("div.modal-body").text("Uspesno ste dodali mjesto!")
+                message.find("div.modal-body").text("Uspjesno ste dodali mjesto!")
             });
             updateMesto.modal("hide");
         });
@@ -123,7 +123,7 @@ $(document).ready(function(){
                     }).done(function () {
                         popunjavanjeTabele();
                         message.modal("show");
-                        message.find("div.modal-body").text("Uspesno ste izmijenili mjesto!")
+                        message.find("div.modal-body").text("Uspjesno ste izmijenili mjesto!")
                     });
                     updateMesto.modal("hide");
                     mesto=null;
@@ -150,7 +150,7 @@ $(document).ready(function(){
         }).done(function () {
             popunjavanjeTabele();
             message.modal("show");
-            message.find("div.modal-body").text("Uspesno ste obrisali mjesto!");
+            message.find("div.modal-body").text("Uspjesno ste obrisali mjesto!");
         });
         deleteMesto.modal("hide");
     });

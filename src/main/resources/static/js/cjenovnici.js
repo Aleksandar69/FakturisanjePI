@@ -104,7 +104,7 @@ $(document).ready(function(){
 	    }).done(function () {
 	        popunjavanjeTabele();
 	        message.modal("show");
-	        message.find("div.modal-body").text("Uspesno ste dodali!")
+	        message.find("div.modal-body").text("Uspjesno ste dodali!")
 	    });
 	    updateCenovnik.modal("hide");
 	    c=null;
@@ -124,7 +124,7 @@ $(document).ready(function(){
              }).done(function () {
                  popunjavanjeTabele();
                  message.modal("show");
-                 message.find("div.modal-body").text("Uspesno ste obrisali cjenovnik!");
+                 message.find("div.modal-body").text("Uspjesno ste obrisali cjenovnik!");
              });
              deleteCenovnik.modal("hide");
          });
@@ -152,7 +152,7 @@ $(document).ready(function(){
                       success: function(data){
                         copyCenovnik.modal("hide");
                         message.modal("show");
-                        message.find("div.modal-body").text("Uspesno ste kopirali stavke cjenovnika!");
+                        message.find("div.modal-body").text("Uspjesno ste kopirali stavke cjenovnika!");
                       }
                   });
                 });
