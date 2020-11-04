@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="lib/bootstrap.css" type="text/css">
+    <script src="lib/jquery-3.5.1.min.js"></script>
+    <script src="lib/bootstrap.min.js"></script>
+
+
+</head>
+<body>
+    <div id="navigation"></div>
+    </br>
+    <div class="row">
+        <div class="col-12 text-center">
+            <h4 class="text-roda">Narudzbenice</h4>
+        </div>
+    </div>
+    <div class="py-5">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-md-3">
+                    <select id="poslovneGodineDropdown" class="select form-control">
+                        <option selected value="0" >Poslovne godine</option>
+                    </select>
+                </div>
+                <div class="col-md-7"></div>
+                <div class="col-md-2">
+                    <button class="btn btn-outline-primary align-middle" data-toggle="modal" data-target="#add-narudzbenica-modal">Dodaj narudzbenicu</button>
+                </div>
+                
+            </div>
+        </br>
+            <div class="row">
+                <div class="col-md-5"></div>
+                <div class="form-group">
+                    <label class="text-roda">Pretrazi</label>
+                    <input type="text" class="form-control" id="naziv-poslovnog-partnera"placeholder="Filtriraj po nazivu partnera"
+                    value="">
+                </div>
+                <div class="col-md-2"></div>
+                
+            </div>
+        </br>
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table">
+                        <thead class="text-roda">
+                        <tr>
+                            <th id="broj-narudzbenice">Broj narudzbenice</th>
+                            <th id="poslovni-partner">Poslovni partner</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody id="tabelaNarudzbenica"></tbody>
+                    </table>
+                    <ul class="pagination justify-content-center" id="narudzbenica-page"></ul>
+                    <br>
+                    <div class="form-group mx-auto w-25">
+                        <label for="nmb-select">Broj prikaza po strani</label>
+                        <select class="form-control" id="nmb-select">
+                            <option value="2">2</option>
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+   
+    <div id="message-dialog"></div>
+    <div id="add_new_narudzbenica"></div>
+    
+        <script src="js/narudzbenice.js"></script>
+</body>
+
+</html>

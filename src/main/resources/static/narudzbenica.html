@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="lib/bootstrap.css" type="text/css">
+  <script src="lib/jquery-3.5.1.min.js"></script>
+  <script src="lib/bootstrap.min.js"></script>
+
+
+</head>
+
+<body>
+  <div id="navigation"></div>
+  <div class="py-5 bg-light text-dark">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 my-3">
+          <div class="card" style="height:100%">
+            <div class="card-body">
+              <h5><b>NARUDŽBENICA</b></h5>
+              <div class="col-md my-3">
+                <p class="card-text p-y-1">Broj: <span id="brojRacuna"></span></p>
+                <p class="card-text p-y-1">Datum izdavanja: <span id="datumIzdavanja"></span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 my-3">
+          <div class="card">
+            <div class="card-body">
+              <h5><b>POSLOVNI PARTNER</b></h5>
+              <div class="col-md my-3">
+                <p class="card-text p-y-1">Naziv: <span id="nazivPP"></span></p>
+                <p class="card-text p-y-1">Broj tekuceg racuna: <span id="tekuciRacunPP"></span></p>
+                <p class="card-text p-y-1">Adresa i mesto: <span id="adresaIMestoPP"></span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="py-5">
+    <div class="container">
+    <button type="button" class="btn btn-default"  id="addStavkaNarudzbenica">Dodavanje stavke</button>
+      <div class="row">
+        <div class="col-md-12">
+          <table id="stavkeTable" class="table">
+            <thead>
+              <tr>
+                <th>Redni broj</th>
+                <th>Naziv robe</th>
+                <th>Grupa robe</th>
+                <th>Jedinica mere</th>
+                <th>Količina</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+          
+      </div>
+    </div>
+  </div>
+
+  <div id="addModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="title" class="modal-title"></h4>
+      </div>
+      <div class="modal-body">
+        <form>
+		<div id="inputRoba"><div class="input-group-prepend"><span class="input-group-text">Roba</span></div>
+        <select class="custom-select" id="robaUsluga">
+        </select></div>
+        <div class="input-group-prepend">Kolicina: <input type="number" value="1" min="1" step="1" class="form-control" id="kolicina" placeholder="kolicina">
+          <!-- <span class="input-group-text" id="jedinicaMere"></span></div> -->
+          </div>
+		<hr>
+        </form>
+      </div>
+      <div class="modal-footer">
+      	<button type="button" class="btn btn-default" id="confirmSave">Sacuvaj</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Otkazi</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<div class="modal" tabindex="-1" role="dialog" id="delete_stavka">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-roda">
+        <h5 class="modal-title ">Brisanaje stavke</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="delete_content"></div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" id="delete_confirm">Obrisi</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Odustani</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="js/narudzbenica.js"></script>
+</body>
+
+</html>
