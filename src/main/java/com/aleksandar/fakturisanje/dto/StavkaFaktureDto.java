@@ -9,7 +9,7 @@ public class StavkaFaktureDto {
 	private double osnovicaZaPdv;
 	private double procenatPdv;
 	private double iznosPdv;
-	private double inosStavka;
+	private double iznosStavka;
 	private long faktura;
 	private long robaUsluga;
 	
@@ -25,7 +25,7 @@ public class StavkaFaktureDto {
 		this.osnovicaZaPdv = osnovicaZaPdv;
 		this.procenatPdv = procenatPdv;
 		this.iznosPdv = iznosPdv;
-		this.inosStavka = inosStavka;
+		this.iznosStavka = inosStavka;
 		this.faktura = faktura;
 		this.robaUsluga = robaUsluga;
 	}
@@ -86,12 +86,12 @@ public class StavkaFaktureDto {
 		this.iznosPdv = iznosPdv;
 	}
 
-	public double getInosStavka() {
-		return inosStavka;
+	public double getIznosStavka() {
+		return iznosStavka;
 	}
 
-	public void setInosStavka(double inosStavka) {
-		this.inosStavka = inosStavka;
+	public void setIznosStavka(double iznosStavka) {
+		this.iznosStavka = iznosStavka;
 	}
 
 	public long getFaktura() {

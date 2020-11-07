@@ -66,7 +66,7 @@ public class PreduzeceService implements IPreduzeceService{
 			throw new RuntimeException("Preduzece nije pronadjeno");
 		}
 	}
-	
+
 	
 	
 	

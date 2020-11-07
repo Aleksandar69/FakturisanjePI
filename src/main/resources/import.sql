@@ -25,12 +25,12 @@ INSERT INTO mjesto (drzava,naziv,obrisano,postanski_broj) VALUES ('Srbija','Sid'
 INSERT INTO mjesto (drzava,naziv,obrisano,postanski_broj) VALUES ('Srbija','Subotica',0,24000);
 INSERT INTO mjesto (drzava,naziv,obrisano,postanski_broj) VALUES ('Srbija','Kragujevac',0,34000);
 
-INSERT INTO preduzece (pib,adresa,email,logo,naziv,obrisano,tekuci_racun,tel,mjesto_id) VALUES ('20207921','Temerinski put 50','potrosac@mercator.rs','https://httppblog.files.wordpress.com/2016/02/roda-novi-logo.jpg?w=628','Roda',0,'574816235917645124','0214870200',1);
+INSERT INTO preduzece (pib,adresa,email,logo,naziv,obrisano,tekuci_racun,tel,mjesto_id) VALUES ('20207921','Bulvevar Oslobodjenja 102' ,'mercator@podrska.rs','https://www.mercatorgroup.si/assets/Logotip-lezec/mercator-logotip-rdec-negative-lezeci.png','Mercator',0,'574816235917645124','0214870200',1);
 
 INSERT INTO grupa_robe (naziv,obrisano,pdv_id,preduzece_id) VALUES ('skolski i kancelarijski materijal',0,1,1);
 INSERT INTO grupa_robe (naziv,obrisano,pdv_id,preduzece_id) VALUES ('pica',0,2,1);
 INSERT INTO grupa_robe (naziv,obrisano,pdv_id,preduzece_id) VALUES ('kucni ljubimci',0,2,1);
-INSERT INTO grupa_robe (naziv,obrisano,pdv_id,preduzece_id) VALUES ('nega i higijena',0,2,1);
+INSERT INTO grupa_robe (naziv,obrisano,pdv_id,preduzece_id) VALUES ('njega i higijena',0,2,1);
 INSERT INTO grupa_robe (naziv,obrisano,pdv_id,preduzece_id) VALUES ('kucne potrepstine',0,2,1)
 INSERT INTO grupa_robe (naziv,obrisano,pdv_id,preduzece_id) VALUES ('ciscenje',0,2,1);
 INSERT INTO grupa_robe (naziv,obrisano,pdv_id,preduzece_id) VALUES ('igracke',0,2,1);
@@ -40,33 +40,33 @@ INSERT INTO grupa_robe (naziv,obrisano,pdv_id,preduzece_id) VALUES ('testenina i
 INSERT INTO grupa_robe (naziv,obrisano,pdv_id,preduzece_id) VALUES ('mlecni proizvodi',0,2,1);
 INSERT INTO grupa_robe (naziv,obrisano,pdv_id,preduzece_id) VALUES ('delikatesi',0,2,1);
 
-INSERT INTO poslovni_partner (pib,adresa,naziv,obrisano,tekuci_racun,vrsta_partnera,mjesto_id,preduzece_id) VALUES ('52631987','Bulevar Vojvode Stepe 12','CORP JVJV',0,'204370010000927056',1,1,1);
-INSERT INTO poslovni_partner (pib,adresa,naziv,obrisano,tekuci_racun,vrsta_partnera,mjesto_id,preduzece_id) VALUES ('22687413','Bulevar Vojvode Stepe 60','Univerzal d.o.o.',0,'140030612000132048',1,1,1);
-INSERT INTO poslovni_partner (pib,adresa,naziv,obrisano,tekuci_racun,vrsta_partnera,mjesto_id,preduzece_id) VALUES ('10002593','Kolo Srpskih Sestrara 1','Promenada',0,'158815673200014898',1,4,1);
-INSERT INTO poslovni_partner (pib,adresa,naziv,obrisano,tekuci_racun,vrsta_partnera,mjesto_id,preduzece_id) VALUES ('12002277','Bulevar Evrope 4','Play',0,'781026612000654125',0,1,1);
-INSERT INTO poslovni_partner (pib,adresa,naziv,obrisano,tekuci_racun,vrsta_partnera,mjesto_id,preduzece_id) VALUES ('33256900','Pavleka Miskina 20','Pedala',0,'472655528986756333',0,2,1);
+INSERT INTO poslovni_partner (pib,adresa,naziv,obrisano,tekuci_racun,vrsta_partnera,mjesto_id,preduzece_id) VALUES ('52631987','Bulevar Vojvode Stepe 12','Locale',0,'204370010000927056',1,1,1);
+INSERT INTO poslovni_partner (pib,adresa,naziv,obrisano,tekuci_racun,vrsta_partnera,mjesto_id,preduzece_id) VALUES ('22687413','Bulevar Vojvode Stepe 60','Deniverzo d.o.o.',0,'140030612000132048',1,1,1);
+INSERT INTO poslovni_partner (pib,adresa,naziv,obrisano,tekuci_racun,vrsta_partnera,mjesto_id,preduzece_id) VALUES ('10002593','Kolo Srpskih Sestrara 1','Smiley',0,'158815673200014898',1,4,1);
+INSERT INTO poslovni_partner (pib,adresa,naziv,obrisano,tekuci_racun,vrsta_partnera,mjesto_id,preduzece_id) VALUES ('12002277','Bulevar Evrope 4','Glavismex',0,'781026612000654125',0,1,1);
+INSERT INTO poslovni_partner (pib,adresa,naziv,obrisano,tekuci_racun,vrsta_partnera,mjesto_id,preduzece_id) VALUES ('33256900','Pavleka Miskina 20','Donstel',0,'472655528986756333',0,2,1);
 
-INSERT INTO roba_usluga (jedinica_mjere,naziv,obrisano,grupa_robe_id) VALUES ('komad','Blok 5 za crtanje',0,1);
-INSERT INTO roba_usluga (jedinica_mjere,naziv,obrisano,grupa_robe_id) VALUES ('komad','Hemijske olovke 2kom.',0,1);
-INSERT INTO roba_usluga (jedinica_mjere,naziv,obrisano,grupa_robe_id) VALUES ('komad','Liker gorki list 1l',0,2);
-INSERT INTO roba_usluga (jedinica_mjere,naziv,obrisano,grupa_robe_id) VALUES ('komad','Coca-Cola 1.5l',0,2);
-INSERT INTO roba_usluga (jedinica_mjere,naziv,obrisano,grupa_robe_id) VALUES ('komad','Felix hrana za macke',0,3);
+INSERT INTO roba_usluga (jedinica_mjere,naziv,obrisano,grupa_robe_id) VALUES ('komad','Blok 5',0,1);
+INSERT INTO roba_usluga (jedinica_mjere,naziv,obrisano,grupa_robe_id) VALUES ('komad','Grafitna Olovka HB',0,1);
+INSERT INTO roba_usluga (jedinica_mjere,naziv,obrisano,grupa_robe_id) VALUES ('komad','Viski Jameson',0,2);
+INSERT INTO roba_usluga (jedinica_mjere,naziv,obrisano,grupa_robe_id) VALUES ('komad','Fanta 1.5l',0,2);
+INSERT INTO roba_usluga (jedinica_mjere,naziv,obrisano,grupa_robe_id) VALUES ('komad','Pedigree hrana za pse',0,3);
 INSERT INTO roba_usluga (jedinica_mjere,naziv,obrisano,grupa_robe_id) VALUES ('komad','Pedigree dentaastix',0,3);
-INSERT INTO roba_usluga (jedinica_mjere,naziv,obrisano,grupa_robe_id) VALUES ('komad','Nivea pena za brijanje 200ml',0,4);
+INSERT INTO roba_usluga (jedinica_mjere,naziv,obrisano,grupa_robe_id) VALUES ('komad','Nivea stick dezdorans',0,4);
 INSERT INTO roba_usluga (jedinica_mjere,naziv,obrisano,grupa_robe_id) VALUES ('komad','Dove cvrsti sapun 100g',0,4);
-INSERT INTO roba_usluga (jedinica_mjere,naziv,obrisano,grupa_robe_id) VALUES ('komad','Papirni ubrus',0,5);
-INSERT INTO roba_usluga (jedinica_mjere,naziv,obrisano,grupa_robe_id) VALUES ('komad','Kese za smece 60l',0,5);
+INSERT INTO roba_usluga (jedinica_mjere,naziv,obrisano,grupa_robe_id) VALUES ('komad','Toalet Papir',0,5);
+INSERT INTO roba_usluga (jedinica_mjere,naziv,obrisano,grupa_robe_id) VALUES ('komad','Kese za smece 120l',0,5);
 
-INSERT INTO roba_usluga (jedinica_mjere,naziv_robe_usluge,obrisano,grupa_robe_id) VALUES ('komad','Sundjer za sudove 2kom',0,6);
-INSERT INTO roba_usluga (jedinica_mjere,naziv_robe_usluge,obrisano,grupa_robe_id) VALUES ('komad','Fairy limun 800ml',0,6);
-INSERT INTO roba_usluga (jedinica_mjere,naziv_robe_usluge,obrisano,grupa_robe_id) VALUES ('komad','Gumena lopta',0,7);
-INSERT INTO roba_usluga (jedinica_mjere,naziv_robe_usluge,obrisano,grupa_robe_id) VALUES ('komad','Set za plazu',0,7);
-INSERT INTO roba_usluga (jedinica_mjere,naziv_robe_usluge,obrisano,grupa_robe_id) VALUES ('komad','Stark Smoki 150g',0,8);
-INSERT INTO roba_usluga (jedinica_mjere,naziv_robe_usluge,obrisano,grupa_robe_id) VALUES ('komad','Kinder cokolada',0,8);
-INSERT INTO roba_usluga (jedinica_mjere,naziv_robe_usluge,obrisano,grupa_robe_id) VALUES ('komad','Grasak 450g',0,9);
-INSERT INTO roba_usluga (jedinica_mjere,naziv_robe_usluge,obrisano,grupa_robe_id) VALUES ('komad','Makarona kosa 400g',0,10);
-INSERT INTO roba_usluga (jedinica_mjere,naziv_robe_usluge,obrisano,grupa_robe_id) VALUES ('komad','Mleko 1l',0,11);
-INSERT INTO roba_usluga (jedinica_mjere,naziv_robe_usluge,obrisano,grupa_robe_id) VALUES ('komad','Sir trapist 250g',0,12);
+INSERT INTO roba_usluga (jedinica_mjere,naziv,obrisano,grupa_robe_id) VALUES ('komad','Sundjer za sudove 6kom',0,6);
+INSERT INTO roba_usluga (jedinica_mjere,naziv,obrisano,grupa_robe_id) VALUES ('komad','Fairy limun 800ml',0,6);
+INSERT INTO roba_usluga (jedinica_mjere,naziv,obrisano,grupa_robe_id) VALUES ('komad','Gumena lopta',0,7);
+INSERT INTO roba_usluga (jedinica_mjere,naziv,obrisano,grupa_robe_id) VALUES ('komad','Papuce',0,7);
+INSERT INTO roba_usluga (jedinica_mjere,naziv,obrisano,grupa_robe_id) VALUES ('komad','Cips 150g',0,8);
+INSERT INTO roba_usluga (jedinica_mjere,naziv,obrisano,grupa_robe_id) VALUES ('komad','Milka cokolada',0,8);
+INSERT INTO roba_usluga (jedinica_mjere,naziv,obrisano,grupa_robe_id) VALUES ('komad','Maline 450g',0,9);
+INSERT INTO roba_usluga (jedinica_mjere,naziv,obrisano,grupa_robe_id) VALUES ('komad','Makarone Barilla 400g',0,10);
+INSERT INTO roba_usluga (jedinica_mjere,naziv,obrisano,grupa_robe_id) VALUES ('komad','Mlijeko 1l',0,11);
+INSERT INTO roba_usluga (jedinica_mjere,naziv,obrisano,grupa_robe_id) VALUES ('komad','Sir Edamer 250g',0,12);
 
 INSERT INTO faktura (broj_fakture,datum_fakture,datum_valute,iznos_bez_rabata,iznos_za_placanje,obrisano,osnovica,placeno,rabat,ukupan_pdv,vrsta_fakture,poslovna_godina_id,poslovni_partner_id,preduzece_id) VALUES (1,'2020-04-04 15:11:26.000','2020-04-15 15:11:26.000',1800,1890,0,1750,1,50,140,0,6,4,1)
 INSERT INTO faktura (broj_fakture,datum_fakture,datum_valute,iznos_bez_rabata,iznos_za_placanje,obrisano,osnovica,placeno,rabat,ukupan_pdv,vrsta_fakture,poslovna_godina_id,poslovni_partner_id,preduzece_id) VALUES (2,'2020-05-04 15:11:26.000','2020-05-15 15:11:26.000',76500,83820,0,76500,1,0,7320,1,6,1,1);
@@ -74,15 +74,15 @@ INSERT INTO faktura (broj_fakture,datum_fakture,datum_valute,iznos_bez_rabata,iz
 INSERT INTO faktura (broj_fakture,datum_fakture,datum_valute,iznos_bez_rabata,iznos_za_placanje,obrisano,osnovica,placeno,rabat,ukupan_pdv,vrsta_fakture,poslovna_godina_id,poslovni_partner_id,preduzece_id) VALUES (4,'2020-05-04 15:11:26.000','2020-05-15 15:11:26.000',50,54,0,50,1,0,4,1,6,2,1);
 INSERT INTO faktura (broj_fakture,datum_fakture,datum_valute,iznos_bez_rabata,iznos_za_placanje,obrisano,osnovica,placeno,rabat,ukupan_pdv,vrsta_fakture,poslovna_godina_id,poslovni_partner_id,preduzece_id) VALUES (5,'2020-04-04 15:11:26.000','2020-04-15 15:11:26.000',112000,120949.2,0,111990,1,10,8959.2,1,6,3,1);
 
-INSERT INTO stavka_fakture (iznos_pdva,iznos,jedinicna_cijena,kolicina,obrisano,pdv_osnovica,pdv_procenat,rabat,faktura_id,roba_usluga_id) VALUES (48,648,600,1,0,600,8,0,1,4);
-INSERT INTO stavka_fakture (iznos_pdva,iznos,jedinicna_cijena,kolicina,obrisano,pdv_osnovica,pdv_procenat,rabat,faktura_id,roba_usluga_id) VALUES (92,1242,600,2,0,1150,8,50,1,3);
-INSERT INTO stavka_fakture (iznos_pdva,iznos,jedinicna_cijena,kolicina,obrisano,pdv_osnovica,pdv_procenat,rabat,faktura_id,roba_usluga_id) VALUES (2000,12000,10000,1,0,10000,20,0,2,1);
-INSERT INTO stavka_fakture (iznos_pdva,iznos,jedinicna_cijena,kolicina,obrisano,pdv_osnovica,pdv_procenat,rabat,faktura_id,roba_usluga_id) VALUES (5320,71820,66500,1,0,66500,8,0,2,5);
-INSERT INTO stavka_fakture (iznos_pdva,iznos,jedinicna_cijena,kolicina,obrisano,pdv_osnovica,pdv_procenat,rabat,faktura_id,roba_usluga_id) VALUES (12,162,50,3,0,150,8,0,3,19);
-INSERT INTO stavka_fakture (iznos_pdva,iznos,jedinicna_cijena,kolicina,obrisano,pdv_osnovica,pdv_procenat,rabat,faktura_id,roba_usluga_id) VALUES (360,4860,4500,1,0,4500,8,0,3,18);
-INSERT INTO stavka_fakture (iznos_pdva,iznos,jedinicna_cijena,kolicina,obrisano,pdv_osnovica,pdv_procenat,rabat,faktura_id,roba_usluga_id) VALUES (4,54,50,1,0,50,8,0,4,19);
-INSERT INTO stavka_fakture (iznos_pdva,iznos,jedinicna_cijena,kolicina,obrisano,pdv_osnovica,pdv_procenat,rabat,faktura_id,roba_usluga_id) VALUES (8000,108000,50000,2,0,100000,8,0,5,6);
-INSERT INTO stavka_fakture (iznos_pdva,iznos,jedinicna_cijena,kolicina,obrisano,pdv_osnovica,pdv_procenat,rabat,faktura_id,roba_usluga_id) VALUES (959.2,12949.2,4000,3,0,11990,8,10,5,12);
+INSERT INTO stavka_fakture (iznos_pdva,iznos,cijena,kolicina,obrisano,pdv_osnovica,pdv_procenat,rabat,faktura_id,roba_usluga_id) VALUES (48,648,600,1,0,600,8,0,1,4);
+INSERT INTO stavka_fakture (iznos_pdva,iznos,cijena,kolicina,obrisano,pdv_osnovica,pdv_procenat,rabat,faktura_id,roba_usluga_id) VALUES (92,1242,600,2,0,1150,8,50,1,3);
+INSERT INTO stavka_fakture (iznos_pdva,iznos,cijena,kolicina,obrisano,pdv_osnovica,pdv_procenat,rabat,faktura_id,roba_usluga_id) VALUES (2000,12000,10000,1,0,10000,20,0,2,1);
+INSERT INTO stavka_fakture (iznos_pdva,iznos,cijena,kolicina,obrisano,pdv_osnovica,pdv_procenat,rabat,faktura_id,roba_usluga_id) VALUES (5320,71820,66500,1,0,66500,8,0,2,5);
+INSERT INTO stavka_fakture (iznos_pdva,iznos,cijena,kolicina,obrisano,pdv_osnovica,pdv_procenat,rabat,faktura_id,roba_usluga_id) VALUES (12,162,50,3,0,150,8,0,3,19);
+INSERT INTO stavka_fakture (iznos_pdva,iznos,cijena,kolicina,obrisano,pdv_osnovica,pdv_procenat,rabat,faktura_id,roba_usluga_id) VALUES (360,4860,4500,1,0,4500,8,0,3,18);
+INSERT INTO stavka_fakture (iznos_pdva,iznos,cijena,kolicina,obrisano,pdv_osnovica,pdv_procenat,rabat,faktura_id,roba_usluga_id) VALUES (4,54,50,1,0,50,8,0,4,19);
+INSERT INTO stavka_fakture (iznos_pdva,iznos,cijena,kolicina,obrisano,pdv_osnovica,pdv_procenat,rabat,faktura_id,roba_usluga_id) VALUES (8000,108000,50000,2,0,100000,8,0,5,6);
+INSERT INTO stavka_fakture (iznos_pdva,iznos,cijena,kolicina,obrisano,pdv_osnovica,pdv_procenat,rabat,faktura_id,roba_usluga_id) VALUES (959.2,12949.2,4000,3,0,11990,8,10,5,12);
 
 INSERT INTO stavka_fakture (iznos_pdva,iznos,cijena,kolicina,obrisano,pdv_osnovica,pdv_procenat,rabat,faktura_id,roba_usluga_id) VALUES (58,748,700,1,0,600,8,0,1,2);
 INSERT INTO stavka_fakture (iznos_pdva,iznos,cijena,kolicina,obrisano,pdv_osnovica,pdv_procenat,rabat,faktura_id,roba_usluga_id) VALUES (82,1042,500,2,0,1150,8,50,1,7);

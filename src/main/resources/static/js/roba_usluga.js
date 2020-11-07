@@ -31,7 +31,7 @@ $(document).ready(function(){
                 console.log(request.getResponseHeader('total'));
                 for(var i=0; i<request.getResponseHeader('total'); i++){
                     robaPagintaion.append(`<li class="page-item ${page==i? 'active':''}">` +
-                        `<${page==i? 'span':'a'} class="page-link bg-primary text-light" page="${i}">${i+1}</${page==i? 'span':'a'}></li>`);
+                        `<${page==i? 'span':'a'} class="page-link" page="${i}">${i+1}</${page==i? 'span':'a'}></li>`);
                 }
                 for (i=0 ; i < data.length ; i++)
                     addRoba(data[i]);
@@ -102,6 +102,7 @@ $(document).ready(function(){
 	
 	$(document).on("click",".edit",function(e){
 		var id = $(this).val();
+		console.log(id);
 		$("#title").text("Izmjena robe");
 		$.ajax({url: 'api/robausluga/'+id,
 			type: 'GET',

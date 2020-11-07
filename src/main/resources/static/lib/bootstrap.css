@@ -3713,9 +3713,7 @@ a.bg-secondary:focus, a.bg-secondary:hover {
 .bg-success {
   background-color: #28a745 !important; }
    
-.bg-roda {
-  background-color: #0066ad !important; }
-  
+
 a.bg-success:focus, a.bg-success:hover {
   background-color: #1e7e34 !important; }
 
@@ -5525,13 +5523,10 @@ a.text-info:focus, a.text-info:hover {
 .text-warning {
   color: #ffc107 !important; }
 
-.text-roda {
-  color: #0066ad !important; }
-
 .text-yellow {
   color: #fdf90e !important; }
   
- .bg-roda {
+ .bg-mercator {
   color: #0066ad !important; } 
  
 

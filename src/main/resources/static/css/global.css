@@ -1,0 +1,70 @@
+body{
+	background: #16213e;
+}
+
+.bg-mercator{
+	background-color: #e0144c; !important;
+}
+
+/* .card-body{
+		background: #214252;
+} */
+.card-body{
+		background: #1a1a2e;
+}
+
+body{
+	color: white;
+}
+
+.modal-content{
+	background: #1a1a2e;
+}
+
+.text-mercator{
+	color: #e0144c;
+	
+}
+.modal-title {
+	color: #1a1a2e;
+}
+
+.naziv-poslovnog-partnera{
+	margin: 0 auto;
+}
+
+.form-group{
+ text-align: center; 
+}
+
+.page-item:hover .page-link:hover{
+	background-color:white;
+	color: #5A4181;
+}
+
+.page-item .page-link
+{
+    background-color: #0f3460;
+    color: #1a1a2e;
+}
+
+.page-item.active .page-link {
+ 
+  z-index: 1;
+ 
+  color: #fff;
+ 
+  background-color: #E0144C;
+ 
+  border-color: #E0144C;
+ 
+}
+
+.addRoba{
+	float: right;
+}
+
+.btn-primary{
+	background-color: #0f3460;
+	border-color: #FFFFFF;
+}

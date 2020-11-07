@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.15.0.final using JasperReports Library version 6.15.0-dd49bfb94918336b8321d5507193f0169ead4e95  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="otpremnica" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4eedbb89-b4f6-4469-9ab6-f642a1688cf7">
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#EEEFF0"/>
+		</conditionalStyle>
+	</style>
+	<style name="Table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+			<topPen lineWidth="1.0" lineColor="#000000"/>
+			<leftPen lineWidth="1.0" lineColor="#000000"/>
+			<bottomPen lineWidth="1.0" lineColor="#000000"/>
+			<rightPen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TH" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_CH" mode="Opaque" backcolor="#CACED0">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#D8D8D8"/>
+		</conditionalStyle>
+	</style>
+	<style name="Table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="otpremnice" uuid="7a1ad109-ecdb-4a44-9786-78ddf7fcf810">
+		<parameter name="stavkeOtpremnice1" class="java.util.List"/>
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+		<field name="id" class="java.lang.Long"/>
+		<field name="jedinicaMjere" class="java.lang.String"/>
+		<field name="kolicina" class="java.lang.Integer"/>
+		<field name="cijena" class="java.lang.Float"/>
+		<field name="iznos" class="java.lang.Float"/>
+		<field name="opis" class="java.lang.String"/>
+	</subDataset>
+	<parameter name="otpremnica" class="com.aleksandar.fakturisanje.model.Otpremnica"/>
+	<parameter name="preduzece" class="com.aleksandar.fakturisanje.model.Preduzece"/>
+	<parameter name="poslovniPartner" class="com.aleksandar.fakturisanje.model.PoslovniPartner"/>
+	<parameter name="mjesto" class="com.aleksandar.fakturisanje.model.Mjesto"/>
+	<parameter name="stavkeOtpremnice" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<title>
+		<band height="218" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="110" width="556" height="1" uuid="806ce5df-1219-4876-ae0c-ca7405b1f246">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<staticText>
+				<reportElement x="400" y="40" width="50" height="20" uuid="0f86baff-6386-4f3f-b3fe-2388707babe8"/>
+				<box rightPadding="4"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[Telefon:]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="450" y="40" width="84" height="20" uuid="bb10dbe1-0a4f-4722-9953-c163b63cf979"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{preduzece}.getTel()]]></textFieldExpression>
+			</textField>
+			<image hAlign="Center">
+				<reportElement x="0" y="30" width="65" height="60" uuid="94883631-a913-43e2-b182-ab8d77d0181e"/>
+				<imageExpression><![CDATA["C:/Users/Aleksandar/Desktop/Images/Mercator_Slovenia.jpg"]]></imageExpression>
+			</image>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="450" y="56" width="84" height="20" uuid="3836ce65-eca3-4cad-a6de-b1818def0a2b"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{preduzece}.getEmail()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="400" y="60" width="50" height="20" uuid="0b3f9342-da78-4cfa-9fc5-2301c4749678"/>
+				<box rightPadding="4"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[Email:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="70" y="30" width="220" height="30" uuid="d0b50d5e-c4d2-4e96-b95b-e82c56f92c23"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{preduzece}.getNaziv()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="80" y="60" width="210" height="21" uuid="505f70bc-c6d2-4d16-9774-9787d38162be"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{mjesto}.getNaziv() + ", " + $P{mjesto}.getPostanskiBroj() + ", " +$P{mjesto}.getDrzava()
+
+]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="70" y="80" width="82" height="23" uuid="79eeb408-7107-4134-ad23-e5020da7b308"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Tekuci Racun:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="150" y="76" width="170" height="30" uuid="179340e6-1b07-4e4e-9809-844030346bf1"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{preduzece}.getTekuciRacun()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="400" y="80" width="51" height="23" uuid="8b7e24cb-c956-4e37-b9b6-fc818a940c45"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[PIB:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="450" y="76" width="100" height="30" uuid="a97a93b8-152d-448b-8bbf-7858e134a4c0"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{preduzece}.getPIB()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="110" width="128" height="40" uuid="572df0cd-c94f-44f2-b5b8-a81c48ee9599"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Broj Otpremnice:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="132" y="110" width="168" height="40" uuid="76193b61-d467-49a9-8eb9-4cd6e3a9e6e8"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{otpremnica}.getBrojOtpremnice()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="360" y="110" width="100" height="30" uuid="e89d53ac-2231-4f98-bf4b-427228be7a16"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Datum Izdavanja:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="460" y="110" width="100" height="30" uuid="aa695fc3-1efd-4792-ba53-36f3cc8cdf80"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{otpremnica}.getDatumOtpremnice()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="-1" y="150" width="50" height="30" uuid="ec36677d-5e93-46de-a57a-ba8db607d5f8"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Kupac:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="50" y="150" width="179" height="30" uuid="8c638b0b-55a1-4716-bb9c-ad2847a294da"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{poslovniPartner}.getNaziv()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="-2" y="180" width="92" height="30" uuid="d7f6440a-061e-4d0e-865c-43c38d31aa97"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Adresa Isporuke:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="90" y="180" width="170" height="30" uuid="4af7618c-90b4-4f0a-af7e-559335429dbf"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{poslovniPartner}.getAdresa()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="160" y="0" width="181" height="21" uuid="fa0e3631-3e1d-45c6-9916-b8312dfb95dd"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Otpremnica]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="221">
+			<componentElement>
+				<reportElement x="80" y="20" width="360" height="60" uuid="8fb897ca-af99-4f13-8d2a-582f95d7a7d5">
+					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+					<property name="com.jaspersoft.studio.table.style.table_header" value="Table 1_TH"/>
+					<property name="com.jaspersoft.studio.table.style.column_header" value="Table 1_CH"/>
+					<property name="com.jaspersoft.studio.table.style.detail" value="Table 1_TD"/>
+				</reportElement>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="otpremnice" uuid="3490d6f8-3975-4fa8-890a-8beb6cdd5312">
+						<dataSourceExpression><![CDATA[$P{stavkeOtpremnice}]]></dataSourceExpression>
+					</datasetRun>
+					<jr:column width="40" uuid="8de6975b-fc3f-498c-9d10-6042e66786cc">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
+						<jr:tableHeader style="Table 1_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="40" height="30" uuid="29b82c2e-7d25-4258-b286-1c8ac9f566f4"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Redni Broj]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="Table 1_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="40" height="30" uuid="5b302f9f-7273-4296-9dc3-a4e7ce09be2b"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="120" uuid="a4f7f013-0953-4505-9723-b6ed848c5340">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
+						<jr:tableHeader style="Table 1_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="120" height="30" uuid="556f7bb7-6c78-4c29-b2ca-92aa06cb7a66"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Naziv Proizvoda]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="Table 1_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="120" height="30" uuid="8c6c730d-d653-4c1e-9d92-a6ae4439568b"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{opis}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="60" uuid="4ffdd44d-a29f-4e07-8aa4-b8ba85ce0136">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+						<jr:tableHeader style="Table 1_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="60" height="30" uuid="5d22ccc6-ffdd-48a1-83b8-fba9c37ea016"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Kolicina]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="Table 1_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="60" height="30" uuid="e4db3b06-03c3-4e7f-92ec-da3d33ec6308"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{kolicina}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="100" uuid="d5613408-fe04-4e07-a578-b35808390d87">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column4"/>
+						<jr:tableHeader style="Table 1_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="100" height="30" uuid="47b58541-057f-420b-aa67-79fc6b31dab6"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Jedinica Mjere]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="Table 1_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="100" height="30" uuid="71e101ef-48c7-4c3f-b0aa-0d010034e20d"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{jedinicaMjere}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="40" uuid="60e3d21d-33a9-4254-b847-f4aa6d80d25a">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column5"/>
+						<jr:tableHeader style="Table 1_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="40" height="30" uuid="fd4e5f64-944b-48d3-82bd-f2a06b4ac0fc"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Cijena]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="Table 1_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="40" height="30" uuid="f2dc724f-bbac-4cb0-a6b4-d5bae8712be0"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{cijena}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</detail>
+	<lastPageFooter>
+		<band height="177">
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="0" y="147" width="556" height="30" backcolor="#E6E8E9" uuid="36aa233d-4305-48e6-974a-1bbf89bb3c8f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Serif" size="9" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Hvala Vam na povjerenju]]></text>
+			</staticText>
+		</band>
+	</lastPageFooter>
+</jasperReport>

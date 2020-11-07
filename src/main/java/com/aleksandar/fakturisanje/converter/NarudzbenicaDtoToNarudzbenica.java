@@ -46,6 +46,7 @@ public class NarudzbenicaDtoToNarudzbenica implements Converter<NarudzbenicaDto,
             narudzbenica.setPoslovniPartner(poslovniPartner);
         }
 
+        System.out.println("POSLOVNA GODINA ID: " + source.getPoslovnaGodina());
         PoslovnaGodina poslovnaGodina = poslovnaGodIf.findOne(source.getPoslovnaGodina());
         if(poslovnaGodina != null){
             narudzbenica.setPoslovnaGodina(poslovnaGodina);

@@ -1,5 +1,8 @@
 package com.aleksandar.fakturisanje.controller;
 
+import java.util.Collections;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpHeaders;
@@ -23,6 +26,7 @@ import com.aleksandar.fakturisanje.converter.RobaUslugaToRobaUslugaDto;
 import com.aleksandar.fakturisanje.converter.StavkaCjenovnikaToStavkaCjenovnikaDto;
 import com.aleksandar.fakturisanje.dto.RobaUslugaDto;
 import com.aleksandar.fakturisanje.model.RobaUsluga;
+import com.aleksandar.fakturisanje.model.StavkaCjenovnika;
 import com.aleksandar.fakturisanje.service.interfaces.IRobaUslugaService;
 import com.aleksandar.fakturisanje.service.interfaces.IStavkaCjenovnikaService;
 
@@ -92,9 +96,10 @@ public class RobaUslugaController {
         if(dto.getId()!=id){
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
-        RobaUsluga robaUsluga = robaUslugaService.save(fromDtoConv.convert(dto));
+        RobaUsluga robaUsluga = fromDtoConv.convert(dto);
+        RobaUsluga robaUslugasaved = robaUslugaService.save(robaUsluga);
         if(robaUsluga!=null){
-            return new ResponseEntity(toDtoConv.convert(robaUsluga),HttpStatus.OK);
+            return new ResponseEntity(toDtoConv.convert(robaUslugasaved),HttpStatus.OK);
         }else {
         	return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
@@ -125,4 +130,24 @@ public class RobaUslugaController {
         	return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
     }
+	
+	@GetMapping("/{id}/cijena")
+	public ResponseEntity getCena(@PathVariable("id") long id) {
+		RobaUsluga robaUsluga = robaUslugaService.findOne(id);
+		if (robaUsluga!=null) {
+			List<StavkaCjenovnika> stavkeCenovnika = stavkaCjenovnikaService.findAllByRoba_usluga_id(id);
+			Collections.sort(stavkeCenovnika, (o1, o2) -> (o1.getCjenovnik().getDatumVazenja().compareTo(o2.getCjenovnik().getDatumVazenja())));
+			return new ResponseEntity(stavkaCjenovnikaToDtoConv.convert(stavkeCenovnika.get(stavkeCenovnika.size()-1)),HttpStatus.OK);
+		}else {
+			return new ResponseEntity(HttpStatus.NOT_FOUND);
+		}
+    }
+	
+	@GetMapping("/{id}/pdv")
+	public ResponseEntity getPdv(@PathVariable("id") long id) {
+		RobaUsluga robaUsluga = robaUslugaService.findOne(id);
+		return ResponseEntity.ok(pdvToDto.convert(robaUsluga.getGrupaRobe().getPdv()));
+	}
+	
+	
 }

@@ -36,7 +36,7 @@ $(document).ready(function(){
                 mestaPagintaion.empty();
                 for(var i=0; i<request.getResponseHeader('total'); i++){
                     mestaPagintaion.append(`<li class="page-item ${page==i? 'active':''}">` +
-                        `<${page==i? 'span':'a'} class="page-link bg-primary text-light" page="${i}">${i+1}</${page==i? 'span':'a'}></li>`);
+                        `<${page==i? 'span':'a'} class="page-link" page="${i}">${i+1}</${page==i? 'span':'a'}></li>`);
                 }
                 data.forEach(function (value) {
                     red = $("<tr></tr>");

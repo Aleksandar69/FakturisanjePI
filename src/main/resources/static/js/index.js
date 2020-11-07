@@ -93,7 +93,7 @@ $("#updatePreduzece").on("click", function(){
      $("#tekuci_racun").val(preduzece.tekuciRacun);
      $("#pibUpdate").val(preduzece.pib);
      $("#logo").val(preduzece.logo);
-     $("#mestoDropdown").val(preduzece.mesto);
+     $("#mestoDropdown").val(preduzece.mjesto);
      $("#update_preduzece_modal").modal("show");
  });
 
@@ -107,7 +107,7 @@ $("#update_confirm").on("click", function (event){
     preduzece.tekuciRacun = $("#tekuci_racun").val();
     preduzece.pib = $("#pibUpdate").val();
     preduzece.logo = $("#logo").val();
-    preduzece.mesto = $("#mestoDropdown").val();
+    preduzece.mjesto = $("#mestoDropdown").val();
 
     $.ajax({
         url: "/api/preduzece/1",
@@ -151,7 +151,7 @@ buttons.add.on("click", function (event) {
 tabelaCjenovnika.on("click","button.delete_cenovnik", function (event) {
     event.preventDefault();
     var cenovnikID = $(this).attr("cjenovnik_id");
-    deleteContent.text("Da li ste sigurni da želite da obrišete cenovnik koji ima id="+cenovnikID+" ?");
+    deleteContent.text("Da li ste sigurni da želite da obrišete cjenovnik koji ima id="+cenovnikID+" ?");
     deleteCjenovnik.modal("show");
     $("#delete_confirm").on("click",function (event) {
         event.preventDefault();
@@ -201,7 +201,7 @@ buttons.edit.on("click", function (event) {
     }).done(function () {
         ucitajCjenovnike();
         message.modal("show");
-        message.find("div.modal-body").text("Uspjesno ste izmjenili cjenovnik!")
+        message.find("div.modal-body").text("Uspjesno ste izmijenili cjenovnik!")
     });
     addCenovnik.modal("hide");
     c={};

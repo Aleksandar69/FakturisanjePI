@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="lib/bootstrap.css" type="text/css">
   <script src="lib/jquery-3.5.1.min.js"></script>
-    <script src="lib/bootstrap.min.js"></script>
+    <script src="lib/bootstrap.min.js"></script> <link rel="stylesheet" href="css/global.css" type="text/css">
 
 
   </head>
@@ -23,15 +23,17 @@
                     <input type="text" class="form-control ml-2" id="naziv-filter" placeholder="Naziv mesta"
                            value="">
                 </div>
-                <button type="button" class="btn btn-outline-primary" id="add_new_mesto">Unos novog mesta</button>
+                <button type="button" class="btn btn-primary" id="add_new_mesto">Unos novog mesta</button>
             </div>
             <p></p>
           <table class="table">
             <thead>
-              <tr class="text-roda">
+              <tr class="text-mercator">
                 <th >Naziv</th>
                 <th>Postanski broj</th>               
                 <th> Drzava</th>
+                <th></th>
+                <th></th>
               </tr>
             </thead>
             <tbody id="tblMesta"></tbody>
@@ -58,7 +60,7 @@
   <div class="modal" tabindex="-1" role="dialog" id="delete_mjesto">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header bg-roda text-light">
+            <div class="modal-header bg-mercator text-light">
                 <h5 class="modal-title">Brisanje mjesta</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -76,7 +78,7 @@
 <div class="modal" tabindex="-1" role="dialog" id="update_mesto">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header bg-roda">
+            <div class="modal-header bg-mercator">
                 <h5 class="modal-title text-light"></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>

@@ -42,7 +42,7 @@ public class NarudzbenicaService implements INarudzbenicaService{
 			return nar;
 		}
 		else {
-			throw new RuntimeException("Nije pronadjena narudzbenica");
+			return null;
 		}
 	}
 

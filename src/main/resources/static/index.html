@@ -7,7 +7,7 @@
 <!--   <script type="text/javascript" src="js/index.js"></script>--> 
  <link rel="stylesheet" href="lib/bootstrap.css" type="text/css">
   <script src="lib/jquery-3.5.1.min.js"></script>
-  <script src="lib/bootstrap.min.js"></script>
+  <script src="lib/bootstrap.min.js"></script> <link rel="stylesheet" href="css/global.css" type="text/css">
 </head>
 <body>
   <div id="navigation"></div>
@@ -96,7 +96,7 @@
                     </div>
                   </div>
                   <div class="row">
-                    <div class="col-md-10">
+                    <div class="col-md-8">
                     </div>
                     <div class="col-md-2">              
                       <button class="btn btn-primary" id="updatePreduzece">Izmijeni podatke</button>
@@ -113,14 +113,14 @@
       <div class="py-5">
         
         
-        <h3 class="text-center font-weight-bold text-roda">Cjenovnici</h3>
+        <h3 class="text-center font-weight-bold text-mercator">Cjenovnici</h3>
         <div class="row">
           <div class="col-md-1"></div>
           <div class="col-md-10">
             <table class="table" >
               <thead>
               <tr>
-                <th class="text-primary">Datum važenja</th>
+                <th class="text-mercator">Datum važenja</th>
                 <th></th>
                 <th></th>
                 <th></th>
@@ -147,7 +147,7 @@
   <div class="modal" tabindex="-1" role="dialog" id="update_preduzece_modal">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
-        <div class="modal-header bg-roda">
+        <div class="modal-header bg-mercator">
           <h5 class="modal-title ">Azuriranje podataka</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -186,9 +186,9 @@
 <div class="modal" tabindex="-1" role="dialog" id="add_cenovnik">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header bg-roda">
+            <div class="modal-header bg-mercator">
               
-                <h5 class="modal-title"></h5>
+                <h5 class="modal-title">Cjenovnik</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -217,8 +217,8 @@
   <div class="modal" tabindex="-1" role="dialog" id="delete_cenovnik">
     <div class="modal-dialog modal-sm" role="document">
       <div class="modal-content">
-        <div class="modal-header bg-roda">
-          <h5 class="modal-title ">Brisanaje cenovnika</h5>
+        <div class="modal-header bg-mercator">
+          <h5 class="modal-title ">Brisanje cjenovnika</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>

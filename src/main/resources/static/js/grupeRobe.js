@@ -31,7 +31,7 @@ $(document).ready(function(){
                 grupePagintaion.empty();
                 for(var i=0; i<request.getResponseHeader('total'); i++){
                     grupePagintaion.append(`<li class="page-item ${page==i? 'active':''}">` +
-                        `<${page==i? 'span':'a'} class="page-link bg-primary text-light" page="${i}">${i+1}</${page==i? 'span':'a'}></li>`);
+                        `<${page==i? 'span':'a'} class="page-link" page="${i}">${i+1}</${page==i? 'span':'a'}></li>`);
                 }
                 getPreduzeca();
                 getPdv();
@@ -60,10 +60,9 @@ $(document).ready(function(){
                     red.append("<td>" + value.nazivGrupe + "</br></td>");
                     red.append("<td>" + preduzece.naziv + "</br></td>");
                     red.append("<td>" + pdv.nazivPdva + "</br></td>");
-                    red.append("<td class='text-right'><a href='roba_usluga.html?grupa=" + value.id + "' class='btn btn-outline-primary'>Pregledaj</a></td>");
-                    red.append("<td class='text-right'>" +
-                        "<button grupa_id='" + value.id + "' class='btn btn-outline-warning update_grupa'>Izmeni</button>" +
-                        " <button grupa_id='" + value.id + "' class='btn btn-outline-danger delete_grupa'>Obrisi</button></td>");
+                    red.append("<td><a href='roba_usluga.html?grupa=" + value.id + "' class='btn btn-outline-primary'>Pregledaj</a></td>");
+                    red.append("<td><button grupa_id='" + value.id + "' class='btn btn-outline-warning update_grupa'>Izmijeni</button> </td>");
+                    red.append("<td> <button grupa_id='" + value.id + "' class='btn btn-outline-danger delete_grupa'>Obrisi</button></td>")
                     tabela.append(red);
                 });
             }
@@ -159,6 +158,7 @@ $(document).ready(function(){
                         data: JSON.stringify(grupa),
                         contentType:"application/json"
                     }).done(function () {
+                    	$("#tblGrupeRobe").empty();
                         popunjavanjeTabele();
                         message.modal("show");
                         message.find("div.modal-body").text("Uspjesno ste izmjenili grupu robe!")

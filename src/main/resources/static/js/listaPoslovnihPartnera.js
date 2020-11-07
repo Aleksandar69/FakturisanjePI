@@ -33,7 +33,7 @@ $(document).ready(function() {
                 partneriPagintaion.empty();
                 for(var i=0; i<request.getResponseHeader('total'); i++){
                     partneriPagintaion.append(`<li class="page-item ${page==i? 'active':''}">` +
-                        `<${page==i? 'span':'a'} class="page-link bg-roda text-light " page="${i}">${i+1}</${page==i? 'span':'a'}></li>`);
+                        `<${page==i? 'span':'a'} class="page-link " page="${i}">${i+1}</${page==i? 'span':'a'}></li>`);
                 }
                 data.forEach(function (value) {
                     var mesto;

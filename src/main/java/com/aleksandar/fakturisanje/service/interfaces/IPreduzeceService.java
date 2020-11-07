@@ -14,5 +14,4 @@ public interface IPreduzeceService {
     Preduzece findOne(Long id);
     Preduzece save(Preduzece preduzece);
     Boolean delete(Long id);
-	
 }

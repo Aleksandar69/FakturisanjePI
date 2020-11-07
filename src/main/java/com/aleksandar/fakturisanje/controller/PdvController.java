@@ -1,5 +1,7 @@
 package com.aleksandar.fakturisanje.controller;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,7 @@ import com.aleksandar.fakturisanje.converter.PdvDtoToPdv;
 import com.aleksandar.fakturisanje.converter.PdvToPdvDto;
 import com.aleksandar.fakturisanje.converter.StopaPdvToStopaPdvDto;
 import com.aleksandar.fakturisanje.model.PDV;
+import com.aleksandar.fakturisanje.model.StopaPDV;
 import com.aleksandar.fakturisanje.service.interfaces.IPDVService;
 
 @RestController
@@ -50,6 +53,17 @@ public class PdvController {
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
         return ResponseEntity.ok(todto.convert(pdv));
+    }
+    
+    @GetMapping(value = "/{id}/stopa")
+    public ResponseEntity getStopa(@PathVariable long id){
+        PDV pdv = pdvServiceInterface.findOne(id);
+        if(pdv==null || pdv.getStopePdva().isEmpty()){
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
+        }
+        List<StopaPDV> stope = new ArrayList(pdv.getStopePdva());
+        Collections.sort(stope, (o1, o2) -> (o1.getDatumVazenja().compareTo(o2.getDatumVazenja())));
+        return ResponseEntity.ok(stopaPDVtoDto.convert(stope.get(stope.size()-1)));
     }
 	
 }

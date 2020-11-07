@@ -32,7 +32,7 @@ public class StavkaFaktureDtoToStavkaFakture implements Converter<StavkaFaktureD
 		stavka.setPdvOsnovica(source.getOsnovicaZaPdv());
 		stavka.setPdvProcenat(source.getProcenatPdv());
 		stavka.setIznosPdva(source.getIznosPdv());
-		stavka.setIznos(source.getInosStavka());
+		stavka.setIznos(source.getIznosStavka());
 		if (f!=null) {
 			stavka.setFaktura(f);
 		}

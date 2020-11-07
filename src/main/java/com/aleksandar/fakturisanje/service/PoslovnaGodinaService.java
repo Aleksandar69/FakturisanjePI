@@ -24,11 +24,12 @@ public class PoslovnaGodinaService implements IPoslovnaGodinaService {
 	@Override
 	public PoslovnaGodina findOne(Long id) {
 		Optional<PoslovnaGodina> result = poslovnaGodRepo.findById(id);
+		//System.out.println(result.get().getGodina());
 		if(result.isPresent()) {
 			return result.get();
 		}
 		else {
-			throw new RuntimeException("Poslovna godina nije pronadjena");
+			return null;
 		}
 
 	}

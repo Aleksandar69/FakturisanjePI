@@ -96,7 +96,7 @@ public class OtpremnicaService implements IOtpremnicaService {
         faktura.setDatumFakture(new Date());
         faktura.setDatumValute(datumValute);
         faktura.setPlaceno(true);
-        faktura.setVrstaFakture(true);
+        faktura.setVrstaFakture(false);
         faktura.setPreduzece(otpremnica.getPreduzece());
         faktura.setPoslovnaGodina(otpremnica.getPoslovnaGodina());
         faktura.setPoslovniPartner(otpremnica.getPoslovniPartner());

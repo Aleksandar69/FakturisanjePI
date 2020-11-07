@@ -28,17 +28,19 @@ $(document).ready(function(){
     function ucitajPartnere(){
         $.get("api/poslovni_partneri", function(data) {
             newNarudzbenicaHtml.poslovniPartner.empty();
-            var optKupci = $('<optgroup label="Kupci"></optgroup>');
+ //           var optKupci = $('<optgroup label="Kupci"></optgroup>');
             var optProdavci = $('<optgroup label="Prodavci"></optgroup>');
             data.forEach(function (value) {
                 if(value.vrstaPartnera===1){
 //                    newFakturaHtml.poslovniPartner.append("<option value='"+value.id+"'>"+value.nazivPartnera+"</option>");
                     optProdavci.append("<option value='"+value.id+"'>"+value.nazivPartnera+"</option>");
-                }else{
-                    optKupci.append("<option value='"+value.id+"'>"+value.nazivPartnera+"</option>");
                 }
+                
+//                else{
+//                    optKupci.append("<option value='"+value.id+"'>"+value.nazivPartnera+"</option>");
+//                }
             });
-            newNarudzbenicaHtml.poslovniPartner.append(optKupci);
+          //  newNarudzbenicaHtml.poslovniPartner.append(optKupci);
             newNarudzbenicaHtml.poslovniPartner.append(optProdavci);
         });
     }
@@ -146,7 +148,7 @@ $(document).ready(function(){
                 narudzbenicaPagination.empty();
                 for(var i=0; i<request.getResponseHeader('total'); i++){
                     narudzbenicaPagination.append(`<li class="page-item text-light ${page==i? 'active':''}">` +
-                        `<${page==i? 'span':'a'} class="page-link bg-roda text-light" page="${i}">${i+1}</${page==i? 'span':'a'}></li>`);
+                        `<${page==i? 'span':'a'} class="page-link bg-mercator text-light" page="${i}">${i+1}</${page==i? 'span':'a'}></li>`);
                 }
                 data.forEach(function (value) {
                     
@@ -184,7 +186,7 @@ $(document).ready(function(){
                       red.append("<td class='center-left'><button narudzbenica_otpremnica_id='" + value.id + "' class='btn btn-outline-dark napravi_otpremnicu'>Napravi otpremnicu</a></td>");
                     
                     } else if(value.obrisano!=true) {
-                      red.append("<td class='center-left'><button narudzbenica_id='" + value.id + "' class='btn btn-outline-dark napravi_fakturu'>Napravi fakturu</a></td>");
+                      red.append("<td class='center-left'><button narudzbenica_id='" + value.id + "' class='btn btn-outline-light napravi_fakturu'>Napravi fakturu</a></td>");
                     
                     }
 

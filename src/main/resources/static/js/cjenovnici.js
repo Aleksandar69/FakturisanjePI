@@ -28,7 +28,7 @@ $(document).ready(function(){
                 cenovnikPagintaion.empty();
                 for(var i=0; i<request.getResponseHeader('total'); i++){
                     cenovnikPagintaion.append(`<li class="page-item  ${page==i? 'active':''}">` +
-                        `<${page==i? 'span':'a'} class="page-link bg-primary text-light" page="${i}">${i+1}</${page==i? 'span':'a'}></li>`);
+                        `<${page==i? 'span':'a'} class="page-link" page="${i}">${i+1}</${page==i? 'span':'a'}></li>`);
                 }
                 data.forEach(function (value) {
                     var partner;
@@ -41,11 +41,11 @@ $(document).ready(function(){
                             red = $("<tr></tr>");
                             red.append("<td>"+partner.nazivPartnera+"</br></td>");
                             red.append("<td class='text-center'>"+new Date(value.datumVazenja).toLocaleString()+"</td>");
-                            red.append("<td class='text-right'><a href='cjenovnik.html?id="+value.id+"' class='btn btn-outline-primary'>Pregledaj</a></td>");
+                            red.append("<td><a href='cjenovnik.html?id="+value.id+"' class='btn btn-outline-primary'>Pregledaj</a></td>");
                             red.append("<td>" +
                                 "<button cenovnik_id='"+value.id+"' class='btn btn-outline-danger delete_cenovnik'>Obrisi</button></td>");
                             red.append("<td>" +
-                                                "<button cenovnik_kopiraj='"+value.id+"' class='btn btn-outline-primary kopiraj_cenovnik'>Kopiraj stvake postojeceg</button></td>");
+                                                "<button cenovnik_kopiraj='"+value.id+"' class='btn btn-outline-primary kopiraj_cenovnik'>Kopiraj stvake drugog cjenovnika</button></td>");
                             tabela.append(red);
                         }, error: function (error) {
                             $.get("api/preduzece/1", function (data) {
@@ -56,7 +56,7 @@ $(document).ready(function(){
                                 red.append("<td>" +
                                     "<button cenovnik_id='"+value.id+"' class='btn btn-outline-danger delete_cenovnik'>Obrisi</button></td>");
                                 red.append("<td>" +
-                                                   "<button cenovnik_kopiraj='"+value.id+"' class='btn btn-outline-primary kopiraj_cenovnik'>Kopiraj stvake postojeceg</button></td>");
+                                                   "<button cenovnik_kopiraj='"+value.id+"' class='btn btn-outline-primary kopiraj_cenovnik'>Kopiraj stvake drugog cjenovnika</button></td>");
                                 tabela.append(red);
 
                             });

@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="lib/bootstrap.css" type="text/css">
   <script src="lib/jquery-3.5.1.min.js"></script>
-  <script src="lib/bootstrap.min.js"></script>
+  <script src="lib/bootstrap.min.js"></script> <link rel="stylesheet" href="css/global.css" type="text/css">
 </head>
 
 <body>
@@ -26,12 +26,12 @@
                 <option value="0" selected>Sve grupe</option>
               </select>
             </div>
-            <button type="button" class="btn btn-outline-primary" id="addRoba">Dodaj robu</button>
+            <button type="button" class="btn btn-primary">Dodaj robu</button>
           </div>
           <p></p>
           <table id="robaTable" class="table">
             <thead>
-              <tr class="text-roda">
+              <tr class="text-mercator">
                 <th>Naziv</th>
                 <th>Jedinica mjere</th>
                 <th>Grupa robe</th>
@@ -60,7 +60,7 @@
   <div id="addEditModal" class="modal" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header bg-roda">
+      <div class="modal-header bg-mercator">
         <h4 id="title" class="modal-title text-light"></h4>
       </div>
       <div class="modal-body">
@@ -85,7 +85,7 @@
   <div id="deleteModal" class="modal" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header bg-roda">
+      <div class="modal-header bg-mercator">
         <h4 class="modal-title text-light">Potvrdi brisanje</h4>
       </div>
       <div class="modal-body">
