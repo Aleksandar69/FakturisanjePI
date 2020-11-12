@@ -136,7 +136,7 @@ public class RobaUslugaController {
 		RobaUsluga robaUsluga = robaUslugaService.findOne(id);
 		if (robaUsluga!=null) {
 			List<StavkaCjenovnika> stavkeCenovnika = stavkaCjenovnikaService.findAllByRoba_usluga_id(id);
-			Collections.sort(stavkeCenovnika, (o1, o2) -> (o1.getCjenovnik().getDatumVazenja().compareTo(o2.getCjenovnik().getDatumVazenja())));
+			Collections.sort(stavkeCenovnika, (o1, o2) -> (o1.getCjenovnik().getDatumVazenjaOd().compareTo(o2.getCjenovnik().getDatumVazenjaOd())));
 			return new ResponseEntity(stavkaCjenovnikaToDtoConv.convert(stavkeCenovnika.get(stavkeCenovnika.size()-1)),HttpStatus.OK);
 		}else {
 			return new ResponseEntity(HttpStatus.NOT_FOUND);

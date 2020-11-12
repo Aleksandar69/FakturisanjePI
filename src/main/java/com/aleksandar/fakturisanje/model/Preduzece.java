@@ -49,7 +49,7 @@ public class Preduzece {
     @OneToMany(mappedBy = "preduzece", cascade = CascadeType.ALL)
 	private Set<PoslovniPartner> poslovniPartneri = new HashSet<>();
 	
-	@OneToMany( cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "preduzece", cascade = CascadeType.ALL)
 	private Set<Cjenovnik> cjenovnici = new HashSet<>();
 	
     @OneToMany(mappedBy = "preduzece", cascade = CascadeType.ALL)

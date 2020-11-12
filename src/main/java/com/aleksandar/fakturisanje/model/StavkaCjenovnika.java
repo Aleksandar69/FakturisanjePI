@@ -17,11 +17,11 @@ public class StavkaCjenovnika {
 	
 	private float cijena;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = {CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST})
 	@JoinColumn(name = "cjenovnik_id")
 	private Cjenovnik cjenovnik;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = {CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST})
 	@JoinColumn(name="roba_usluga_id")
 	private RobaUsluga robaUsluga;
 	

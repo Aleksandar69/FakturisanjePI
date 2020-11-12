@@ -24,7 +24,8 @@
             <thead class="text-mercator">
               <tr>
 				<th class="text-center">Preduzece</th>               
-                <th class="text-center">Datum važenja</th>               
+                <th class="text-center">Datum vazenja Od</th>          
+                <th class="text-center">Datum vazenja Do</th>  
                 <th style="width:50px"></th>
               	<th style="width:50px"></th>
               	<th style="width:50px"></th>
@@ -79,8 +80,9 @@
               <div class="modal-body">
                   <!--<label  for="cenovnikdropdown"><b>Godina</b></label>-->
                   <select id="cenovnikDropdown" class="select form-control">
-                      <option selected value="0" >Datum vazenja</option>
+                      <option selected value="0" >Datum vazenja Od</option>
                   </select>
+                  
 
               </div>
               <div class="modal-footer">
@@ -95,7 +97,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header bg-mercator">
-                <h5 class="modal-title text-light">Dodavanje cenovnika</h5>
+                <h5 class="modal-title text-light">Dodavanje cjenovnika</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -103,10 +105,17 @@
             <div class="modal-body">
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                        <span class="input-group-text mr-2">Datum vazenja</span>
+                        <span class="input-group-text mr-2">Datum vazenja Od</span>
                     </div>
-                    <input type="date" class="form-control mr-5" id="datum">
+                    <input type="date" class="form-control mr-5" id="datumOd">
                 </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text mr-2">Datum vazenjaDo</span>
+                    </div>
+                    <input type="date" class="form-control mr-5" id="datumDo">
+                </div>
+                
       
             <div class="form-group">
 				<label for="Preduzece">

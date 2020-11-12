@@ -29,7 +29,7 @@ $(document).ready(function(){
 						}});
 					if (!obrisano) {
         				$("#stavkeTable tbody").append("<tr><td>"+(i+1)+"</td><td>"+robaUsluga.nazivRobeUsluge+"</td><td>"+grupaRobe+"</td><td>"+
-        					robaUsluga.jedinicaMjere+"</td><td>"+data[i].kolicina+"</td><td> <button stavka_id='" + (i+1) + "' class='btn btn-outline-danger delete_stavka'>Obrisi</button></td></tr>")
+        					robaUsluga.jedinicaMjere+"</td><td>"+data[i].kolicina+"</td><td> <button stavka_id='" + data[i].id + "' class='btn btn-outline-danger delete_stavka'>Obrisi</button></td></tr>")
 
         			}else{
 						$("#stavkeTable tbody").append("<tr><td>"+(i+1)+"</td><td>"+robaUsluga.nazivRobeUsluge+"</td><td>"+grupaRobe+"</td><td>"+
@@ -104,9 +104,9 @@ $(document).ready(function(){
 					poslovnaGodina = data.godina; 
 				}
 			});
-			if(data.obrisano==true || data.tipNarudzbenice==true){
-				document.getElementById('addStavkaNarudzbenica').style.visibility='hidden';
-			}
+//			if(data.obrisano==true || data.tipNarudzbenice==true){
+//				document.getElementById('addStavkaNarudzbenica').style.visibility='hidden';
+//			}
             obrisano = data.obrisano
 			$("#addStavka").show();
 			$("#brojRacuna").text(data.brojNarudzbenice+"/"+poslovnaGodina);
@@ -142,11 +142,11 @@ $(document).ready(function(){
 				async: false,
 				success: function(data){
 					robaUslugaNaziv=data.nazivRobeUsluge;
-					jedinicaM=data.jedinicaMere;
+					jedinicaM=data.jedinicaMjere;
 			}});
 
 			var stavkeNarudzbenice = {
-				jedinicaMere: jedinicaM,
+				jedinicaMjere: jedinicaM,
 				kolicina: kolicina,
 				opisRobe: robaUslugaNaziv,
 				robaUsluga:robaUsluga,
@@ -170,6 +170,7 @@ $(document).ready(function(){
            stavka = $(this).attr("stavka_id");
 		   deleteContent.text("Da li ste sigurni da želite da obrišete stavku?");
 		   deleteStavka.modal("show");
+		   console.log("stavka id: " + stavka);
 		$("#delete_confirm").on("click",function (event) {
 		event.preventDefault();
     	    $.ajax({url: 'api/stavkanarudzbenice/'+stavka,

@@ -43,7 +43,8 @@ public class PreduzeceService implements IPreduzeceService{
 			return result.get();
 		}
 		else {
-			throw new RuntimeException("Preduzece nije pronadjeno");
+			System.out.println("Preduzece Nije Pronadjeno");
+			return null;
 		}
 	}
 

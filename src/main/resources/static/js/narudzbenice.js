@@ -28,7 +28,7 @@ $(document).ready(function(){
     function ucitajPartnere(){
         $.get("api/poslovni_partneri", function(data) {
             newNarudzbenicaHtml.poslovniPartner.empty();
- //           var optKupci = $('<optgroup label="Kupci"></optgroup>');
+            var optKupci = $('<optgroup label="Kupci"></optgroup>');
             var optProdavci = $('<optgroup label="Prodavci"></optgroup>');
             data.forEach(function (value) {
                 if(value.vrstaPartnera===1){
@@ -36,11 +36,11 @@ $(document).ready(function(){
                     optProdavci.append("<option value='"+value.id+"'>"+value.nazivPartnera+"</option>");
                 }
                 
-//                else{
-//                    optKupci.append("<option value='"+value.id+"'>"+value.nazivPartnera+"</option>");
-//                }
+                else{
+                    optKupci.append("<option value='"+value.id+"'>"+value.nazivPartnera+"</option>");
+                }
             });
-          //  newNarudzbenicaHtml.poslovniPartner.append(optKupci);
+            newNarudzbenicaHtml.poslovniPartner.append(optKupci);
             newNarudzbenicaHtml.poslovniPartner.append(optProdavci);
         });
     }
@@ -134,14 +134,21 @@ $(document).ready(function(){
         });
     });
     
+    $("#tip-nar input").on("change", function() {
+    	ucitajNarudzbenice();
+    });
+    
     function ucitajNarudzbenice() {
         tabelaNarudzbenica.empty();
-        
+        var tip = $("#tip-nar input:checked").val();
+        console.log(tip);
         var godina = $("#poslovneGodineDropdown").val();
         var naziv = nameSearch.val();
         
+        var tip_nar = tip==1? "ulazne":"izlazne";
+        
         $.ajax({
-            url: `api/narudzbenice/?godina=${godina}&page=${page}&num=${numberPerPage}&naziv=${naziv}`,
+            url: `api/narudzbenice/${tip_nar}?godina=${godina}&page=${page}&num=${numberPerPage}&naziv=${naziv}`,
             type: 'GET',
             contentType:"application/json",
             success: function(data, textStatus, request) {
@@ -178,13 +185,12 @@ $(document).ready(function(){
                     red.append("<td>"+value.brojNarudzbenice+"/"+poslovnaGodina+"</td>");
 
                     red.append("<td>"+poslovniPartner.nazivPartnera+"</br>"+mjesto.naziv+"</td>");
-                    red.append("<td></td>")
-                    red.append("<td></td>")
-                    red.append("<td class='text-right'><a href='narudzbenica.html?id="+value.id+"' class='btn btn-outline-primary'>Pregledaj</a></td>");
+ 
+                    red.append("<td><a href='narudzbenica.html?id="+value.id+"' class='btn btn-outline-primary'>Pregledaj</a></td>");
 
-                    if (poslovniPartner.vrstaPartnera == 0 && value.tipNarudzbenice==true) {
-                      red.append("<td class='center-left'><button narudzbenica_otpremnica_id='" + value.id + "' class='btn btn-outline-dark napravi_otpremnicu'>Napravi otpremnicu</a></td>");
-                    
+                    if (poslovniPartner.vrstaPartnera == 0 && value.tipNarudzbenice==true && value.obrisano!=true) {
+                      red.append("<td><button narudzbenica_otpremnica_id='" + value.id + "' class='btn btn-outline-light napravi_otpremnicu'>Napravi otpremnicu</a></td> ");
+                      red.append("<td><button narudzbenica_id='" + value.id + "' class='btn btn-outline-light napravi_fakturu'>Napravi fakturu</a></td>");
                     } else if(value.obrisano!=true) {
                       red.append("<td class='center-left'><button narudzbenica_id='" + value.id + "' class='btn btn-outline-light napravi_fakturu'>Napravi fakturu</a></td>");
                     

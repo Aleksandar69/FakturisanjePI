@@ -57,6 +57,11 @@ public class StavkaCjenovnikaService implements IStavkaCjenovnikaService {
 		}
 	}
 
+	@Override
+	public List<StavkaCjenovnika> findAllByCjenovnikId(long id) {
+		return stavkaCjRepo.findAllByCjenovnik_Id(id);
+	}
+
 	
 	
 }

@@ -33,7 +33,7 @@ $(document).ready(function(){
         };
 
         var cenovnikHtml = {
-            datumVazenja: $("#datum-vazenja"),
+            datumVazenjaOd: $("#datum-vazenja"),
             preduzece: {
                 naziv: $("#naziv-preduzeca"),
                 adresa: $("#adresa-preduzeca"),
@@ -93,8 +93,9 @@ $(document).ready(function(){
         
         $("#id").text(id);
         $.get( "api/cjenovnik/"+id, function( data ) {
-            var date = new Date(data.datumVazenja);
-            cenovnikHtml.datumVazenja.text(date.toLocaleDateString());
+            var dateOd = new Date(data.datumVazenjaOd);
+            var dateDo = new Date(data.datumVazenjaDo);
+            cenovnikHtml.datumVazenjaOd.text(dateOd.toLocaleDateString() + " - " + dateDo.toLocaleDateString());
             ucitajStavkeCenovnika();
         });
         

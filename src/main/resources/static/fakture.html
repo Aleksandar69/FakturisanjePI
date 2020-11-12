@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="lib/bootstrap.css" type="text/css">
+    <script src="lib/jquery-3.5.1.min.js"></script>
+    <script src="lib/bootstrap.min.js"></script> <link rel="stylesheet" href="css/global.css" type="text/css">
+</head>
+<body>
+    <div id="navigation"></div>
+    <div class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <form id="tip-fakture">
+                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                            <label id="knjiga_ulaznih" class="btn btn-outline-primary active">
+                                <input type="radio" name="options" value="1" checked> Knjiga ulaznih faktura
+                            </label>
+                            <label id="knjiga_izlaznih" class="btn btn-outline-secondary">
+                                <input type="radio" name="options" value="2"> Knjiga izlaznih faktura
+                            </label>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-4"></div>
+                <div class="col-md-2">
+                    <select id="poslovneGodineDropdown" class="select form-control">
+                        <option selected value="0" >Poslovne godine</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-outline-light" id="get_izvestaj">Preuzmi izvjestaj</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5"></div>
+                <div class="form-group">
+                    <label class="text-mercator">Pretrazi</label>
+                    <input type="text" class="form-control" id="naziv-poslovnog-partnera"placeholder="Filtriraj po nazivu partnera"
+                    value="">
+                </div>
+                <div class="col-md-2"></div>
+                <div class="col-md-2">
+                    <p></p>
+                    <p></p>
+                </div>
+            </div>
+           
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table">
+                        <thead class="text-mercator">
+                        <tr>
+                            <th id="broj-fakture">Broj fakture/poslovna godina</th>
+                            <th>Datum fakture</th>
+                            <th>Datum valute</th>
+                            <th id="poslovni-partner"></th>
+                            <th>Adresa</th>
+                            <th>Iznos fakture</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody id="tabelaFaktura"></tbody>
+                    </table>
+                    <ul class="pagination justify-content-center" id="fakture-page"></ul>
+                    <br>
+                    <div class="form-group mx-auto w-25">
+                        <label for="nmb-select">Broj prikaza po strani</label>
+                        <select class="form-control" id="nmb-select">
+                            <option value="2">2</option>
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!--  GET IZVESTAJ FAKTURA -->
+
+    <div class="modal" tabindex="-1" role="dialog" id="izvestaj_preduzece">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-mercator text-light">
+                    <h5 class="modal-title">Izvjestaj faktura preduzeca</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <label  for="vrstaDropdown"><b>Vrsta</b></label>
+                    <select id="vrstaDropdown" class="form-control">
+                        <option value="izlazne">Izlazne</option>
+                        <option value="ulazne">Ulazne</option>
+                    </select>
+
+                    <label  for="godinaDropdown"><b>Godina</b></label>
+                    <select id="godinaDropdown" class="form-control"></select>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="confirm-izvestaj" class="btn btn-primari">Potvrda</button>
+                    <button type="button" class="btn btn=secondary" data-dismiss="modal">Izlaz</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" tabindex="-1" role="dialog" id="open_pdf">
+        <div class="modal-dialog" role="document"  style="max-width: 85%; max-height: 65%">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Izvjestaj</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" style="height: 80vh">
+                    <embed id="modal-pdf" src="null" style="width: 100%; height: 100%"></embed>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Izlaz</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="message-dialog"></div>
+    <div id="add_new_faktura"></div>
+    <script src="js/fakture.js"></script>
+</body>
+
+</html>

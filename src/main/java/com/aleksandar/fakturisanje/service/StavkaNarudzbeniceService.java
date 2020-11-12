@@ -54,8 +54,9 @@ public class StavkaNarudzbeniceService implements IStavkaNarudzbeniceService {
 		Optional<StavkaNarudzbenice> result = stavkaNarudzbeniceRepo.findById(id);
 		if(result.isPresent()) {
 			StavkaNarudzbenice sn =result.get();
-			sn.setObrisano(true);
-			stavkaNarudzbeniceRepo.saveAndFlush(sn);
+			stavkaNarudzbeniceRepo.delete(sn);
+//			sn.setObrisano(true);
+//			stavkaNarudzbeniceRepo.saveAndFlush(sn);
 		}
 		else {
 			throw new RuntimeException("Nije pronadjena StavkaNarudzbenice");

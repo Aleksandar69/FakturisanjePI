@@ -40,7 +40,8 @@ public class PoslovniPartnerService implements IPoslovniPartnerService {
 			return result.get();
 		}
 		else {
-			throw new RuntimeException("Poslovni Partner nije pronadjen");
+			System.out.println("Poslovni Partner Nije Pronadjen");
+			return null;
 		}
 	}
 

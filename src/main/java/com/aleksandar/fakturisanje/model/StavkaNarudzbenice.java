@@ -21,11 +21,11 @@ public class StavkaNarudzbenice {
 	
 	private String opis;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = {CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn(name = "roba_usluga_id")
     private RobaUsluga robaUsluga;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = {CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn(name = "narudzbenica_id")
     private Narudzbenica narudzbenica;
 

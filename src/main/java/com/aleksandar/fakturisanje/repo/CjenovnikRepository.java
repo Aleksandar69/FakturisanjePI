@@ -20,4 +20,8 @@ public interface CjenovnikRepository extends JpaRepository<Cjenovnik, Long>{
 	
 	List<Cjenovnik> findByIdNot(long id);
 	
+	List<Cjenovnik> findAllByPreduzece_Id(long id);
+	
+	List<Cjenovnik> findAllByPoslovniPartner_id(long id);
+	
 }

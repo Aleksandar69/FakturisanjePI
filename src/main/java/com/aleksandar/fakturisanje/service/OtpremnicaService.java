@@ -1,5 +1,6 @@
 package com.aleksandar.fakturisanje.service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -12,17 +13,22 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import com.aleksandar.fakturisanje.model.Cjenovnik;
 import com.aleksandar.fakturisanje.model.Faktura;
 import com.aleksandar.fakturisanje.model.Narudzbenica;
 import com.aleksandar.fakturisanje.model.Otpremnica;
+import com.aleksandar.fakturisanje.model.StavkaCjenovnika;
 import com.aleksandar.fakturisanje.model.StavkaFakture;
 import com.aleksandar.fakturisanje.model.StavkaNarudzbenice;
 import com.aleksandar.fakturisanje.model.StavkaOtpremnice;
 import com.aleksandar.fakturisanje.repo.FakturaRepository;
 import com.aleksandar.fakturisanje.repo.OtpremnicaRepository;
+import com.aleksandar.fakturisanje.repo.StavkaCjenovnikaRepository;
 import com.aleksandar.fakturisanje.repo.StavkaFaktureRepository;
+import com.aleksandar.fakturisanje.service.interfaces.ICjenovnikService;
 import com.aleksandar.fakturisanje.service.interfaces.IFakturaService;
 import com.aleksandar.fakturisanje.service.interfaces.IOtpremnicaService;
+import com.aleksandar.fakturisanje.service.interfaces.IStavkaCjenovnikaService;
 
 @Service
 public class OtpremnicaService implements IOtpremnicaService {
@@ -41,6 +47,12 @@ public class OtpremnicaService implements IOtpremnicaService {
 	
 	@Autowired
 	private StavkaFaktureRepository stavkaFaktureRepo;
+
+	@Autowired
+	private IStavkaCjenovnikaService stavkaCjenovnikaService;
+	
+	@Autowired
+	private ICjenovnikService cjenovnikService;
 	
 	@Override
 	public Otpremnica findOne(Long id) {
@@ -103,34 +115,25 @@ public class OtpremnicaService implements IOtpremnicaService {
         
         // naci id robe usluga iz narudzbenice
         Set<StavkaOtpremnice> stavkeOtpremnice = otpremnica.getStavkeOtpremnice();
-
-        //povuci sve stavke fakture iz baze i naci da se poklapaju idijevi
-        List<StavkaFakture> stavkeFakture = stavkaFaktureRepo.findDistinctStavkeFakture();
-
+            
         Set<StavkaFakture> nadjeneStavke = new HashSet<>();
+        
+        for(StavkaOtpremnice so : stavkeOtpremnice) {
+    			StavkaFakture novaStavkaFakture = new StavkaFakture();
+                novaStavkaFakture.setIznosPdva(so.getIznos()* (so.getRobaUsluga().getGrupaRobe().getStopapdva().getProcenat() / 100));
+                novaStavkaFakture.setIznos(so.getIznos() * (1+(so.getRobaUsluga().getGrupaRobe().getStopapdva().getProcenat() / 100)));
+                novaStavkaFakture.setCijena(so.getCijena());
+                novaStavkaFakture.setKolicina(so.getKolicina());
+                novaStavkaFakture.setPdvOsnovica(so.getIznos());
+                novaStavkaFakture.setRabat(0);
+                novaStavkaFakture.setObrisano(false);
+                novaStavkaFakture.setRobaUsluga(so.getRobaUsluga());
+                novaStavkaFakture.setPdvProcenat(so.getRobaUsluga().getGrupaRobe().getStopapdva().getProcenat());
+                novaStavkaFakture.setFaktura(faktura);
 
-        for (StavkaOtpremnice stavkaOtpremnice : stavkeOtpremnice) {
-            for (StavkaFakture stavkaFakture : stavkeFakture) {
-                long stavkaNarudzbeniceId = stavkaOtpremnice.getRobaUsluga().getId();
-                long stavkaFaktureId = stavkaFakture.getRobaUsluga().getId();
-                if (stavkaFaktureId == stavkaNarudzbeniceId ) {
+                nadjeneStavke.add(novaStavkaFakture);
+        }
 
-                    StavkaFakture novaStavkaFakture = new StavkaFakture();
-                    novaStavkaFakture.setIznosPdva(stavkaFakture.getIznosPdva());
-                    novaStavkaFakture.setIznos(stavkaFakture.getIznos());
-                    novaStavkaFakture.setCijena(stavkaFakture.getCijena());
-                    novaStavkaFakture.setKolicina(stavkaFakture.getKolicina());
-                    novaStavkaFakture.setObrisano(stavkaFakture.isObrisano());
-                    novaStavkaFakture.setPdvOsnovica(stavkaFakture.getPdvOsnovica());
-                    novaStavkaFakture.setRabat(stavkaFakture.getRabat());
-                    novaStavkaFakture.setRobaUsluga(stavkaFakture.getRobaUsluga());
-                    novaStavkaFakture.setPdvProcenat(stavkaFakture.getPdvProcenat());
-                    novaStavkaFakture.setFaktura(faktura);
-
-                    nadjeneStavke.add(novaStavkaFakture);
-                }
-            }
-	}
         faktura.setStavkeFakture(nadjeneStavke);
         fakturaService.update(faktura);
 	}
@@ -140,7 +143,7 @@ public class OtpremnicaService implements IOtpremnicaService {
 
         List<Otpremnica> listaOtpremnica = otpremnicaRepo.findAll();
         
-        narudzbenica.setTipNarudzbenice(false);
+        //narudzbenica.setTipNarudzbenice(false);
         narudzbenica.setObrisano(true);
         narudzbenicaService.save(narudzbenica);
 
@@ -152,30 +155,43 @@ public class OtpremnicaService implements IOtpremnicaService {
         otpremnica.setPoslovniPartner(narudzbenica.getPoslovniPartner());
         otpremnica.setTipOtpremnice(false);
         otpremnica.setObrisano(false);
-
+   
+        
+        List<Cjenovnik> cjenovnik = cjenovnikService.findAllByPreduzeceId(1);
+        
         Set<StavkaNarudzbenice> stavkeNarudzbenice = narudzbenica.getStavkeNarudzbenice();
-        List<StavkaFakture> stavkeFakture = stavkaFaktureRepo.findDistinctStavkeFakture();
         Set<StavkaOtpremnice> stavkeOtpremnice = new HashSet<>();
+        List<StavkaCjenovnika> stavkeCjenovnika = new ArrayList<StavkaCjenovnika>();
+        
+        for (Cjenovnik c : cjenovnik) {
+        	for(StavkaCjenovnika s : c.getStavkeCjenovnika()) {
+        		stavkeCjenovnika.add(s);
+        	}
+		}
+
+
+
 
         for (StavkaNarudzbenice stavkaNarudzbenice : stavkeNarudzbenice) {
-            for (StavkaFakture stavkaFakture : stavkeFakture) {
-
-                long stavkaNarudzbeniceId = stavkaNarudzbenice.getRobaUsluga().getId();
-                long stavkaFaktureId = stavkaFakture.getRobaUsluga().getId();
-                if (stavkaFaktureId == stavkaNarudzbeniceId ) {
-
+        	
+        	
+        	for(StavkaCjenovnika sc : stavkeCjenovnika) {
+        		
+        		if(sc.getRobaUsluga().getId() == stavkaNarudzbenice.getRobaUsluga().getId()) {
+        	
                     StavkaOtpremnice stavkaOtpremnice = new StavkaOtpremnice();
                     stavkaOtpremnice.setJedinicaMjere(stavkaNarudzbenice.getJedinicaMjere());
                     stavkaOtpremnice.setKolicina(stavkaNarudzbenice.getKolicina());
                     stavkaOtpremnice.setRobaUsluga(stavkaNarudzbenice.getRobaUsluga());
-                    stavkaOtpremnice.setCijena(stavkaFakture.getCijena());
-                    stavkaOtpremnice.setIznos(stavkaNarudzbenice.getKolicina() * stavkaFakture.getCijena());
+                    stavkaOtpremnice.setCijena(sc.getCijena());
+                    stavkaOtpremnice.setIznos(stavkaNarudzbenice.getKolicina() * sc.getCijena());
                     stavkaOtpremnice.setOtpremnica(otpremnica);
                     stavkaOtpremnice.setObrisano(false);
+                    stavkaOtpremnice.setOpis(stavkaNarudzbenice.getOpis());
 
                     stavkeOtpremnice.add(stavkaOtpremnice);
-                }
-            }
+        			}
+        		}
         }
 
         otpremnica.setStavkeOtpremnice(stavkeOtpremnice);

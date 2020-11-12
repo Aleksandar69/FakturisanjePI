@@ -78,7 +78,36 @@ public class CjenovnikController {
 			return new ResponseEntity(errors.getAllErrors(),HttpStatus.BAD_REQUEST);
 		}
 		
+		Cjenovnik cjenovnikConv = cjenovnikFromDto.convert(dto);
+		
+		//Cjenovnik cjenovnik = cjenovnikServiceInterface.save(cjenovnikFromDto.convert(dto));
+		List<Cjenovnik> cjenovnici = null;
+		if(dto.getPreduzeceId() > 0) {
+		 cjenovnici = cjenovnikServiceInterface.findAllByPreduzeceId(dto.getPreduzeceId());
+		}
+		if(dto.getPoslovniPartnerId() > 0) {
+		 cjenovnici = cjenovnikServiceInterface.findAllByPoslParnterId(dto.getPoslovniPartnerId());
+		}
+		
+		
+		
+		for (Cjenovnik c : cjenovnici) {
+			boolean isafter = c.getDatumVazenjaOd().after(cjenovnikConv.getDatumVazenjaOd());
+			boolean isafter2 = c.getDatumVazenjaOd().after(cjenovnikConv.getDatumVazenjaDo());
+			boolean isbefore = c.getDatumVazenjaDo().before(cjenovnikConv.getDatumVazenjaOd());
+			boolean isbefore2 = c.getDatumVazenjaDo().before(cjenovnikConv.getDatumVazenjaDo());
+			if(c.isObrisano() == false) {
+				System.out.println("cjenovnik od " + c.getDatumVazenjaOd()  + " sa id-em " + c.getId()  + " obrisan: " + c.isObrisano());
+			if(!((isafter && isafter2) || (isbefore && isbefore2))) {
+				System.out.println("Preklapanje datuma");
+				return new ResponseEntity(errors.getAllErrors(),HttpStatus.BAD_REQUEST);
+			}
+			}
+			
+		}
+		
 		Cjenovnik cjenovnik = cjenovnikServiceInterface.save(cjenovnikFromDto.convert(dto));
+		
 		if(cjenovnik != null) {
 			if(preduzece == true) {
 				Optional<Preduzece> pred = preduzeceRepository.findById(id);

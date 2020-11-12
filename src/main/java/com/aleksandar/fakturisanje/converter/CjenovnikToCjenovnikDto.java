@@ -17,7 +17,14 @@ public class CjenovnikToCjenovnikDto implements Converter<Cjenovnik, CjenovnikDt
 		CjenovnikDto cjenovnikDto = new CjenovnikDto();
 		
 		cjenovnikDto.setId(source.getId());
-		cjenovnikDto.setDatumVazenja(source.getDatumVazenja());
+		cjenovnikDto.setDatumVazenjaOd(source.getDatumVazenjaOd());
+		cjenovnikDto.setDatumVazenjaDo(source.getDatumVazenjaDo());
+		if(source.getPoslovniPartner() != null) {
+		cjenovnikDto.setPoslovniPartnerId(source.getPoslovniPartner().getId());
+		}
+		if(source.getPreduzece() != null) {
+		cjenovnikDto.setPreduzeceId(source.getPreduzece().getId());
+		}
 		return cjenovnikDto;
 	}
 

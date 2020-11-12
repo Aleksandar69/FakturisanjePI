@@ -32,6 +32,10 @@ public class GrupaRobe {
 	@JoinColumn(name = "pdv_id")
 	private PDV pdv;
 	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "stopapdv_id")
+	private StopaPDV stopapdva;
+	
 	private boolean obrisano;
 
 	public GrupaRobe(String naziv, Set<RobaUsluga> robaUsluge, Preduzece preduzece, PDV pdv) {
@@ -93,6 +97,14 @@ public class GrupaRobe {
 
 	public void setObrisano(boolean obrisano) {
 		this.obrisano = obrisano;
+	}
+
+	public StopaPDV getStopapdva() {
+		return stopapdva;
+	}
+
+	public void setStopapdva(StopaPDV stopapdva) {
+		this.stopapdva = stopapdva;
 	}
 	
 	

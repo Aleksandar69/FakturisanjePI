@@ -52,10 +52,12 @@ public class StavkaOtpremniceService implements IStavkaOtpremniceService {
 			StavkaOtpremnice so = result.get();
 			so.setObrisano(true);
 			
-			Otpremnica otpremnica = so.getOtpremnica();
-			otpremnicaService.save(otpremnica);
+			stavkaOtpremniceRepo.delete(so);
 			
-			stavkaOtpremniceRepo.saveAndFlush(so);
+//			Otpremnica otpremnica = so.getOtpremnica();
+//			otpremnicaService.save(otpremnica);
+			
+//			stavkaOtpremniceRepo.saveAndFlush(so);
 		}
 		else {
 			throw new RuntimeException("StavkeOtpremnice nije pronadjena");

@@ -56,6 +56,7 @@ public class StavkaNarudzbeniceController {
     @DeleteMapping(value = "/{id}")
     public ResponseEntity deleteStavkaNarudzbenice(@PathVariable long id){
 
+    	System.out.println("stavka id: " + id);
         StavkaNarudzbenice stavka = stavkaNarudzbeniceService.findOne(id);
         if(stavka==null){
             return new ResponseEntity(HttpStatus.NOT_FOUND);

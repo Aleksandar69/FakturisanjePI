@@ -62,9 +62,12 @@ public class CjenovnikService implements ICjenovnikService{
 		else {
 			throw new RuntimeException("Cjenovnik nije pronadjen");
 		}
+
+	//	cjenovnikRepo.delete(cjenovnik);
 		
-		cjenovnik.setDeleted(true);
+		cjenovnik.setObrisano(true);
 		cjenovnikRepo.saveAndFlush(cjenovnik);
+
 		return true;
 	}
 
@@ -85,6 +88,21 @@ public class CjenovnikService implements ICjenovnikService{
 		}
 		
 		cjenovnikRepo.save(ciljani);
+	}
+
+	@Override
+	public List<Cjenovnik> findAllC() {
+		return cjenovnikRepo.findAll();
+	}
+
+	@Override
+	public List<Cjenovnik> findAllByPreduzeceId(long id) {
+		return cjenovnikRepo.findAllByPreduzece_Id(id);
+	}
+
+	@Override
+	public List<Cjenovnik> findAllByPoslParnterId(long id) {
+		return cjenovnikRepo.findAllByPoslovniPartner_id(id);
 	}
 	
 	

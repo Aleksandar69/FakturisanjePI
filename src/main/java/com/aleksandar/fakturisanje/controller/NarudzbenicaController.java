@@ -40,132 +40,207 @@ import com.aleksandar.fakturisanje.service.interfaces.IStavkaNarudzbeniceService
 @RequestMapping("api/narudzbenice")
 public class NarudzbenicaController {
 
-    @Autowired
-    private INarudzbenicaService narudzbenicaService;
+	@Autowired
+	private INarudzbenicaService narudzbenicaService;
 
-    @Autowired
-    private IStavkaNarudzbeniceService stavkaNarudzbeniceService;
+	@Autowired
+	private IStavkaNarudzbeniceService stavkaNarudzbeniceService;
 
-    @Autowired
-    private IPoslovnaGodinaService poslovnaGodinaService;
+	@Autowired
+	private IPoslovnaGodinaService poslovnaGodinaService;
 
-    @Autowired
-    private IOtpremnicaService otpremnicaService;
+	@Autowired
+	private IOtpremnicaService otpremnicaService;
 
-    @Autowired
-    private RobaUslugaToRobaUslugaDto robaUslugaToDto;
+	@Autowired
+	private RobaUslugaToRobaUslugaDto robaUslugaToDto;
 
-    @Autowired
-    private NarudzbenicaDtoToNarudzbenica narudzbenicaDtoToNarudzbenica;
+	@Autowired
+	private NarudzbenicaDtoToNarudzbenica narudzbenicaDtoToNarudzbenica;
 
-    @Autowired
-    private NarudzbenicaToNarudzbenicaDto narudzbenicaToNarudzbenicaDto;
+	@Autowired
+	private NarudzbenicaToNarudzbenicaDto narudzbenicaToNarudzbenicaDto;
 
-    @Autowired
-    private StavkaNarudzbeniceToStavkaNarudzbeniceDto stavkaNarudzbeniceToStavkaNarudzbeniceDto;
-    
-    @GetMapping
-    public ResponseEntity getAll(@RequestParam(value = "godina", defaultValue = "0") int godina,
-                                 @RequestParam(value = "page",defaultValue = "0") int page,
-                                 @RequestParam(value = "num",defaultValue = Integer.MAX_VALUE+"") int num,
-                                 @RequestParam(value = "naziv",defaultValue = "") String naziv){
+	@Autowired
+	private StavkaNarudzbeniceToStavkaNarudzbeniceDto stavkaNarudzbeniceToStavkaNarudzbeniceDto;
 
-        Page<Narudzbenica> narudzbenice;
+	@GetMapping
+	public ResponseEntity getAll(@RequestParam(value = "godina", defaultValue = "0") int godina,
+			@RequestParam(value = "page", defaultValue = "0") int page,
+			@RequestParam(value = "num", defaultValue = Integer.MAX_VALUE + "") int num,
+			@RequestParam(value = "naziv", defaultValue = "") String naziv) {
 
-        if(godina==0){
-            narudzbenice = narudzbenicaService.findAllByNazivPartnera(naziv, page, num);
-        } else {
-            narudzbenice = narudzbenicaService.findAllByPoslovnaGodinaAndNazivPartnera(naziv, godina, page, num);
-        }
+		Page<Narudzbenica> narudzbenice;
 
-        List<NarudzbenicaDto> narudzbeniceDto = narudzbenicaToNarudzbenicaDto.convert(narudzbenice.getContent());
+		if (godina == 0) {
+			narudzbenice = narudzbenicaService.findAllByNazivPartnera(naziv, page, num);
+		} else {
+			narudzbenice = narudzbenicaService.findAllByPoslovnaGodinaAndNazivPartnera(naziv, godina, page, num);
+		}
 
-        HttpHeaders headers = new HttpHeaders();
-        headers.set("total", String.valueOf(narudzbenice.getTotalPages()));
-        return ResponseEntity.ok()
-                .headers(headers)
-                .body(narudzbeniceDto);
-    }
-    
-    @GetMapping("/{id}")
-    public ResponseEntity getOne(@PathVariable("id") long id){
+		List<NarudzbenicaDto> narudzbeniceDto = narudzbenicaToNarudzbenicaDto.convert(narudzbenice.getContent());
 
-        Narudzbenica narudzbenica = narudzbenicaService.findOne(id);
-        if(narudzbenica==null){
-            return new ResponseEntity(HttpStatus.NOT_FOUND);
-        }
+		HttpHeaders headers = new HttpHeaders();
+		headers.set("total", String.valueOf(narudzbenice.getTotalPages()));
+		return ResponseEntity.ok().headers(headers).body(narudzbeniceDto);
+	}
 
-        NarudzbenicaDto narudzbenicaDto = narudzbenicaToNarudzbenicaDto.convert(narudzbenica);
-        return new ResponseEntity<>(narudzbenicaDto, HttpStatus.OK);
-    }	
-	
-    @PostMapping
-    public ResponseEntity addNarudzbenica(@Validated @RequestBody NarudzbenicaDto dto, Errors errors) {
+	@GetMapping(value = "/ulazne")
+	public ResponseEntity getAllUlazne(@RequestParam(value = "godina", defaultValue = "0") int godina,
+			@RequestParam(value = "page", defaultValue = "0") int page,
+			@RequestParam(value = "num", defaultValue = Integer.MAX_VALUE + "") int num,
+			@RequestParam(value = "naziv", defaultValue = "") String naziv) {
 
-        if(errors.hasErrors()){
-            return new ResponseEntity(HttpStatus.BAD_REQUEST);
-        }
+		Page<Narudzbenica> narudzbenice;
 
-        PoslovnaGodina poslednjaPoslovnaGodina = poslovnaGodinaService.findPoslovnaGodinaIsFalse();
-        Narudzbenica narudzbenica = narudzbenicaDtoToNarudzbenica.convert(dto);
-        
-        narudzbenica.setBrojNarudzbenice(poslednjaPoslovnaGodina.getNarudzbenice().size() + 1);
-        narudzbenica.setDatumNarudzbenice(new Date());
-        narudzbenica.setTipNarudzbenice(narudzbenica.getPoslovniPartner().getVrstaPartnera() == 0);
-        narudzbenica.setPoslovnaGodina(poslednjaPoslovnaGodina);
-        narudzbenica.setObrisano(false);
+		if (godina == 0) {
+			// narudzbenice = narudzbenicaService.findAllByNazivPartnera(naziv, page, num);
+			narudzbenice = narudzbenicaService.findAllByTipAndNazivParntera(true, naziv, page, num);
+		} else {
+			// narudzbenice =
+			// narudzbenicaService.findAllByPoslovnaGodinaAndNazivPartnera(naziv, godina,
+			// page, num);
+			narudzbenice = narudzbenicaService.findAllByTipAndNazivParnteraAndGodina(true, naziv, godina, page, num);
+		}
 
-        Narudzbenica dbNarudzbenica = narudzbenicaService.save(narudzbenica);
-        NarudzbenicaDto narudzbenicaDto = narudzbenicaToNarudzbenicaDto.convert(dbNarudzbenica);
+		List<NarudzbenicaDto> narudzbeniceDto = narudzbenicaToNarudzbenicaDto.convert(narudzbenice.getContent());
 
-        return new ResponseEntity<>(narudzbenicaDto, HttpStatus.CREATED);
-    }
-    
-    @PostMapping("/{id}/napraviOtpremnicu")
-    public ResponseEntity napraviOtpremnicuOdNarudzbenice(@PathVariable("id") long id) {
+		HttpHeaders headers = new HttpHeaders();
+		headers.set("total", String.valueOf(narudzbenice.getTotalPages()));
+		return ResponseEntity.ok().headers(headers).body(narudzbeniceDto);
+	}
 
-        Narudzbenica narudzbenica = narudzbenicaService.findOne(id);
-        otpremnicaService.napraviOtpremnicuOdNarudzbenice(narudzbenica);
+	@GetMapping(value = "/izlazne")
+	public ResponseEntity getAllIzlazne(@RequestParam(value = "godina", defaultValue = "0") int godina,
+			@RequestParam(value = "page", defaultValue = "0") int page,
+			@RequestParam(value = "num", defaultValue = Integer.MAX_VALUE + "") int num,
+			@RequestParam(value = "naziv", defaultValue = "") String naziv) {
 
-        return new ResponseEntity(HttpStatus.CREATED);
-    }
-    
-    @PostMapping("/{id}/napraviFakturu")
-    public ResponseEntity napraviFakturuOdNarudzbenice(@PathVariable("id") long id) {
-        PoslovnaGodina poslovnaGodina = poslovnaGodinaService.findPoslovnaGodinaIsFalse();
-        int poslednjaPoslovnjaGodina = poslovnaGodina.getFakture().size();
+		Page<Narudzbenica> narudzbenice;
 
-        Narudzbenica narudzbenica = narudzbenicaService.findOne(id);
-        narudzbenicaService.napraviFakturuOdNarudzbenice(narudzbenica, poslednjaPoslovnjaGodina);
+		if (godina == 0) {
+			// narudzbenice = narudzbenicaService.findAllByNazivPartnera(naziv, page, num);
+			narudzbenice = narudzbenicaService.findAllByTipAndNazivParntera(false, naziv, page, num);
+		} else {
+			// narudzbenice =
+			// narudzbenicaService.findAllByPoslovnaGodinaAndNazivPartnera(naziv, godina,
+			// page, num);
+			narudzbenice = narudzbenicaService.findAllByTipAndNazivParnteraAndGodina(false, naziv, godina, page, num);
+		}
 
-        return new ResponseEntity(HttpStatus.CREATED);
-    }
-    
-    @GetMapping("/{id}/stavkeNarudzbenice")
-    public ResponseEntity getStavke(@PathVariable("id") long id){
+		List<NarudzbenicaDto> narudzbeniceDto = narudzbenicaToNarudzbenicaDto.convert(narudzbenice.getContent());
 
-        List<StavkaNarudzbenice> stavkeNarudzbenice = stavkaNarudzbeniceService.pronadjiStavkeNarudzbenice(id);
-        List<StavkaNarudzbeniceDto> stavkeNarudzbeniceDto = stavkaNarudzbeniceToStavkaNarudzbeniceDto.convert(stavkeNarudzbenice);
-        return new ResponseEntity<>(stavkeNarudzbeniceDto, HttpStatus.OK);
-    }
-    
-    @GetMapping("/{id}/robaCjenovnika")
-    public ResponseEntity getCenovnikRoba(@PathVariable("id") long id){
-    	Narudzbenica narudzbenica = narudzbenicaService.findOne(id);
-        if(narudzbenica==null){
-            return new ResponseEntity(HttpStatus.NOT_FOUND);
-        }
-        List<Cjenovnik> cenovnici = new ArrayList<Cjenovnik>();
-        if (narudzbenica.getPoslovniPartner().getVrstaPartnera()==1)
-        	cenovnici.addAll(narudzbenica.getPoslovniPartner().getCjenovnici());
-        else
-        	cenovnici.addAll(narudzbenica.getPreduzece().getCjenovnici());
-        Cjenovnik c = cenovnici.get(cenovnici.size()-1);
-        ArrayList<RobaUsluga> roba = new ArrayList();
-        for (StavkaCjenovnika s : c.getStavkeCjenovnika()) {
-        	roba.add(s.getRobaUsluga());
-        }
-        return ResponseEntity.ok(robaUslugaToDto.convert(roba));
-    }
+		HttpHeaders headers = new HttpHeaders();
+		headers.set("total", String.valueOf(narudzbenice.getTotalPages()));
+		return ResponseEntity.ok().headers(headers).body(narudzbeniceDto);
+	}
+
+	@GetMapping("/{id}")
+	public ResponseEntity getOne(@PathVariable("id") long id) {
+
+		Narudzbenica narudzbenica = narudzbenicaService.findOne(id);
+		if (narudzbenica == null) {
+			return new ResponseEntity(HttpStatus.NOT_FOUND);
+		}
+
+		NarudzbenicaDto narudzbenicaDto = narudzbenicaToNarudzbenicaDto.convert(narudzbenica);
+		return new ResponseEntity<>(narudzbenicaDto, HttpStatus.OK);
+	}
+
+	@PostMapping
+	public ResponseEntity addNarudzbenica(@Validated @RequestBody NarudzbenicaDto dto, Errors errors) {
+
+		if (errors.hasErrors()) {
+			return new ResponseEntity(HttpStatus.BAD_REQUEST);
+		}
+
+		PoslovnaGodina poslednjaPoslovnaGodina = poslovnaGodinaService.findPoslovnaGodinaIsFalse();
+		Narudzbenica narudzbenica = narudzbenicaDtoToNarudzbenica.convert(dto);
+
+		narudzbenica.setBrojNarudzbenice(poslednjaPoslovnaGodina.getNarudzbenice().size() + 1);
+		narudzbenica.setDatumNarudzbenice(new Date());
+		narudzbenica.setTipNarudzbenice(narudzbenica.getPoslovniPartner().getVrstaPartnera() == 0);
+		narudzbenica.setPoslovnaGodina(poslednjaPoslovnaGodina);
+		narudzbenica.setObrisano(false);
+
+		Narudzbenica dbNarudzbenica = narudzbenicaService.save(narudzbenica);
+		NarudzbenicaDto narudzbenicaDto = narudzbenicaToNarudzbenicaDto.convert(dbNarudzbenica);
+
+		return new ResponseEntity<>(narudzbenicaDto, HttpStatus.CREATED);
+	}
+
+	@PostMapping("/{id}/napraviOtpremnicu")
+	public ResponseEntity napraviOtpremnicuOdNarudzbenice(@PathVariable("id") long id) {
+
+		Narudzbenica narudzbenica = narudzbenicaService.findOne(id);
+		otpremnicaService.napraviOtpremnicuOdNarudzbenice(narudzbenica);
+
+		return new ResponseEntity(HttpStatus.CREATED);
+	}
+
+	@PostMapping("/{id}/napraviFakturu")
+	public ResponseEntity napraviFakturuOdNarudzbenice(@PathVariable("id") long id) {
+		PoslovnaGodina poslovnaGodina = poslovnaGodinaService.findPoslovnaGodinaIsFalse();
+		int poslednjaPoslovnjaGodina = poslovnaGodina.getFakture().size();
+
+		Narudzbenica narudzbenica = narudzbenicaService.findOne(id);
+		narudzbenicaService.napraviFakturuOdNarudzbenice(narudzbenica, poslednjaPoslovnjaGodina);
+
+		return new ResponseEntity(HttpStatus.CREATED);
+	}
+
+	@GetMapping("/{id}/stavkeNarudzbenice")
+	public ResponseEntity getStavke(@PathVariable("id") long id) {
+
+		List<StavkaNarudzbenice> stavkeNarudzbenice = stavkaNarudzbeniceService.pronadjiStavkeNarudzbenice(id);
+		List<StavkaNarudzbeniceDto> stavkeNarudzbeniceDto = stavkaNarudzbeniceToStavkaNarudzbeniceDto
+				.convert(stavkeNarudzbenice);
+		return new ResponseEntity<>(stavkeNarudzbeniceDto, HttpStatus.OK);
+	}
+
+	@GetMapping("/{id}/robaCjenovnika")
+	public ResponseEntity getCenovnikRoba(@PathVariable("id") long id) {
+		Narudzbenica narudzbenica = narudzbenicaService.findOne(id);
+		if (narudzbenica == null) {
+			return new ResponseEntity(HttpStatus.NOT_FOUND);
+		}
+		List<Cjenovnik> cjenovnici = new ArrayList<Cjenovnik>();
+		if (narudzbenica.getPoslovniPartner().getVrstaPartnera() == 1)
+			cjenovnici.addAll(narudzbenica.getPoslovniPartner().getCjenovnici());
+		else
+			cjenovnici.addAll(narudzbenica.getPreduzece().getCjenovnici());
+
+		ArrayList<RobaUsluga> roba = new ArrayList();
+
+		Date date = new Date();
+
+		for (Cjenovnik cjenovnik : cjenovnici) {
+			boolean isafter = cjenovnik.getDatumVazenjaOd().before(date);
+			boolean isbefore = cjenovnik.getDatumVazenjaDo().after(date);
+			
+			System.out.println(isafter);
+			System.out.println(isbefore);
+			
+			if (isafter && isbefore && !(cjenovnik.isObrisano())) {
+				for (StavkaCjenovnika s : cjenovnik.getStavkeCjenovnika()) {
+					roba.add(s.getRobaUsluga());
+				}
+			}
+		}
+
+//        for (Cjenovnik cjenovnik : cjenovnici) {
+//			if(cjenovnik.isActive()) {
+//				 for (StavkaCjenovnika s : cjenovnik.getStavkeCjenovnika()) {
+//			        	roba.add(s.getRobaUsluga());
+//			        }
+//			}
+//		}
+//        Cjenovnik c = cjenovnici.get(cjenovnici.size()-1);
+//        ArrayList<RobaUsluga> roba = new ArrayList();
+//        for (StavkaCjenovnika s : c.getStavkeCjenovnika()) {
+//        	roba.add(s.getRobaUsluga());
+//        }
+		return ResponseEntity.ok(robaUslugaToDto.convert(roba));
+	}
 
 }

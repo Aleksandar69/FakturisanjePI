@@ -39,9 +39,11 @@ $(document).ready(function(){
                         success: function(data) {
                             partner = data;
                             red = $("<tr></tr>");
-                            red.append("<td>"+partner.nazivPartnera+"</br></td>");
-                            red.append("<td class='text-center'>"+new Date(value.datumVazenja).toLocaleString()+"</td>");
-                            red.append("<td><a href='cjenovnik.html?id="+value.id+"' class='btn btn-outline-primary'>Pregledaj</a></td>");
+                            red.append("<td class='text-center'>"+partner.nazivPartnera+"</br></td>");
+                            red.append("<td class='text-center'>"+new Date(value.datumVazenjaOd).toLocaleString()+"</td>");
+                            red.append("<td class='text-center'>"+new Date(value.datumVazenjaDo).toLocaleString()+"</td>");
+
+                            red.append("<td class='text-right'><a href='cjenovnik.html?id="+value.id+"' class='btn btn-outline-primary'>Pregledaj</a></td>");
                             red.append("<td>" +
                                 "<button cenovnik_id='"+value.id+"' class='btn btn-outline-danger delete_cenovnik'>Obrisi</button></td>");
                             red.append("<td>" +
@@ -50,8 +52,9 @@ $(document).ready(function(){
                         }, error: function (error) {
                             $.get("api/preduzece/1", function (data) {
                                 red = $("<tr></tr>");
-                                red.append("<td>"+data.naziv+"</br></td>");
-                                red.append("<td class='text-center'>"+new Date(value.datumVazenja).toLocaleString()+"</td>");
+                                red.append("<td class='text-center'>"+data.naziv+"</br></td>");
+                                red.append("<td class='text-center'>"+new Date(value.datumVazenjaOd).toLocaleString()+"</td>");
+                                red.append("<td class='text-center'>"+new Date(value.datumVazenjaDo).toLocaleString()+"</td>");
                                 red.append("<td class='text-right'><a href='cjenovnik.html?id="+value.id+"' class='btn btn-outline-primary'>Pregledaj</a></td>");
                                 red.append("<td>" +
                                     "<button cenovnik_id='"+value.id+"' class='btn btn-outline-danger delete_cenovnik'>Obrisi</button></td>");
@@ -92,9 +95,13 @@ $(document).ready(function(){
 	buttons.add.on("click", function (event) {
 	    var c = {};
 	    event.preventDefault();
-	    var datum =  $("#datum");
 	    var preduz =  $("#selectPreduzece");
-	    c.datumVazenja = datum.val();
+	    var datumOd =  $("#datumOd");
+	    var datumDo = $("#datumDo")
+	    c.datumVazenjaOd = datumOd.val();
+	    c.datumVazenjaDo = datumDo.val();
+	    c.poslovniPartnerId = preduz.val();
+	    c.preduzeceId = null;
 	
 	    $.ajax({
 	        url: 'api/cjenovnik?preduzece=false&id='+preduz.val(),
@@ -104,7 +111,7 @@ $(document).ready(function(){
 	    }).done(function () {
 	        popunjavanjeTabele();
 	        message.modal("show");
-	        message.find("div.modal-body").text("Uspjesno ste dodali!")
+	        message.find("div.modal-body").text("Uspjesno ste dodali cjenovnik!")
 	    });
 	    updateCenovnik.modal("hide");
 	    c=null;
@@ -142,7 +149,7 @@ $(document).ready(function(){
                 var select = document.getElementById("cenovnikDropdown");
                 $("#cenovnikDropdown").empty();
                 data.forEach(function(value){
-                       $("#cenovnikDropdown").append('<option value="' + value.id + '">' + new Date(value.datumVazenja).toLocaleString() + '</option>');
+                       $("#cenovnikDropdown").append('<option value="' + value.id + '">' + new Date(value.datumVazenjaOd).toLocaleString() + " - " +  new Date(value.datumVazenjaDo).toLocaleString() + '</option>');
                 })
                 $("#kopi_cen").on("click", function (event) {
                   var ciljaniId = $("#cenovnikDropdown").val();

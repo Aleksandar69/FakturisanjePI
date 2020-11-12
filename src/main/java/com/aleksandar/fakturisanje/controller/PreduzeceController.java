@@ -108,7 +108,7 @@ public class PreduzeceController {
     public ResponseEntity getCjenovnici(@PathVariable("id") long id) {
     	Preduzece preduzece = preduzeceService.findOne(id);
     	Set<Cjenovnik> c = preduzece.getCjenovnici();
-		return ResponseEntity.ok(toCjenovnikDto.convert(c.stream().filter(x -> !x.isDeleted()).collect(Collectors.toList())));
+		return ResponseEntity.ok(toCjenovnikDto.convert(c.stream().filter(x -> !x.isObrisano()).collect(Collectors.toList())));
     }
     
     @PutMapping(value= "/{id}")

@@ -120,8 +120,8 @@
             <table class="table" >
               <thead>
               <tr>
-                <th class="text-mercator">Datum važenja</th>
-                <th></th>
+                <th class="text-mercator">Datum važenja Od</th>
+                <th class="text-mercator">Datum važenja Do</th>
                 <th></th>
                 <th></th>
                 <th></th>
@@ -196,10 +196,17 @@
             <div class="modal-body">
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                        <span class="input-group-text">Datum vazenja</span>
+                        <span class="input-group-text">Datum vazenja Od</span>
                     </div>
-                    <input type="date" class="form-control" id="datum">
+                    <input type="date" class="form-control" id="datumOd">
                 </div>
+                 <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Datum vazenja Do</span>
+                    </div>
+                    <input type="date" class="form-control" id="datumDo">
+                </div>
+                
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" id="buttonAdd_cenovnik">Potvrda</button>

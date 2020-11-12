@@ -12,14 +12,18 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import com.aleksandar.fakturisanje.model.Cjenovnik;
 import com.aleksandar.fakturisanje.model.Faktura;
 import com.aleksandar.fakturisanje.model.Narudzbenica;
+import com.aleksandar.fakturisanje.model.StavkaCjenovnika;
 import com.aleksandar.fakturisanje.model.StavkaFakture;
 import com.aleksandar.fakturisanje.model.StavkaNarudzbenice;
 import com.aleksandar.fakturisanje.repo.NarudzbenicaRepository;
 import com.aleksandar.fakturisanje.repo.StavkaFaktureRepository;
+import com.aleksandar.fakturisanje.service.interfaces.ICjenovnikService;
 import com.aleksandar.fakturisanje.service.interfaces.IFakturaService;
 import com.aleksandar.fakturisanje.service.interfaces.INarudzbenicaService;
+import com.aleksandar.fakturisanje.service.interfaces.IStavkaCjenovnikaService;
 
 @Service
 public class NarudzbenicaService implements INarudzbenicaService{
@@ -32,6 +36,13 @@ public class NarudzbenicaService implements INarudzbenicaService{
 	
 	@Autowired
 	private StavkaFaktureRepository stavkaFaktRepo;
+	
+	@Autowired
+	private IStavkaCjenovnikaService stavkaCjenovnikaService;
+	
+	@Autowired
+	private ICjenovnikService cjenovnikService;
+
 
 	@Override
 	public Narudzbenica findOne(Long id) {
@@ -79,41 +90,58 @@ public class NarudzbenicaService implements INarudzbenicaService{
         faktura.setPreduzece(narudzbenica.getPreduzece());
         faktura.setPoslovnaGodina(narudzbenica.getPoslovnaGodina());
         faktura.setPoslovniPartner(narudzbenica.getPoslovniPartner());
+      
         
-        // naci id robe usluga iz narudzbenice
         Set<StavkaNarudzbenice> stavkeNarudzbenice = narudzbenica.getStavkeNarudzbenice();
+        
+        
+        List<StavkaCjenovnika> stavkeCjenovnika = stavkaCjenovnikaService.findAll();
 
-        //povuci sve stavke fakture iz baze i naci da se poklapaju idijevi
-        List<StavkaFakture> stavkeFakture = stavkaFaktRepo.findDistinctStavkeFakture();
 
         Set<StavkaFakture> nadjeneStavke = new HashSet<>();
 
-        for (StavkaNarudzbenice stavkaNarudzbenice : stavkeNarudzbenice) {
-            for (StavkaFakture stavkaFakture : stavkeFakture) {
-                long stavkaNarudzbeniceId = stavkaNarudzbenice.getRobaUsluga().getId();
-                long stavkaFaktureId = stavkaFakture.getRobaUsluga().getId();
-                if (stavkaFaktureId == stavkaNarudzbeniceId ) {
+        for (StavkaNarudzbenice sn : stavkeNarudzbenice) {
+        	        	
+        	for(StavkaCjenovnika sc : stavkeCjenovnika) {
+        		
+        		if(sc.getRobaUsluga().getId() == sn.getRobaUsluga().getId()) {
 
                     StavkaFakture novaStavkaFakture = new StavkaFakture();
-                    novaStavkaFakture.setIznosPdva(stavkaFakture.getIznosPdva());
-                    novaStavkaFakture.setIznos(stavkaFakture.getIznos());
-                    novaStavkaFakture.setCijena(stavkaFakture.getCijena());
-                    novaStavkaFakture.setKolicina(stavkaFakture.getKolicina());
-                    novaStavkaFakture.setObrisano(stavkaFakture.isObrisano());
-                    novaStavkaFakture.setPdvOsnovica(stavkaFakture.getPdvOsnovica());
-                    novaStavkaFakture.setRabat(stavkaFakture.getRabat());
-                    novaStavkaFakture.setRobaUsluga(stavkaFakture.getRobaUsluga());
-                    novaStavkaFakture.setPdvProcenat(stavkaFakture.getPdvProcenat());
+                    novaStavkaFakture.setIznosPdva(sc.getCijena() * sn.getKolicina() * (sn.getRobaUsluga().getGrupaRobe().getStopapdva().getProcenat() / 100));
+                    novaStavkaFakture.setIznos(sc.getCijena() * sn.getKolicina() * (1+(sn.getRobaUsluga().getGrupaRobe().getStopapdva().getProcenat() / 100)));
+                    novaStavkaFakture.setCijena(sc.getCijena());
+                    novaStavkaFakture.setKolicina(sn.getKolicina());
+                    novaStavkaFakture.setPdvOsnovica(sc.getCijena() * sn.getKolicina());
+                    novaStavkaFakture.setObrisano(false);
+                    novaStavkaFakture.setRabat(0);
+                    novaStavkaFakture.setRobaUsluga(sn.getRobaUsluga());
+                    novaStavkaFakture.setPdvProcenat(sn.getRobaUsluga().getGrupaRobe().getStopapdva().getProcenat());
                     novaStavkaFakture.setFaktura(faktura);
 
+
                     nadjeneStavke.add(novaStavkaFakture);
-                }
-            }
+        		}
+        	}
         }
 
         faktura.setStavkeFakture(nadjeneStavke);
         fakturaService.update(faktura);
 		
 	}
+
+	@Override
+	public Page<Narudzbenica> findAllByTipAndNazivParntera(boolean tip, String naziv, int brStranice,
+			int brPrikazanih) {
+		return narudzbenicaRepo.findAllByTipNarudzbeniceAndPoslovniPartner_NazivIgnoreCaseContainsAndObrisanoIsFalse(tip, naziv, PageRequest.of(brStranice, brPrikazanih));
+
+	}
+
+	@Override
+	public Page<Narudzbenica> findAllByTipAndNazivParnteraAndGodina(boolean tip, String naziv, int brStranice,
+			int brPrikazanih, int godina) {
+		return narudzbenicaRepo.findAllByTipNarudzbeniceAndPoslovnaGodina_IdAndPoslovniPartner_NazivIgnoreCaseContainsAndObrisanoIsFalse(tip, godina, naziv,PageRequest.of(brStranice, brPrikazanih));
+	}
+
+
 	
 }

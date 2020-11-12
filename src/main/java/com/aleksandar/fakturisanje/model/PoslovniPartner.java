@@ -50,7 +50,7 @@ public class PoslovniPartner {
     @OneToMany(mappedBy = "poslovniPartner", cascade = CascadeType.ALL)
 	private Set<Narudzbenica> narudzbenice = new HashSet<>();
     
-	@OneToMany( cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "poslovniPartner", cascade = CascadeType.ALL)
 	private Set<Cjenovnik> cjenovnici = new HashSet<>();
 	
 	private boolean obrisano;

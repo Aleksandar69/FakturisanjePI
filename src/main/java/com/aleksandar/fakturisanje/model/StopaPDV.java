@@ -1,6 +1,8 @@
 package com.aleksandar.fakturisanje.model;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -9,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class StopaPDV {
@@ -24,6 +27,9 @@ public class StopaPDV {
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "pdv_id")
 	private PDV pdv;
+	
+	@OneToMany(mappedBy = "stopapdva", cascade = CascadeType.ALL)
+    private Set<GrupaRobe> grupeRobe = new HashSet<>();
 	
 	private boolean obrisano;
 	
@@ -77,6 +83,14 @@ public class StopaPDV {
 
 	public void setObrisano(boolean obrisano) {
 		this.obrisano = obrisano;
+	}
+
+	public Set<GrupaRobe> getGrupeRobe() {
+		return grupeRobe;
+	}
+
+	public void setGrupeRobe(Set<GrupaRobe> grupeRobe) {
+		this.grupeRobe = grupeRobe;
 	}
 	
 	

@@ -61,11 +61,11 @@ function ucitajCjenovnike(){
         success: function(data) {
             data.forEach(function(value) {
                 red = $("<tr></tr>");
-                red.append("<td>"+new Date(value.datumVazenja).toLocaleString()+"</td>");
-                red.append("<td></td>");
+                red.append("<td>"+new Date(value.datumVazenjaOd).toLocaleString()+"</td>");
+                red.append("<td>"+new Date(value.datumVazenjaDo).toLocaleString()+"</td>");
                 red.append("<td class='text-right'><a href='cjenovnik.html?id="+value.id+"' class='btn  btn-outline-primary'>Pristupi</a></td>");
                 red.append("<td style='width: 25px;'><button cjenovnik_id='"+value.id+"' class='btn btn-outline-danger delete_cenovnik ' >Obrisi</button></td>");
-                red.append("<td><button cjenovnik_id='"+value.id+"' class=' btn btn-outline-warning update_cenovnik '>Izmijeni</button></td>");
+         //       red.append("<td><button cjenovnik_id='"+value.id+"' class=' btn btn-outline-warning update_cenovnik '>Izmijeni</button></td>");
                 tabelaCjenovnika.append(red);
             })
         }
@@ -131,9 +131,35 @@ $("#add_new_cenovnik").on("click", function (event) {
 buttons.add.on("click", function (event) {
     c = {};
     event.preventDefault();
-    var datum =  $("#datum");
-    c.datumVazenja = datum.val();
+    var datumOd =  $("#datumOd");
+    var datumDo = $("#datumDo")
+    c.datumVazenjaOd = datumOd.val();
+    c.datumVazenjaDo = datumDo.val();
+    c.preduzeceId = 1;
+    c.poslovniPartnerId = null;
 
+    console.log(c.datumVazenjaDo);
+    
+    if(datumOd.val() > datumDo.val()){
+        addCenovnik.modal("hide");
+        message.find("div.modal-body").text("Pocetani datum mora biti prije krajnjeg");
+        message.modal("show");
+        return;
+    }
+    
+    $.ajax({
+        url:"api/preduzece/1/cjenovnici",
+        type: 'GET',
+        success: function(data) {
+        	data.forEach(function(value) {
+            	if((datumOd<=value.datumVazenjaOd && value.datumVazenjaOd >= datumDo) || (datumOd <= value.datumVazenjaDo && value.datumVazenjaDo <= datumDo)
+            			|| (value.datumVazenjaOd < datumOd && datumDo < value.datumVazenjaDo)){
+            		alert("test");
+        	}
+        })
+        }
+    })
+    
     $.ajax({
         url: 'api/cjenovnik?preduzece=true&id=1' ,
         type: 'POST',
@@ -181,7 +207,7 @@ tabelaCjenovnika.on("click", "button.update_cenovnik", function (event) {
             buttons.edit.show();
             buttons.add.hide();
             var datum =  $("#datum");
-            var date = new Date(data.datumVazenja);
+            var date = new Date(data.datumVazenjaOd);
             var dateStr = date.getFullYear()+"-"+(date.getMonth()<9? "0":"")+(date.getMonth()+1)+"-"+(date.getDate()<10? "0":"")+date.getDate();
             datum.val(dateStr);
         }
@@ -192,7 +218,7 @@ buttons.edit.on("click", function (event) {
     event.preventDefault();
 
     var datum =  $("#datum");
-    c.datumVazenja =  datum.val();
+    c.datumVazenjaOd =  datum.val();
     $.ajax({
         url: 'api/cjenovnik/'+c.id,
         type: 'PUT',

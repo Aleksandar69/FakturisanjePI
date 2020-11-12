@@ -6,7 +6,13 @@ public class CjenovnikDto {
 
 	private long id;
 	
-	private Date datumVazenja;
+	private Date datumVazenjaOd;
+	
+	private Date DatumVazenjaDo;
+	
+	private long preduzeceId;
+	
+	private long poslovniPartnerId;
 	
 	public CjenovnikDto() {
 		
@@ -14,10 +20,11 @@ public class CjenovnikDto {
 	
 	
 
-	public CjenovnikDto(long id, Date datumVazenja) {
+	public CjenovnikDto(long id, Date datumVazenja, Date datumVazenjaDo) {
 		super();
 		this.id = id;
-		this.datumVazenja = datumVazenja;
+		this.datumVazenjaOd = datumVazenja;
+		this.DatumVazenjaDo = datumVazenjaDo;
 	}
 
 
@@ -30,13 +37,50 @@ public class CjenovnikDto {
 		this.id = id;
 	}
 
-	public Date getDatumVazenja() {
-		return datumVazenja;
+	public Date getDatumVazenjaOd() {
+		return datumVazenjaOd;
 	}
 
-	public void setDatumVazenja(Date datumVazenja) {
-		this.datumVazenja = datumVazenja;
+	public void setDatumVazenjaOd(Date datumVazenja) {
+		this.datumVazenjaOd = datumVazenja;
 	}
+
+
+
+	public Date getDatumVazenjaDo() {
+		return DatumVazenjaDo;
+	}
+
+
+
+	public void setDatumVazenjaDo(Date datumVazenjaDo) {
+		DatumVazenjaDo = datumVazenjaDo;
+	}
+
+
+
+	public long getPreduzeceId() {
+		return preduzeceId;
+	}
+
+
+
+	public void setPreduzeceId(long preduzeceId) {
+		this.preduzeceId = preduzeceId;
+	}
+
+
+
+	public long getPoslovniPartnerId() {
+		return poslovniPartnerId;
+	}
+
+
+
+	public void setPoslovniPartnerId(long poslovniPartnerId) {
+		this.poslovniPartnerId = poslovniPartnerId;
+	}
+	
 	
 	
 	
