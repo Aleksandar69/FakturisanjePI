@@ -465,7 +465,7 @@ $P{faktura}.getPoslovniPartner().getTekuciRacun().substring(16,$P{faktura}.getPo
 				</jr:table>
 			</componentElement>
 		</band>
-		<band height="100">
+		<band height="131">
 			<staticText>
 				<reportElement x="0" y="40" width="90" height="30" uuid="48844d35-05c8-4110-80be-fd29febb963b"/>
 				<textElement textAlignment="Left"/>
@@ -496,6 +496,58 @@ $P{faktura}.getPoslovniPartner().getTekuciRacun().substring(16,$P{faktura}.getPo
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$P{faktura}.getBrojFakture()]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement x="268" y="0" width="98" height="30" uuid="51162344-de15-4286-9903-88611de041f5"/>
+				<textElement verticalAlignment="Bottom"/>
+				<text><![CDATA[Odobrena Rabat:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="268" y="30" width="98" height="30" uuid="408b9254-5723-48b4-8ba0-30482d291a76"/>
+				<textElement verticalAlignment="Bottom"/>
+				<text><![CDATA[PDV Osnovica:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="268" y="60" width="98" height="30" uuid="ed4f1fb5-1dbd-48c5-a49f-3ab09204d1f5"/>
+				<textElement verticalAlignment="Bottom"/>
+				<text><![CDATA[PDV:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="268" y="90" width="98" height="30" uuid="d9bf6023-9d48-42bb-9a3a-8c6bdeb72792"/>
+				<textElement verticalAlignment="Bottom"/>
+				<text><![CDATA[Za placanje:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="366" y="0" width="113" height="30" uuid="f357bcd6-112e-46bc-a8de-cb04570286df"/>
+				<textElement verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$P{faktura}.getRabat()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="368" y="30" width="111" height="30" uuid="37401de2-42e4-4983-9f25-560b66a4d9e5"/>
+				<textElement verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$P{faktura}.getOsnovica()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="366" y="60" width="111" height="30" uuid="b9ac98d5-0e6c-4499-9351-2967e163c497"/>
+				<textElement verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$P{faktura}.getUkupanPdv()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="368" y="90" width="111" height="30" uuid="68f37262-cc8b-4a47-8e9d-a31e575d5e79"/>
+				<textElement verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$P{faktura}.getIznosZaPlacanje()]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="268" y="59" width="209" height="1" uuid="6bb3aa24-8950-46a4-af53-94aab452da8b"/>
+			</line>
+			<line>
+				<reportElement x="268" y="120" width="209" height="1" uuid="43fa929d-0273-4d7e-8d55-dc53c3366ba5"/>
+			</line>
+			<line>
+				<reportElement x="268" y="90" width="209" height="1" uuid="ed285903-6bc5-473e-b236-38f744d7c403"/>
+			</line>
+			<line>
+				<reportElement x="270" y="30" width="209" height="1" uuid="e998ac95-c8d8-4877-a803-78b8b3a7f6db"/>
+			</line>
 		</band>
 	</detail>
 	<columnFooter>

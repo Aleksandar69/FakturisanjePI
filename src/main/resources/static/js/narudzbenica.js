@@ -104,9 +104,9 @@ $(document).ready(function(){
 					poslovnaGodina = data.godina; 
 				}
 			});
-//			if(data.obrisano==true || data.tipNarudzbenice==true){
-//				document.getElementById('addStavkaNarudzbenica').style.visibility='hidden';
-//			}
+			if(data.obrisano==true || data.tipNarudzbenice==true){
+				document.getElementById('addStavkaNarudzbenica').style.visibility='hidden';
+			}
             obrisano = data.obrisano
 			$("#addStavka").show();
 			$("#brojRacuna").text(data.brojNarudzbenice+"/"+poslovnaGodina);

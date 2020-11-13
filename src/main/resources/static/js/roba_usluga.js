@@ -7,6 +7,7 @@ $(document).ready(function(){
 		$("#inputGrupa").hide();
 		grupa = "?grupa="+params["grupa"];
 	}
+	var grpId = getGrpId();
 	var grupaFilter = $("#grupa-robe-filter");
 
     var page = 0; var robaPagintaion = $('#roba-pagination');
@@ -20,6 +21,7 @@ $(document).ready(function(){
 	
 	function getRobaUsluga() {
 		robaTable.empty();
+		console.log("params: " + grpId);
 		var naziv = nameSearch.val();
 		var grupa = grupaFilter.val();
         $.ajax({url: `api/robausluga?page=${page}&num=${numberPerPage}&naziv=${naziv}&grupa=${grupa}`,
@@ -45,7 +47,8 @@ $(document).ready(function(){
             url: 'api/grupa_robe/'+data.grupaRobe,
             type: 'GET',
             async: false,
-            success: function(data) { grupaRobe = data.nazivGrupe; }
+            success: function(data) { grupaRobe = data.nazivGrupe;
+}
         });
 		$("#robaTable tbody").append("<tr><td>"+data.nazivRobeUsluge+"</td><td>"+data.jedinicaMjere+"</td><td>"+
 				grupaRobe+"</td><td class='text-right'><button value='"+data.id+"' class='btn btn-outline-primary edit'>Izmijeni</button></td><td>"+
@@ -77,6 +80,14 @@ $(document).ready(function(){
 	        param[hash[0]] = hash[1];
 	    }
 	    return param;
+	}
+	
+	function getGrpId(){
+		var url = window.location.href;
+		//var id = url.match(/grupa=(\d+)/);
+		var id = url.substring(url.lastIndexOf('=') + 1)
+		var sliced =id.slice(2);
+		return id;
 	}
 	
 	$("#addRoba").click(function(e){

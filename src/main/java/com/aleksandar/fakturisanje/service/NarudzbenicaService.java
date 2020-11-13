@@ -1,5 +1,6 @@
 package com.aleksandar.fakturisanje.service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -15,6 +16,8 @@ import org.springframework.stereotype.Service;
 import com.aleksandar.fakturisanje.model.Cjenovnik;
 import com.aleksandar.fakturisanje.model.Faktura;
 import com.aleksandar.fakturisanje.model.Narudzbenica;
+import com.aleksandar.fakturisanje.model.PoslovniPartner;
+import com.aleksandar.fakturisanje.model.Preduzece;
 import com.aleksandar.fakturisanje.model.StavkaCjenovnika;
 import com.aleksandar.fakturisanje.model.StavkaFakture;
 import com.aleksandar.fakturisanje.model.StavkaNarudzbenice;
@@ -86,7 +89,12 @@ public class NarudzbenicaService implements INarudzbenicaService{
         faktura.setDatumFakture(new Date());
         faktura.setDatumValute(datumValute);
         faktura.setPlaceno(true);
-        faktura.setVrstaFakture(true);
+        if(narudzbenica.getPoslovniPartner().getVrstaPartnera() == 0) {
+           faktura.setVrstaFakture(true);
+        }
+        else {
+            faktura.setVrstaFakture(false);
+        }
         faktura.setPreduzece(narudzbenica.getPreduzece());
         faktura.setPoslovnaGodina(narudzbenica.getPoslovnaGodina());
         faktura.setPoslovniPartner(narudzbenica.getPoslovniPartner());
@@ -95,7 +103,33 @@ public class NarudzbenicaService implements INarudzbenicaService{
         Set<StavkaNarudzbenice> stavkeNarudzbenice = narudzbenica.getStavkeNarudzbenice();
         
         
-        List<StavkaCjenovnika> stavkeCjenovnika = stavkaCjenovnikaService.findAll();
+        List<Cjenovnik> cjenovnici = new ArrayList<Cjenovnik>();
+        
+        System.out.println("Narudzbenica je: " + narudzbenica.isTipNarudzbenice());
+        
+        if(!(narudzbenica.isTipNarudzbenice())) {
+        	List<Cjenovnik >cjenovnici2 = cjenovnikService.findAllByPoslParnterId(narudzbenica.getPoslovniPartner().getId());
+        	
+        	for (Cjenovnik cjenovnik : cjenovnici2) {
+				cjenovnici.add(cjenovnik);
+			}
+        }
+        else {
+        	List<Cjenovnik> cjenovnici2 = cjenovnikService.findAllByPreduzeceId(narudzbenica.getPreduzece().getId());	
+        	for (Cjenovnik cjenovnik : cjenovnici2) {
+				cjenovnici.add(cjenovnik);
+			}
+        }
+        
+    //    List<Cjenovnik> cjenovnici = cjenovnikService.findAllByPreduzeceId(narudzbenica.getPreduzece().getId());
+        
+        List<StavkaCjenovnika> stavkeCjenovnika = new ArrayList<StavkaCjenovnika>();
+        
+        for (Cjenovnik c : cjenovnici) {
+        	for(StavkaCjenovnika s : c.getStavkeCjenovnika()) {
+        		stavkeCjenovnika.add(s);
+        	}
+		}
 
 
         Set<StavkaFakture> nadjeneStavke = new HashSet<>();

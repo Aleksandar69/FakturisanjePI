@@ -115,8 +115,8 @@ public class OtpremnicaService implements IOtpremnicaService {
         
         // naci id robe usluga iz narudzbenice
         Set<StavkaOtpremnice> stavkeOtpremnice = otpremnica.getStavkeOtpremnice();
-            
-        Set<StavkaFakture> nadjeneStavke = new HashSet<>();
+      
+        Set<StavkaFakture> nadjeneStavke = new HashSet<>(); 
         
         for(StavkaOtpremnice so : stavkeOtpremnice) {
     			StavkaFakture novaStavkaFakture = new StavkaFakture();

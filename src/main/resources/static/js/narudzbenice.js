@@ -28,7 +28,7 @@ $(document).ready(function(){
     function ucitajPartnere(){
         $.get("api/poslovni_partneri", function(data) {
             newNarudzbenicaHtml.poslovniPartner.empty();
-            var optKupci = $('<optgroup label="Kupci"></optgroup>');
+//            var optKupci = $('<optgroup label="Kupci"></optgroup>');
             var optProdavci = $('<optgroup label="Prodavci"></optgroup>');
             data.forEach(function (value) {
                 if(value.vrstaPartnera===1){
@@ -36,11 +36,11 @@ $(document).ready(function(){
                     optProdavci.append("<option value='"+value.id+"'>"+value.nazivPartnera+"</option>");
                 }
                 
-                else{
-                    optKupci.append("<option value='"+value.id+"'>"+value.nazivPartnera+"</option>");
-                }
+//                else{
+//                    optKupci.append("<option value='"+value.id+"'>"+value.nazivPartnera+"</option>");
+//                }
             });
-            newNarudzbenicaHtml.poslovniPartner.append(optKupci);
+//            newNarudzbenicaHtml.poslovniPartner.append(optKupci);
             newNarudzbenicaHtml.poslovniPartner.append(optProdavci);
         });
     }
