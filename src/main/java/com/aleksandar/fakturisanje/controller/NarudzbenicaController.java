@@ -100,7 +100,7 @@ public class NarudzbenicaController {
 			// narudzbenice =
 			// narudzbenicaService.findAllByPoslovnaGodinaAndNazivPartnera(naziv, godina,
 			// page, num);
-			narudzbenice = narudzbenicaService.findAllByTipAndNazivParnteraAndGodina(true, naziv, godina, page, num);
+			narudzbenice = narudzbenicaService.findAllByTipAndNazivParnteraAndGodina(true, naziv, page, num, godina);
 		}
 
 		List<NarudzbenicaDto> narudzbeniceDto = narudzbenicaToNarudzbenicaDto.convert(narudzbenice.getContent());
@@ -125,7 +125,7 @@ public class NarudzbenicaController {
 			// narudzbenice =
 			// narudzbenicaService.findAllByPoslovnaGodinaAndNazivPartnera(naziv, godina,
 			// page, num);
-			narudzbenice = narudzbenicaService.findAllByTipAndNazivParnteraAndGodina(false, naziv, godina, page, num);
+			narudzbenice = narudzbenicaService.findAllByTipAndNazivParnteraAndGodina(false, naziv, page, num, godina);
 		}
 
 		List<NarudzbenicaDto> narudzbeniceDto = narudzbenicaToNarudzbenicaDto.convert(narudzbenice.getContent());
@@ -154,7 +154,7 @@ public class NarudzbenicaController {
 			return new ResponseEntity(HttpStatus.BAD_REQUEST);
 		}
 
-		PoslovnaGodina poslednjaPoslovnaGodina = poslovnaGodinaService.findPoslovnaGodinaIsFalse();
+		PoslovnaGodina poslednjaPoslovnaGodina = poslovnaGodinaService.findPoslovnaGodinaIsNotObrisanoIsNotZakljucana();
 		Narudzbenica narudzbenica = narudzbenicaDtoToNarudzbenica.convert(dto);
 
 		narudzbenica.setBrojNarudzbenice(poslednjaPoslovnaGodina.getNarudzbenice().size() + 1);
@@ -168,7 +168,7 @@ public class NarudzbenicaController {
 
 		return new ResponseEntity<>(narudzbenicaDto, HttpStatus.CREATED);
 	}
-
+	
 	@PostMapping("/{id}/napraviOtpremnicu")
 	public ResponseEntity napraviOtpremnicuOdNarudzbenice(@PathVariable("id") long id) {
 
@@ -180,7 +180,7 @@ public class NarudzbenicaController {
 
 	@PostMapping("/{id}/napraviFakturu")
 	public ResponseEntity napraviFakturuOdNarudzbenice(@PathVariable("id") long id) {
-		PoslovnaGodina poslovnaGodina = poslovnaGodinaService.findPoslovnaGodinaIsFalse();
+		PoslovnaGodina poslovnaGodina = poslovnaGodinaService.findPoslovnaGodinaIsNotObrisanoIsNotZakljucana();
 		int poslednjaPoslovnjaGodina = poslovnaGodina.getFakture().size();
 
 		Narudzbenica narudzbenica = narudzbenicaService.findOne(id);
@@ -193,6 +193,11 @@ public class NarudzbenicaController {
 	public ResponseEntity getStavke(@PathVariable("id") long id) {
 
 		List<StavkaNarudzbenice> stavkeNarudzbenice = stavkaNarudzbeniceService.pronadjiStavkeNarudzbenice(id);
+		
+		for (StavkaNarudzbenice stavkaNarudzbenice : stavkeNarudzbenice) {
+			System.out.println(stavkaNarudzbenice.getOpis());
+		}
+		
 		List<StavkaNarudzbeniceDto> stavkeNarudzbeniceDto = stavkaNarudzbeniceToStavkaNarudzbeniceDto
 				.convert(stavkeNarudzbenice);
 		return new ResponseEntity<>(stavkeNarudzbeniceDto, HttpStatus.OK);

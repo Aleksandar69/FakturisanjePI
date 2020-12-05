@@ -105,6 +105,7 @@ $(document).ready(function(){
 				}
 			});
 			if(data.obrisano==true || data.tipNarudzbenice==true){
+				console.log("tip narudzbenice: " + data.tipNarudzbenice )
 				document.getElementById('addStavkaNarudzbenica').style.visibility='hidden';
 			}
             obrisano = data.obrisano
@@ -120,7 +121,7 @@ $(document).ready(function(){
 		dataType: "json",
 		contentType: "application/json",
 		success: function(data){
-			console.log(data);
+			console.log("narudzbenice/id/stavke" + data);
 			addStavke(data);
 			
 		}

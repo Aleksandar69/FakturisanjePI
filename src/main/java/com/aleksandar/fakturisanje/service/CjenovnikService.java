@@ -37,7 +37,7 @@ public class CjenovnikService implements ICjenovnikService{
 	}
 
 	@Override
-	public List<Cjenovnik> findAllById(long id) {
+	public List<Cjenovnik> findAllByNotId(long id) {
 		return cjenovnikRepo.findByIdNot(id);
 	}
 

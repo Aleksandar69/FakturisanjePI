@@ -212,7 +212,7 @@ public class CjenovnikController {
 	
 	@GetMapping("/{id}/bezIzabranog")
 	public ResponseEntity getAllWithoutGivenOne(@PathVariable("id") long id) {
-		List<Cjenovnik> cenovnik = cjenovnikServiceInterface.findAllById(id);
+		List<Cjenovnik> cenovnik = cjenovnikServiceInterface.findAllByNotId(id);
 		return ResponseEntity.ok(cjenovnikToDto.convert(cenovnik));
 
 	}

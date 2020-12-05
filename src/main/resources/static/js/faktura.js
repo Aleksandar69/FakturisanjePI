@@ -19,7 +19,8 @@ $(document).ready(function(){
                 async: false,
                 success: function(data) { poslovnaGodina = data.godina; }
             });
-			if (!data.placeno) $("#addStavka").show();
+			$("#addStavka").hide();
+			//if (!data.placeno) $("#addStavka").show();
 			$("#brojRacuna").text(data.brFakture+"/"+poslovnaGodina);
 			$("#datumIzdavanja").text(new Date(data.datumFakture).toLocaleString());
 			$("#datumValute").text(new Date(data.datumValute).toLocaleString());
@@ -31,8 +32,8 @@ $(document).ready(function(){
 			console.log(data.preduzece);
 			getPoslovniPartner(data.poslovniPartner);
 			vrstaFakture = data.vrstaFakture;
-			console.log(data.vrstaFakture);
-			console.log(vrstaFakture);
+			console.log("vrsta fakture: " + data.vrstaFakture);
+			console.log("vrsta fakture2: " + vrstaFakture);
 			if(vrstaFakture === true){
 				$("#addStavka").hide();
 			}

@@ -11,6 +11,6 @@ public interface IPoslovnaGodinaService {
     PoslovnaGodina save(PoslovnaGodina poslovnaGodina);
     Boolean delete(Long id);
     
-    PoslovnaGodina findPoslovnaGodinaIsFalse();
+    PoslovnaGodina findPoslovnaGodinaIsNotObrisanoIsNotZakljucana();
 	
 }

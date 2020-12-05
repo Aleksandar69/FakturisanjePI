@@ -90,10 +90,10 @@ public class NarudzbenicaService implements INarudzbenicaService{
         faktura.setDatumValute(datumValute);
         faktura.setPlaceno(true);
         if(narudzbenica.getPoslovniPartner().getVrstaPartnera() == 0) {
-           faktura.setVrstaFakture(true);
+           faktura.setVrstaFakture(false);
         }
         else {
-            faktura.setVrstaFakture(false);
+            faktura.setVrstaFakture(true);
         }
         faktura.setPreduzece(narudzbenica.getPreduzece());
         faktura.setPoslovnaGodina(narudzbenica.getPoslovnaGodina());

@@ -128,7 +128,7 @@ public class OtpremnicaController {
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
 
-        PoslovnaGodina poslednjaPoslovnaGodina = poslovnaGodinaService.findPoslovnaGodinaIsFalse();
+        PoslovnaGodina poslednjaPoslovnaGodina = poslovnaGodinaService.findPoslovnaGodinaIsNotObrisanoIsNotZakljucana();
         Otpremnica otpremnica = otpremnicaDtoToOtpremnica.convert(dto);
         otpremnica.setBrojOtpremnice(poslednjaPoslovnaGodina.getOtpremnice().size()+1);
         otpremnica.setDatumOtpremnice(new Date());
@@ -145,7 +145,7 @@ public class OtpremnicaController {
     @PostMapping("/{id}/napraviFakturu")
     public ResponseEntity napraviFakturuOdOtpremnice(@PathVariable("id") long id) {
 
-        PoslovnaGodina poslovnaGodina = poslovnaGodinaService.findPoslovnaGodinaIsFalse();
+        PoslovnaGodina poslovnaGodina = poslovnaGodinaService.findPoslovnaGodinaIsNotObrisanoIsNotZakljucana();
         int poslednjaPoslovnjaGodina = poslovnaGodina.getFakture().size();
 
         Otpremnica otpremnica = otpremnicaService.findOne(id);

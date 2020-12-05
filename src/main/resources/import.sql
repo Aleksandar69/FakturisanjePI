@@ -68,12 +68,12 @@ INSERT INTO roba_usluga (jedinica_mjere,naziv,obrisano,grupa_robe_id) VALUES ('k
 INSERT INTO roba_usluga (jedinica_mjere,naziv,obrisano,grupa_robe_id) VALUES ('komad','Mlijeko 1l',0,11);
 INSERT INTO roba_usluga (jedinica_mjere,naziv,obrisano,grupa_robe_id) VALUES ('komad','Sir Edamer 250g',0,12);
 
-INSERT INTO cjenovnik (datum_vazenja_od, datum_vazenja_do, obrisano, preduzece_id, poslovnipartner_id) VALUES ('2020-11-01 00:00:00.000', '2020-12-01, 00:00:00.000',0, 1, null);
-INSERT INTO cjenovnik (datum_vazenja_od,datum_vazenja_do, obrisano, preduzece_id, poslovnipartner_id) VALUES ('2020-11-01 00:00:00.000', '2020-12-01 00:00:00.000',0,null, 1);
-INSERT INTO cjenovnik (datum_vazenja_od, datum_vazenja_do, obrisano, preduzece_id, poslovnipartner_id) VALUES ('2020-11-01 00:00:00.000', '2020-12-01 00:00:00.000',0, null, 2);
-INSERT INTO cjenovnik (datum_vazenja_od,datum_vazenja_do, obrisano, preduzece_id, poslovnipartner_id) VALUES ('2020-11-01 00:00:00.000', '2020-12-01 00:00:00.000',0, null, 3);
-INSERT INTO cjenovnik (datum_vazenja_od, datum_vazenja_do, obrisano, preduzece_id, poslovnipartner_id) VALUES ('2020-11-01 00:00:00.000', '2020-12-01 00:00:00.000',0, null, 4);
-INSERT INTO cjenovnik (datum_vazenja_od,datum_vazenja_do, obrisano, preduzece_id, poslovnipartner_id) VALUES ('2020-11-01 00:00:00.000', '2020-12-01 00:00:00.000',0, null, 5);
+INSERT INTO cjenovnik (datum_vazenja_od, datum_vazenja_do, obrisano, preduzece_id, poslovnipartner_id) VALUES ('2020-11-01 00:00:00.000', '2020-12-10, 00:00:00.000',0, 1, null);
+INSERT INTO cjenovnik (datum_vazenja_od,datum_vazenja_do, obrisano, preduzece_id, poslovnipartner_id) VALUES ('2020-11-01 00:00:00.000', '2020-12-10 00:00:00.000',0,null, 1);
+INSERT INTO cjenovnik (datum_vazenja_od, datum_vazenja_do, obrisano, preduzece_id, poslovnipartner_id) VALUES ('2020-11-01 00:00:00.000', '2020-12-10 00:00:00.000',0, null, 2);
+INSERT INTO cjenovnik (datum_vazenja_od,datum_vazenja_do, obrisano, preduzece_id, poslovnipartner_id) VALUES ('2020-11-01 00:00:00.000', '2020-12-10 00:00:00.000',0, null, 3);
+INSERT INTO cjenovnik (datum_vazenja_od, datum_vazenja_do, obrisano, preduzece_id, poslovnipartner_id) VALUES ('2020-11-01 00:00:00.000', '2020-12-10 00:00:00.000',0, null, 4);
+INSERT INTO cjenovnik (datum_vazenja_od,datum_vazenja_do, obrisano, preduzece_id, poslovnipartner_id) VALUES ('2020-11-01 00:00:00.000', '2020-12-10 00:00:00.000',0, null, 5);
 
 
 INSERT INTO stavka_cjenovnika (cijena,obrisano,cjenovnik_id,roba_usluga_id) VALUES (120,0,1,10);
@@ -106,7 +106,7 @@ INSERT INTO narudzbenica (broj_narudzbenice, datum_narudzbenice, obrisano, tip_n
 
 INSERT INTO stavka_narudzbenice (jedinica_mjere, kolicina, obrisano, opis, narudzbenica_id, roba_usluga_id) VALUES ('komad', 200, 0, 'Cips 150g', 1, 15);
 INSERT INTO stavka_narudzbenice (jedinica_mjere, kolicina, obrisano, opis, narudzbenica_id, roba_usluga_id) VALUES ('komad', 30, 0, 'Dove cvrsti sapun 100g', 1, 8);
-INSERT INTO stavka_narudzbenice (jedinica_mjere, kolicina, obrisano, opis, narudzbenica_id, roba_usluga_id) VALUES ('komad', 20, 0, 'Kese za smece 120l', 1, 10);
+INSERT INTO stavka_narudzbenice (jedinica_mjere, kolicina, obrisano, opis, narudzbenica_id, roba_usluga_id) VALUES ('komad', 20, 0, 'Kese za smece 120l', 1, 10); 	
 INSERT INTO stavka_narudzbenice (jedinica_mjere, kolicina, obrisano, opis, narudzbenica_id, roba_usluga_id) VALUES ('komad', 30, 0, 'Sundjer za sudove 6kom', 1, 11);
 INSERT INTO stavka_narudzbenice (jedinica_mjere, kolicina, obrisano, opis, narudzbenica_id, roba_usluga_id) VALUES ('komad', 30, 0, 'Toalet Papir', 2, 9);
 INSERT INTO stavka_narudzbenice (jedinica_mjere, kolicina, obrisano, opis, narudzbenica_id, roba_usluga_id) VALUES ('komad', 100, 0, 'Kese za smece 120l', 2, 10);

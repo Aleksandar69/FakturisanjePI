@@ -55,7 +55,7 @@ public class PoslovnaGodinaService implements IPoslovnaGodinaService {
 	}
 
 	@Override
-	public PoslovnaGodina findPoslovnaGodinaIsFalse() {
+	public PoslovnaGodina findPoslovnaGodinaIsNotObrisanoIsNotZakljucana() {
 		return poslovnaGodRepo.findByZakljucanaIsFalseAndObrisanoIsFalse().get(0);
 	}
 
