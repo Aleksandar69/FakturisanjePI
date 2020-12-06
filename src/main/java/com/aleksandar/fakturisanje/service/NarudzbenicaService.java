@@ -98,6 +98,7 @@ public class NarudzbenicaService implements INarudzbenicaService{
         faktura.setPreduzece(narudzbenica.getPreduzece());
         faktura.setPoslovnaGodina(narudzbenica.getPoslovnaGodina());
         faktura.setPoslovniPartner(narudzbenica.getPoslovniPartner());
+        faktura.setNarudzbenica(narudzbenica);
       
         
         Set<StavkaNarudzbenice> stavkeNarudzbenice = narudzbenica.getStavkeNarudzbenice();

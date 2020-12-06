@@ -112,6 +112,7 @@ public class OtpremnicaService implements IOtpremnicaService {
         faktura.setPreduzece(otpremnica.getPreduzece());
         faktura.setPoslovnaGodina(otpremnica.getPoslovnaGodina());
         faktura.setPoslovniPartner(otpremnica.getPoslovniPartner());
+        faktura.setOtpremnica(otpremnica);
         
         // naci id robe usluga iz narudzbenice
         Set<StavkaOtpremnice> stavkeOtpremnice = otpremnica.getStavkeOtpremnice();
