@@ -103,6 +103,9 @@ INSERT INTO narudzbenica (broj_narudzbenice, datum_narudzbenice, obrisano, tip_n
 INSERT INTO narudzbenica (broj_narudzbenice, datum_narudzbenice, obrisano, tip_narudzbenice, poslovna_godina_id, poslovni_partner_id, preduzece_id) VALUES (5, '2020-11-10 12:37:52.184000', 0, 1, 6, 5, 1);
 INSERT INTO narudzbenica (broj_narudzbenice, datum_narudzbenice, obrisano, tip_narudzbenice, poslovna_godina_id, poslovni_partner_id, preduzece_id) VALUES (5, '2020-11-10 12:38:27.767000', 0, 0, 6, 1, 1);
 INSERT INTO narudzbenica (broj_narudzbenice, datum_narudzbenice, obrisano, tip_narudzbenice, poslovna_godina_id, poslovni_partner_id, preduzece_id) VALUES (5, '2020-11-10 12:38:53.884000', 0, 0, 6, 2, 1);
+INSERT INTO narudzbenica (broj_narudzbenice, datum_narudzbenice, obrisano, tip_narudzbenice, poslovna_godina_id, poslovni_partner_id, preduzece_id) VALUES (5, '2020-12-06 12:48:09.985000', 0, 1, 6, 4, 1);
+INSERT INTO narudzbenica (broj_narudzbenice, datum_narudzbenice, obrisano, tip_narudzbenice, poslovna_godina_id, poslovni_partner_id, preduzece_id) VALUES (5, '2020-12-06 13:07:29.449000', 0, 0, 6, 3, 1);
+
 
 INSERT INTO stavka_narudzbenice (jedinica_mjere, kolicina, obrisano, opis, narudzbenica_id, roba_usluga_id) VALUES ('komad', 200, 0, 'Cips 150g', 1, 15);
 INSERT INTO stavka_narudzbenice (jedinica_mjere, kolicina, obrisano, opis, narudzbenica_id, roba_usluga_id) VALUES ('komad', 30, 0, 'Dove cvrsti sapun 100g', 1, 8);
@@ -114,4 +117,10 @@ INSERT INTO stavka_narudzbenice (jedinica_mjere, kolicina, obrisano, opis, narud
 INSERT INTO stavka_narudzbenice (jedinica_mjere, kolicina, obrisano, opis, narudzbenica_id, roba_usluga_id) VALUES ('komad', 40, 0, 'Viski Jameson', 3, 3);
 INSERT INTO stavka_narudzbenice (jedinica_mjere, kolicina, obrisano, opis, narudzbenica_id, roba_usluga_id) VALUES ('komad', 100, 0, 'Fanta 1.5l', 4, 4);
 INSERT INTO stavka_narudzbenice (jedinica_mjere, kolicina, obrisano, opis, narudzbenica_id, roba_usluga_id) VALUES ('komad', 200, 0, 'Pedigree dentaastix', 4, 6);
+INSERT INTO stavka_narudzbenice (jedinica_mjere, kolicina, obrisano, opis, narudzbenica_id, roba_usluga_id) VALUES ('komad', 100, 0, 'Dove cvrsti sapun 100g', 5, 8);
+INSERT INTO stavka_narudzbenice (jedinica_mjere, kolicina, obrisano, opis, narudzbenica_id, roba_usluga_id) VALUES ('komad', 50, 0, 'Sundjer za sudove 6kom', 5, 11);
+INSERT INTO stavka_narudzbenice (jedinica_mjere, kolicina, obrisano, opis, narudzbenica_id, roba_usluga_id) VALUES ('komad', 50, 0, 'Cips 150g', 5, 15);
+INSERT INTO stavka_narudzbenice (jedinica_mjere, kolicina, obrisano, opis, narudzbenica_id, roba_usluga_id) VALUES ('komad', 50, 0, 'Sundjer za sudove 6kom', 6, 11);
+INSERT INTO stavka_narudzbenice (jedinica_mjere, kolicina, obrisano, opis, narudzbenica_id, roba_usluga_id) VALUES ('komad', 50, 0, 'Toalet Papir', 6, 9);
+
 
