@@ -155,6 +155,7 @@ public class OtpremnicaService implements IOtpremnicaService {
         otpremnica.setPoslovniPartner(narudzbenica.getPoslovniPartner());
         otpremnica.setTipOtpremnice(false);
         otpremnica.setObrisano(false);
+        otpremnica.setNarudzbenica(narudzbenica);
    
         
         List<Cjenovnik> cjenovnik = cjenovnikService.findAllByPreduzeceId(1);
