@@ -19,8 +19,8 @@ $(document).ready(function(){
                 async: false,
                 success: function(data) { poslovnaGodina = data.godina; }
             });
-			$("#addStavka").hide();
-			//if (!data.placeno) $("#addStavka").show();
+			//$("#addStavka").hide();
+			if (!data.placeno) $("#addStavka").show();
 			$("#brojRacuna").text(data.brFakture+"/"+poslovnaGodina);
 			$("#datumIzdavanja").text(new Date(data.datumFakture).toLocaleString());
 			$("#datumValute").text(new Date(data.datumValute).toLocaleString());
